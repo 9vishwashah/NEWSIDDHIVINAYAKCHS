@@ -1,0 +1,757 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.max-width {
+    max-width: 1200px;
+    padding: 0 20px;
+    margin: auto;
+}
+
+/* Navbar Styling */
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    padding: 20px 0;
+    /* background: #111; */
+    transition: all 0.3s ease;
+}
+
+.navbar.sticky {
+    padding: 15px 0;
+    background: crimson;
+}
+
+.navbar .max-width {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo a {
+    color: #fff;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.navbar .logo a span {
+    color: crimson;
+    transition: all 0.3s ease;
+}
+
+
+
+.navbar.sticky .logo a span {
+    color: #fff;
+}
+
+.logo img {
+    width: 70px;
+    border-radius: 30%;
+    margin-left: -100px;
+    height: auto;
+    display: inline-block;
+}
+
+/* Added Menu Btn */
+.navbar .menu li {
+    list-style: none;
+    display: inline-block;
+}
+
+.navbar .menu li a {
+    display: block;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+}
+
+.navbar .menu li a:hover {
+    color: crimson;
+}
+
+.navbar.sticky .menu li a:hover {
+    color: #fff;
+}
+
+
+
+
+
+/* Media Query for Responsive Adjustments */
+@media (max-width: 768px) {
+    .logo img {
+        width: 50px;
+        margin-left: 0;
+        border-radius: 30%;
+    }
+}
+
+
+
+.navbar .menu li {
+    display: inline-block;
+}
+
+.navbar .menu li a {
+    display: block;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+}
+
+.navbar .menu li a:hover {
+    color: crimson;
+}
+
+
+.navbar.sticky .menu li a:hover {
+    color: #fff;
+}
+
+
+.menu-btn {
+    display: none;
+    font-size: 23px;
+    cursor: pointer;
+    color: #fff;
+
+}
+
+
+.scroll-up-btn {
+    position: fixed;
+    height: 45px;
+    width: 42px;
+    background: crimson;
+    right: 30px;
+    bottom: 10px;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    z-index: 9999;
+    font-size: 30px;
+    border-radius: 6px;
+    border-bottom-width: 2px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.scroll-up-btn.show {
+    bottom: 30px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.scroll-up-btn:hover {
+    filter: brightness(90%);
+}
+
+/* Home Section */
+.home {
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+    background: url("./blob-scene-haikei.svg") no-repeat;
+    height: 100vh;
+    min-height: 500px;
+    color: #fff;
+    /* text-align: center; */
+    background-position: center;
+    background-size: cover;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.home .max-width {
+    margin: auto 0 auto 30px;
+}
+
+
+
+.home .home-content .text-1 {
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.home .home-content .text-2 {
+    font-size: 75px;
+    font-weight: 600;
+    /* font-weight: bold; */
+    margin-left: -3px;
+    /* margin-bottom: 15px; */
+}
+
+.home .home-content .text-3 {
+    font-size: 40px;
+    margin: 5px 0;
+}
+
+.home .home-content .text-3 span {
+    color: crimson;
+    font-weight: 500;
+}
+
+.home .home-content a {
+    display: inline-block;
+    background: crimson;
+    color: #fff;
+    font-size: 25px;
+    padding: 12px 36px;
+    margin-top: 20px;
+    border-radius: 6px;
+    border: 2px solid crimson;
+    transition: all 0.3s ease;
+}
+
+.home .home-content a:hover {
+    background: none;
+    color: crimson;
+}
+
+section {
+    padding: 50px 0;
+}
+
+footer {
+    background: crimson;
+    padding: 15px 23px;
+    color: #fff;
+    text-align: center;
+}
+
+footer span a {
+    color: black;
+    text-decoration: bold;
+}
+
+footer span a:hover {
+    text-decoration: underline;
+}
+
+.about,
+.services,
+.skills,
+.teams,
+.contact,
+footer {
+    font-family: 'Poppins', sans-serif;
+}
+
+.about .about-content,
+.services .serv-content,
+.skills .skills-content,
+.contact .contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+section .title {
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+section .title::before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 180px;
+    height: 3px;
+    background: #111;
+    transform: translateX(-50%);
+}
+
+section .title::after {
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    font-size: 20px;
+    color: crimson;
+    padding: 5px;
+    background: #fff;
+    transform: translateX(-50%);
+}
+
+.txt {
+    position: absolute;
+    color: crimson;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 250;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+/* Responsive Media Queries */
+@media (max-width: 947px) {
+    .max-width {
+        padding: 0 15px;
+    }
+
+    .navbar .menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        flex-direction: column;
+        background: #111;
+        width: 100%;
+        height: 100vh;
+        padding-top: 60px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .navbar .menu.active {
+        left: 0;
+    }
+
+    .menu-btn {
+        display: none;
+    }
+
+    .menu-btn i.active:before {
+        content: "\f00d";
+    }
+
+    .navbar .menu li {
+        display: block;
+    }
+
+    .navbar .menu li a {
+        font-size: 20px;
+    }
+
+    .home .home-content .text-2 {
+        font-size: 36px;
+    }
+
+    .home .home-content .text-3 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .home .home-content {
+        padding: 10px;
+    }
+
+    .home .home-content .text-2 {
+        font-size: 28px;
+    }
+
+    .home .home-content .text-3 {
+        font-size: 16px;
+    }
+
+    .home .home-content a {
+        font-size: 16px;
+        padding: 8px 20px;
+    }
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        padding: 0 15px;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+}
+
+
+.title {
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+input[type="text"] {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.card {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* background-color: #803c3c; */
+    animation: fadeIn 0.5s ease;
+    background-color: whitesmoke;
+    user-select: none;
+    /* text-align: ke; */
+}
+
+.cardDetails {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease;
+    background-color: whitesmoke;
+    /* white-space: nowrap; */
+
+}
+
+.cardDetails p {
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    /* text-wrap: none; */
+    line-break: auto;
+    line-height: 1.5;
+    margin-bottom: 5px;
+    /* text-align: left; */
+    /* white-space: nowrap; */
+
+}
+
+.contactDetails .cardDetails p {
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    /* text-wrap: none; */
+    /* line-break: auto; */
+    line-height: 1.5;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+    .contactDetails .cardDetails p {
+        font-size: 20px;
+        /* Slightly smaller font for tablets and small screens */
+        text-align: left;
+        /* Center text alignment for smaller screens */
+    }
+}
+
+/* Media query for screens smaller than 480px */
+@media (max-width: 480px) {
+    .contactDetails .cardDetails p {
+        font-size: 12px;
+        /* Further reduce font size for mobile devices */
+        line-height: 1.4;
+        /* Adjust line height for better readability */
+        margin-bottom: 10px;
+        /* Increase margin for spacing */
+    }
+}
+
+
+.cardDetails img {
+    width: 90%;
+    height: 50%;
+    object-fit: cover;
+    /* border-radius: 40px; */
+    background-color: rgb(29, 32, 138);
+}
+
+
+.member-details .title::after {
+    content: " Flat Search";
+}
+
+.bankDetails .title::after {
+    content: "Online Payment";
+}
+
+.suspense .title::after {
+    content: "Verify";
+}
+
+.stats .title::after {
+    content: "Overview";
+}
+
+
+.contactDetails .title::after {
+    content: "For Any Query";
+}
+
+.card p {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    line-break: auto;
+    line-height: 1.5;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.card button {
+    text-align: right;
+    align-items: right;
+    align-content: right;
+}
+
+
+.card h2 {
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    color: crimson;
+    margin-bottom: 2px;
+}
+
+
+.card img {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 6px;
+    background-color: red;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Vehicle image container */
+.vehicle-images-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    /* Spacing between images */
+    margin-top: 10px;
+    flex-wrap: wrap;
+    /* Allow wrapping in case of multiple images */
+}
+
+.vehicle-image-container {
+    display: inline-block;
+    width: 50px;
+    /* Adjust the width as needed */
+    height: 50px;
+    /* Adjust the height as needed */
+    overflow: hidden;
+    border-radius: 8px;
+    /* Rounded corners for the container */
+    border: 2px solid #ddd;
+    /* Border around the image container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Shadow effect */
+    padding: 5px;
+    /* Padding inside the container */
+    background-color: #952424;
+    /* Background color for the container */
+    text-align: center;
+}
+
+.vehicle-image-container img {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    /* Ensures the image covers the container without distortion */
+    border-radius: 6px;
+    /* Rounded corners on the image itself */
+}
+
+/* Adjust the layout if there are more than one image */
+.vehicle-images-container img {
+    margin-bottom: 10px;
+}
+
+.red-text {
+    color: red;
+    /* Red text color */
+    font-size: 24px;
+    /* Larger text size */
+    font-weight: bold;
+    /* Optional: Make the text bold */
+    margin-top: 10px;
+    /* Optional: Add some space above the text */
+}
+
+.red-text::before {
+    /* content: "₹"; */
+    /* Add Rupees symbol before the amount */
+    font-size: 18px;
+    /* Smaller size for the Rupees symbol */
+    margin-right: 5px;
+    /* Space between symbol and amount */
+    vertical-align: middle;
+    /* Align the symbol properly */
+}
+
+.green-text {
+    content: "₹";
+    color: green;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+.suspense-image {
+    width: 100%;
+    /* Make the image responsive, taking the full width of the container */
+    height: auto;
+    /* Maintain aspect ratio */
+    max-width: 100%;
+    /* Ensures it doesn't grow beyond its original size */
+    display: block;
+    margin: 0 auto;
+    /* Centers the image horizontally */
+}
+
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 600px) {
+    .suspense-image {
+        width: 100%;
+        /* Image takes up 100% width on smaller screens */
+        height: 100%;
+        scale: auto;
+        /* Maintain aspect ratio */
+    }
+}
+
+
+/* For Desktop and Larger Screens */
+/* Ensure consistent structure for each section */
+.bill-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 8px 0;
+}
+
+.bill-section .button {
+    align-items: right;
+}
+
+/* Style for the labels on the left */
+.bill-section .label {
+    flex: 1;
+    /* Take up the remaining space on the left */
+    text-align: left;
+    font-size: 16px;
+    white-space: nowrap;
+    /* Prevent labels from wrapping */
+}
+
+/* Style for the buttons on the right */
+.view-bill {
+    background: crimson;
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 2px solid crimson;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    /* align-items: right; */
+    /* Prevent buttons from wrapping */
+}
+
+.view-bill:hover {
+    background: #fff;
+    color: crimson;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .bill-section {
+        flex-direction: row;
+        /* Keep labels and buttons side by side */
+    }
+
+    .bill-section .label {
+        font-size: 14px;
+    }
+
+    .view-bill {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+}
+
+
+.map-container iframe {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+}
+
+
+/*  */

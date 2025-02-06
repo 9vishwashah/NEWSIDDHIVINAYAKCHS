@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW SIDDHIVINAYAK CHS</title>
+    <script src="./vishwa2020.js"></script>
+    <script src="./vishwa2021.js"></script>
+    <script src="./vishwa2022.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./carousal.css">
+    <script src="./script.js"></script>
+    <script src="./Finalscript.js"></script>
+    <script src="https://kit.fontawesome.com/32255cd4c3.js" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-7082006231641635">
+</head>
+
+
+<body>
+    <!-- Scroll-to-top Button -->
+    <div class=" scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class=" navbar">
+        <div class="max-width">
+            <div class="logo"><a href="#"><img src="./logo.jpeg" alt=""></a></div>
+            <ul class="menu">
+                <li><a href="#home" class="menu-btn">Home</a></li>
+                <li><a href="#new-member-details" class="menu-btn">Members</a></li>
+                <li><a href="#details" class="menu-btn">Guidelines</a></li>
+                <li><a href="#stats" class="menu-btn">Details</a></li>
+                <li><a href="#contact" class="menu-btn">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="max-width">
+            <div class="home-content">
+                <div class="text-1"></div>
+                <div class="text-2">New Siddhivinayak CHS</div>
+                <div class="text-3">Your home for a <span class="highlight">peaceful lifestyle</span></div>
+                <a href="#new-member-details">Members</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="member-details" id="new-member-details">
+        <div class="container">
+            <h1 class="title" id="title"> MEMBER DETAILS </h1>
+            <p>Insert Flat No in 4 Digit Format: <br>Eg If Bldg No: A-18 and Flat No: 1 <br>then Type "1801"</p>
+            <input type="text" id="flatSearch" placeholder="Enter Flat No" maxlength="4"
+                onkeydown="triggerSearch(event)">
+            <button class=" view-bill" onclick="searchFlat()">Display</button>
+            <div class="card" id="resultCard">
+                <h2 id="ownerName"></h2>
+                <p><strong><i class="fa-solid fa-address-book" style="color: #DC143C;"></i> Flat No:</strong> <span
+                        id="flatNo"></span></p>
+                <p><strong><i class="fa-solid fa-phone" style="color: #DC143C;"></i> Mobile No:</strong>
+                    <a href=""><span id="phno"></span></a></span>
+                </p>
+                <p><strong><i class="fa-solid fa-envelope" style="color: #DC143C;"></i> Email ID:</strong> <span
+                        id="email"></span></p>
+                <p><strong><i class="fa-solid fa-motorcycle" style="color: #DC143C;"></i> Two Wheeler Parked:</strong>
+                    <span id="twowheel"></span>
+                </p>
+                <p><strong><i class="fa-solid fa-car" style="color: #DC143C;"></i> Four Wheeler Parked:</strong> <span
+                        id="fourwheel"></span></p>
+                <p><strong><i class="fa-solid fa-wallet" style="color: #DC143C;"></i> Outstanding Balance
+                        : </strong><span id="balance"></span></p>
+                <p><strong><i class="fa-solid fa-users" style="color: #DC143C;"></i> Current Occupancy: </strong> <span
+                        id="occupancy"></span></p>
+                <img id="vehicleImage1" src="" alt="Vehicle Image">
+                <img id="vehicleImage2" src="" alt="Vehicle Image">
+
+                <h3 id="ownerName">DOWNLOAD BILLS & RECEIPTS</h3>
+                <div class="bill-section">
+
+                    <p><i class="fa-regular fa-file" style="color: #DC143C;"></i><strong> December 2024 Bill:
+                        </strong></p>
+                    <button id="decBillBtn" class="view-bill">View Bill</button></p>
+                </div>
+                <div class="bill-section">
+                    <p><i class="fa-solid fa-receipt" style="color: #DC143C;"></i><strong> December 2024 Receipt:
+                        </strong></p>
+                    <button id="decRecBtn" class="view-bill">View Receipt</button></p>
+                </div>
+                <div class="bill-section">
+                    <p><i class="fa-regular fa-file" style="color: #DC143C;"></i><strong> Final Patra Bill: </strong>
+                    </p>
+                    <button id="patraBillBtn" class="view-bill">View Bill</button></p>
+                </div>
+                <div class="bill-section">
+                    <p><i class="fa-solid fa-receipt" style="color: #DC143C;"></i><strong> Final Patra Receipt:
+                        </strong></p>
+                    <button id="patraRecBtn" class="view-bill">View Receipt</button></p>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="bankDetails">
+        <div class="container">
+            <h1 class="title" id="title">Bank Details</h1>
+            <div class="cardDetails" id="resultCard">
+                <p><strong>Bank Name: </strong>The Maharashtra State Co-Op Bank Ltd.</p>
+                <p><strong>Branch: </strong>Vashi</p>
+                <p><strong>A/C No: </strong>0034106420000155</p>
+                <p><strong>IFSC Code: </strong>MSCI0082034</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="suspense" id="details">
+        <div class="container">
+            <h2 class="title" id="title">Suspense Entries</h2>
+            <div class="cardDetails">
+                <p>The corresponding Payments acknowledgements with flat numbers have not been received to the office.
+                    We are unable to match these payments with the entries in our passbook.</p>
+                <p>Kindly verify the transaction and contact office with the details:</p>
+                <img src="./SUSPENSE.png" class="suspense-image" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="stats" id="stats">
+        <div class="container">
+            <h1 class="title" id="title">STATS</h1>
+            <p>Chart consist of No of Vehicles parked in Society at <br>A-Type & B-Type</p>
+            <div class="cardDetails">
+                <img src="./ATYPESTAT.png" class="" alt="">
+                <img src="./BTYPESTAT.png" class="stat" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="contactDetails" id="contact">
+        <div class="container">
+            <h1 class="title" id="title">Contact</h1>
+            <div class="cardDetails" id="resultCard">
+                <p><i class="fa-brands fa-whatsapp" style="color:darkgreen;"></i><strong> Mr. Uttam Bhanage (Chairman):
+                    </strong> <a href="https://wa.me/9821167546">9821167546</a></p>
+                <p><i class="fa-brands fa-whatsapp" style="color:darkgreen;"></i><strong> Mrs. Sandhya Gavhane
+                        (Secretary): </strong><a href="https://wa.me/9892933353">9892933353</a></p>
+                <p><i class="fa-brands fa-whatsapp" style="color:darkgreen;"></i><strong> Mr. Ajay Gandhi (Committe):
+                    </strong><a href="https://wa.me/9322051984">9322051984</a></p>
+                <p><i class="fa-brands fa-whatsapp" style="color:darkgreen;"></i><strong> Society Office :
+                    </strong><a href="https://wa.me/9136352915">9136352915</a></p>
+                <p><i class="fa-brands fa-whatsapp" style="color:darkgreen;"></i><strong> Mr. AA Mulani (Legal
+                        Audit): </strong><a href="https://wa.me/9819640825">9819640825</a></p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.5469696986406!2d73.00205307934571!3d19.083645999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c1307187462d%3A0x70a207798d282a7a!2sSiddhivinayak%20Society!5e0!3m2!1sen!2sin!4v1736514128489!5m2!1sen!2sin"
+                style="border:0;" allowfullscreen="yes" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    <footer>
+        <span>Created By <a href="#">Vishwa Alpesh Shah</a> | <span class="far fa-copyright"></span> 2025 All rights
+            reserved.</span>
+    </footer>
+
+    <script src="./footer.js"></script>
+</body>
+
+</html>
