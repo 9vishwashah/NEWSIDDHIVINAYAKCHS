@@ -56,8 +56,7 @@
         <div class="container">
             <h1 class="title" id="title"> MEMBER DETAILS </h1>
             <p>Insert Flat No in 4 Digit Format: <br>Eg If Bldg No: A-18 and Flat No: 1 <br>then Type "1801"</p>
-            <input type="text" id="flatSearch" placeholder="Enter Flat No" maxlength="4"
-                onkeydown="triggerSearch(event)">
+            <input type="text" id="searchInput" placeholder="Enter Flat No" onkeydown="triggerSearch(event)">
             <button class=" view-bill" onclick="searchFlat()">Display</button>
             <div class="card" id="resultCard">
                 <h2 id="ownerName"></h2>
@@ -71,8 +70,16 @@
                 <p><strong><i class="fa-solid fa-motorcycle" style="color: #DC143C;"></i> Two Wheeler Parked:</strong>
                     <span id="twowheel"></span>
                 </p>
+                <p><strong><i class="fa-solid fa-hashtag" style="color: #DC143C;"></i> 2W No:</strong>
+                    <span id="TwoWNo"></span>
+                <p id="SecondTwNopara"><strong><i class="fa-solid fa-hashtag" style="color: #DC143C;"></i> Two
+                        Wheeler No:</strong>
+                    <span id="SecondTwNo"></span>
+                </p>
                 <p><strong><i class="fa-solid fa-car" style="color: #DC143C;"></i> Four Wheeler Parked:</strong> <span
                         id="fourwheel"></span></p>
+                <p><strong><i class="fa-solid fa-hashtag" style="color: #DC143C;"></i> 4W No:</strong> <span
+                        id="FourWNo"></span></p>
                 <p><strong><i class="fa-solid fa-wallet" style="color: #DC143C;"></i> Outstanding Balance
                         : </strong><span id="balance"></span></p>
                 <p><strong><i class="fa-solid fa-users" style="color: #DC143C;"></i> Current Occupancy: </strong> <span
