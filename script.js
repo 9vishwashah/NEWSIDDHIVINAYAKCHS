@@ -232,28 +232,41 @@ flatData = lines.slice(1).map(line => {
     return { ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy, TwoWNo, SecondTwNo, FourWNo, decBill, decRec, patraBill, patraRec, vehicleImage1, vehicleImage2 };
 });
 
-// function getFirstFourDigits(input) {
-//     // Extract only digits from the input
-//     const digits = input.replace(/\D/g, ''); // Removes all non-digit characters
-//     // Return the first four digits
-//     return digits.slice(0, 4);
-// }
 
 function triggerSearch(event) {
     if (event.key === "Enter") {
-        // Trigger the button click
         searchFlat();
     }
 }
 
+
+
+
+
 function searchFlat() {
     const searchInput = document.getElementById('searchInput').value.trim().toUpperCase();
+    document.getElementById('searchInput').value = "";
     const result = flatData.find(flat => flat.flatNo === searchInput ||
         (flat.TwoWNo && flat.TwoWNo.toUpperCase() === searchInput) ||
         (flat.FourWNo && flat.FourWNo.toUpperCase() === searchInput));
 
     const resultCard = document.getElementById('resultCard');
-    // const balanceElement = document.getElementById('balance');
+
+
+    document.getElementById('ownerName').innerText = "";
+    document.getElementById('flatNo').innerText = "";
+    document.getElementById('phno').innerText = "";
+    document.getElementById('email').innerText = "";
+    document.getElementById('fourwheel').innerText = "";
+    document.getElementById('twowheel').innerText = "";
+    document.getElementById('balance').innerText = "";
+    document.getElementById('occupancy').innerText = "";
+    document.getElementById('TwoWNo').innerText = "";
+    document.getElementById('SecondTwNo').innerText = "";
+    document.getElementById('FourWNo').innerText = "";
+    document.getElementById('SecondTwNopara').style.display = "none";
+    // document.getElementById('FourWNo').parentNode.style.display = "none";
+
     if (result) {
 
         document.getElementById('ownerName').innerText = result.ownerName;
@@ -263,7 +276,10 @@ function searchFlat() {
 
         document.getElementById('twowheel').innerText = result.twowheel;
         document.getElementById('fourwheel').innerText = result.fourwheel;
+
+
         document.getElementById('balance').classList.remove('red-text', 'green-text');
+
         if (result.balance > 0) {
 
             document.getElementById('balance').classList.add('red-text');
@@ -273,32 +289,32 @@ function searchFlat() {
         document.getElementById('balance').innerText = "₹" + Math.abs(result.balance);
 
         document.getElementById('occupancy').innerText = result.occupancy;
-        document.getElementById('TwoWNo').innerText = result.TwoWNo;
 
-        if (result.SecondTwNo) {
-            document.getElementById('SecondTwNo').innerText = result.SecondTwNo;
-        } else {
-            document.getElementById('SecondTwNopara').style.display = 'none';
-        }
-        document.getElementById('FourWNo').innerText = result.FourWNo;
+        vehicleImages(result);
+        checkTwoWheeler(result);
+        checkFourWheeler(result);
 
 
-        // Vehicle Display
-        if (result.vehicleImage1) {
-            document.getElementById('vehicleImage1').src = result.vehicleImage1;
-            document.getElementById('vehicleImage1').style.display = 'block';
-        } else {
-            document.getElementById('vehicleImage1').style.display = 'none';
-        }
 
-        if (result.vehicleImage2) {
-            document.getElementById('vehicleImage2').src = result.vehicleImage2;
-            document.getElementById('vehicleImage2').style.display = 'block';
-        } else {
-            document.getElementById('vehicleImage2').style.display = 'none';
-        }
+        // if (result.SecondTwNo) {
+        //     document.getElementById('SecondTwNo').innerText = result.SecondTwNo;
+        // } else {
+        //     document.getElementById('SecondTwNopara').style.display = 'none';
+        // }
 
-        // Bill Display
+        // if (result.twowheel == "No") {
+        //     document.getElementById('twoWLabel').style.display = 'none';
+        // } else {
+        //     document.getElementById('TwoWNo').innerText = result.TwoWNo;
+        // }
+
+        // if (result.fourwheel === "No") {
+        //     document.getElementById('flabel').style.display = 'none';
+        // } else {
+        //     document.getElementById('FourWNo').innerText = result.FourWNo;
+
+        // }
+
 
         // December Bill
         if (result.decBill) {
@@ -351,5 +367,62 @@ function searchFlat() {
     } else {
         resultCard.style.display = 'none';
         alert('Flat not found!');
+    }
+}
+
+
+
+function checkTwoWheeler(flat) {
+    if (flat.twowheel.toLowerCase() === "No") {
+        document.getElementById('twoWLabel').style.display = 'none';
+        document.getElementById('TwoWNo').innerText = "";
+    } else {
+        document.getElementById('twoWLabel').style.display = 'block';
+        document.getElementById('TwoWNo').innerText = flat.TwoWNo || "No Record";
+    }
+
+    if (flat.SecondTwNo) {
+        document.getElementById('SecondTwNo').innerText = flat.SecondTwNo;
+        document.getElementById('SecondTwNopara').style.display = "block";
+    } else {
+        document.getElementById('SecondTwNopara').style.display = "none";
+    }
+}
+
+
+function checkFourWheeler(flat) {
+    if (flat.fourwheel === "No") {
+        document.getElementById('flabel').style.display = 'none';
+        document.getElementById('FourWNo').innerText = "";
+    } else {
+        document.getElementById('flabel').style.display = 'block';
+        document.getElementById('FourWNo').innerText = flat.FourWNo || "N/A";
+    }
+}
+
+// function checkFourWheeler(flat) {
+//     if (flat.fourwheel === "No") {
+//         document.getElementById('flabel').style.display = 'none';
+//         document.getElementById('FourWNo').innerText = "";
+//     } else {
+//         document.getElementById('flabel').style.display = 'block';
+//         document.getElementById('FourWNO').innerText = flat.FourWNo;
+//     }
+// }
+
+
+function vehicleImages(result) {
+    if (result.vehicleImage1) {
+        document.getElementById('vehicleImage1').src = result.vehicleImage1;
+        document.getElementById('vehicleImage1').style.display = 'block';
+    } else {
+        document.getElementById('vehicleImage1').style.display = 'none';
+    }
+
+    if (result.vehicleImage2) {
+        document.getElementById('vehicleImage2').src = result.vehicleImage2;
+        document.getElementById('vehicleImage2').style.display = 'block';
+    } else {
+        document.getElementById('vehicleImage2').style.display = 'none';
     }
 }
