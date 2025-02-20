@@ -241,31 +241,19 @@ function triggerSearch(event) {
 
 
 
-
-
 function searchFlat() {
     const searchInput = document.getElementById('searchInput').value.trim().toUpperCase();
     document.getElementById('searchInput').value = "";
     const result = flatData.find(flat => flat.flatNo === searchInput ||
         (flat.TwoWNo && flat.TwoWNo.toUpperCase() === searchInput) ||
-        (flat.FourWNo && flat.FourWNo.toUpperCase() === searchInput));
+        (flat.FourWNo && flat.FourWNo.toUpperCase() === searchInput) ||
+        (flat.ownerName && flat.ownerName.toUpperCase().includes(searchInput)));
 
     const resultCard = document.getElementById('resultCard');
+    resetField()
 
 
-    document.getElementById('ownerName').innerText = "";
-    document.getElementById('flatNo').innerText = "";
-    document.getElementById('phno').innerText = "";
-    document.getElementById('email').innerText = "";
-    document.getElementById('fourwheel').innerText = "";
-    document.getElementById('twowheel').innerText = "";
-    document.getElementById('balance').innerText = "";
-    document.getElementById('occupancy').innerText = "";
-    document.getElementById('TwoWNo').innerText = "";
-    document.getElementById('SecondTwNo').innerText = "";
-    document.getElementById('FourWNo').innerText = "";
-    document.getElementById('SecondTwNopara').style.display = "none";
-    // document.getElementById('FourWNo').parentNode.style.display = "none";
+
 
     if (result) {
 
@@ -273,58 +261,31 @@ function searchFlat() {
         document.getElementById('flatNo').innerText = result.flatNo;
         document.getElementById('phno').innerText = result.phno;
         document.getElementById('email').innerText = result.email;
-
         document.getElementById('twowheel').innerText = result.twowheel;
         document.getElementById('fourwheel').innerText = result.fourwheel;
-
-
         document.getElementById('balance').classList.remove('red-text', 'green-text');
 
-        if (result.balance > 0) {
 
-            document.getElementById('balance').classList.add('red-text');
-        } else {
-            document.getElementById('balance').classList.add('green-text');
-        }
-        document.getElementById('balance').innerText = "₹" + Math.abs(result.balance);
 
         document.getElementById('occupancy').innerText = result.occupancy;
 
+        checkBalance(result);
         vehicleImages(result);
         checkTwoWheeler(result);
         checkFourWheeler(result);
 
 
 
-        // if (result.SecondTwNo) {
-        //     document.getElementById('SecondTwNo').innerText = result.SecondTwNo;
-        // } else {
-        //     document.getElementById('SecondTwNopara').style.display = 'none';
-        // }
-
-        // if (result.twowheel == "No") {
-        //     document.getElementById('twoWLabel').style.display = 'none';
-        // } else {
-        //     document.getElementById('TwoWNo').innerText = result.TwoWNo;
-        // }
-
-        // if (result.fourwheel === "No") {
-        //     document.getElementById('flabel').style.display = 'none';
-        // } else {
-        //     document.getElementById('FourWNo').innerText = result.FourWNo;
-
-        // }
-
 
         // December Bill
         if (result.decBill) {
             const decBillBtn = document.getElementById('decBillBtn');
-            decBillBtn.style.display = "inline-block"; // Show the button
+            decBillBtn.style.display = "inline-block";
             decBillBtn.onclick = () => {
-                window.open(result.decBill, '_blank'); // Open the bill link in a new tab
+                window.open(result.decBill, '_blank');
             };
         } else {
-            document.getElementById('decBillBtn').style.display = "none"; // Hide the button if no link
+            document.getElementById('decBillBtn').style.display = "none";
         }
         // December Receipt
         if (result.decRec) {
@@ -370,46 +331,58 @@ function searchFlat() {
     }
 }
 
+function resetField() {
+
+    document.getElementById('ownerName').innerText = "";
+    document.getElementById('flatNo').innerText = "";
+    document.getElementById('phno').innerText = "";
+    document.getElementById('email').innerText = "";
+    document.getElementById('fourwheel').innerText = "";
+    document.getElementById('twowheel').innerText = "";
+    document.getElementById('balance').innerText = "";
+    document.getElementById('occupancy').innerText = "";
+    document.getElementById('TwoWNo').innerText = "";
+    document.getElementById('SecondTwNo').innerText = "";
+    document.getElementById('FourWNo').innerText = "";
+    document.getElementById('SecondTwNopara').style.display = "none";
+}
 
 
-function checkTwoWheeler(flat) {
-    if (flat.twowheel.toLowerCase() === "No") {
+
+function checkTwoWheeler(result) {
+    if (result.twowheel == "No") {
         document.getElementById('twoWLabel').style.display = 'none';
-        document.getElementById('TwoWNo').innerText = "";
     } else {
-        document.getElementById('twoWLabel').style.display = 'block';
-        document.getElementById('TwoWNo').innerText = flat.TwoWNo || "No Record";
-    }
-
-    if (flat.SecondTwNo) {
-        document.getElementById('SecondTwNo').innerText = flat.SecondTwNo;
-        document.getElementById('SecondTwNopara').style.display = "block";
-    } else {
-        document.getElementById('SecondTwNopara').style.display = "none";
+        document.getElementById('TwoWNo').innerText = result.TwoWNo;
+        // document.getElementById('TwoWNo').innerText = "No";
     }
 }
+
+
 
 
 function checkFourWheeler(flat) {
     if (flat.fourwheel === "No") {
         document.getElementById('flabel').style.display = 'none';
-        document.getElementById('FourWNo').innerText = "";
+
+        // document.getElementById('FourWNo').innerText = "";
     } else {
-        document.getElementById('flabel').style.display = 'block';
+        // document.getElementById('flabel').style.display = 'block';
+
         document.getElementById('FourWNo').innerText = flat.FourWNo || "N/A";
     }
 }
 
-// function checkFourWheeler(flat) {
-//     if (flat.fourwheel === "No") {
-//         document.getElementById('flabel').style.display = 'none';
-//         document.getElementById('FourWNo').innerText = "";
-//     } else {
-//         document.getElementById('flabel').style.display = 'block';
-//         document.getElementById('FourWNO').innerText = flat.FourWNo;
-//     }
-// }
 
+function checkBalance(result) {
+    if (result.balance > 0) {
+
+        document.getElementById('balance').classList.add('red-text');
+    } else {
+        document.getElementById('balance').classList.add('green-text');
+    }
+    document.getElementById('balance').innerText = "₹" + Math.abs(result.balance);
+}
 
 function vehicleImages(result) {
     if (result.vehicleImage1) {
