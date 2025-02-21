@@ -11,7 +11,7 @@ DEDIA DEVESH DINESH,1009,8172844688,,No,No,-1714,OWNER,,,,,,,https://drive.googl
 SONI SHILPA ARJUN & ARJUN MITHALAL SONI,1010,9833085071,,No,1,-1846,TENANT,,,,,,,https://drive.google.com/file/d/1vHbQR9VhJFQ26nSEK2oYNyc5uTirGh-k/view,,
 MORE ASHA PRAKASH,1011,9819704046,,No,1,46885,TENANT,,,,,,,,,
 BHANAGE UTTAM GENUBA,1012,9821167546,,No,1,0,OWNER,,,,https://drive.google.com/file/d/1FgWj2hvto-LnIHzenQ7um2jlhjVMTLrD/view,https://drive.google.com/file/d/1Gh-vidQFN4snsQdvo1BJE4Y2fca4C-PU/view,https://drive.google.com/file/d/1FH2Oud42KDxeckRuG5hAIgCpTQv82gTI/view,https://drive.google.com/file/d/1K5V5klT3DzpJn8CpXX8AISVGHRYPHzXt/view,,
-GANDHI AJAY NAGINDAS,1013,9322051984,,No,1,7274,OWNER,,,,,,,,,
+GANDHI AJAY NAGINDAS,1013,9322051984,ajaygandhi1956@gmail.com,No,1,7274,OWNER,MH43S8600,,,,,,,,
 BHUJBAL DAGDU HANUMANT,1014,9322511895,,1,2,0,OWNER,,,,,,,https://drive.google.com/file/d/1nxz_cUtxZnbEdqWEWJsTq5P5RIf3H7bh/view,,
 PATIL MILIND VASANT,1015,9869250527,,No,1,7274,OWNER,,,,,,,,,
 MR. VIJAY NATHURAM MRS. RUPALI & MS. SIMRAN KHARPUDE ,1016,7718958556,,No,No,0,OWNER,,,,,,,https://drive.google.com/file/d/16WIBeWAfB9UGPHySR-L7su28-e6mrdhB/view,,
@@ -247,12 +247,10 @@ function searchFlat() {
     const result = flatData.find(flat => flat.flatNo === searchInput ||
         (flat.TwoWNo && flat.TwoWNo.toUpperCase() === searchInput) ||
         (flat.FourWNo && flat.FourWNo.toUpperCase() === searchInput) ||
-        (flat.ownerName && flat.ownerName.toUpperCase().includes(searchInput)));
+        nameMatches(flat.ownerName, searchInput));
 
     const resultCard = document.getElementById('resultCard');
     resetField()
-
-
 
 
     if (result) {
@@ -269,59 +267,11 @@ function searchFlat() {
 
         document.getElementById('occupancy').innerText = result.occupancy;
 
-        checkBalance(result);
-        vehicleImages(result);
         checkTwoWheeler(result);
         checkFourWheeler(result);
-
-
-
-
-        // December Bill
-        if (result.decBill) {
-            const decBillBtn = document.getElementById('decBillBtn');
-            decBillBtn.style.display = "inline-block";
-            decBillBtn.onclick = () => {
-                window.open(result.decBill, '_blank');
-            };
-        } else {
-            document.getElementById('decBillBtn').style.display = "none";
-        }
-        // December Receipt
-        if (result.decRec) {
-            const decRecBtn = document.getElementById('decRecBtn');
-            decRecBtn.style.display = "inline-block"; // Show the button
-            decRecBtn.onclick = () => {
-                window.open(result.decRec, '_blank'); // Open the bill link in a new tab
-            };
-        } else {
-            document.getElementById('decRecBtn').style.display = "none"; // Hide the button if no link
-        }
-
-        // Patra Bill
-
-        if (result.patraBill) {
-            const patraBillBtn = document.getElementById('patraBillBtn');
-            patraBillBtn.style.display = "inline-block"; // Show the button
-            patraBillBtn.onclick = () => {
-                window.open(result.patraBill, '_blank'); // Open the bill link in a new tab
-            };
-        } else {
-            document.getElementById('patraBillBtn').style.display = "none"; // Hide the button if no link
-        }
-
-        // Patra Receipt 
-
-        if (result.patraRec) {
-            const patraRecBtn = document.getElementById('patraRecBtn');
-            patraRecBtn.style.display = "inline-block"; // Show the button
-            patraRecBtn.onclick = () => {
-                window.open(result.patraRec, '_blank'); // Open the bill link in a new tab
-            };
-        } else {
-            document.getElementById('patraRecBtn').style.display = "none"; // Hide the button if no link
-        }
-
+        checkBalance(result);
+        vehicleImages(result);
+        bills(result)
 
 
         resultCard.style.display = 'block';
@@ -350,11 +300,16 @@ function resetField() {
 
 
 function checkTwoWheeler(result) {
+    const twowheellabel = document.getElementById('twoWLabel');
+    const twowheelno = document.getElementById("TwoWNo");
+
+    twowheellabel.style.display = "block";
+    twowheelno.innerText = ""
+
     if (result.twowheel == "No") {
-        document.getElementById('twoWLabel').style.display = 'none';
+        twowheellabel.style.display = 'none';
     } else {
-        document.getElementById('TwoWNo').innerText = result.TwoWNo;
-        // document.getElementById('TwoWNo').innerText = "No";
+        twowheelno.innerText = result.TwoWNo;
     }
 }
 
@@ -362,14 +317,14 @@ function checkTwoWheeler(result) {
 
 
 function checkFourWheeler(flat) {
+
+    const fourWheelLabel = document.getElementById("flabel")
+    const fourWheelNo = document.getElementById("FourWNo")
+
     if (flat.fourwheel === "No") {
-        document.getElementById('flabel').style.display = 'none';
-
-        // document.getElementById('FourWNo').innerText = "";
+        fourWheelLabel.style.display = 'none';
     } else {
-        // document.getElementById('flabel').style.display = 'block';
-
-        document.getElementById('FourWNo').innerText = flat.FourWNo || "N/A";
+        fourWheelNo.innerText = flat.FourWNo || "N/A";
     }
 }
 
@@ -398,4 +353,60 @@ function vehicleImages(result) {
     } else {
         document.getElementById('vehicleImage2').style.display = 'none';
     }
+}
+
+function bills(result) {
+    if (result.decBill) {
+        const decBillBtn = document.getElementById('decBillBtn');
+        decBillBtn.style.display = "inline-block";
+        decBillBtn.onclick = () => {
+            window.open(result.decBill, '_blank');
+        };
+    } else {
+        document.getElementById('decBillBtn').style.display = "none";
+    }
+    // December Receipt
+    if (result.decRec) {
+        const decRecBtn = document.getElementById('decRecBtn');
+        decRecBtn.style.display = "inline-block"; // Show the button
+        decRecBtn.onclick = () => {
+            window.open(result.decRec, '_blank'); // Open the bill link in a new tab
+        };
+    } else {
+        document.getElementById('decRecBtn').style.display = "none"; // Hide the button if no link
+    }
+
+    if (result.patraBill) {
+        const patraBillBtn = document.getElementById('patraBillBtn');
+        patraBillBtn.style.display = "inline-block"; // Show the button
+        patraBillBtn.onclick = () => {
+            window.open(result.patraBill, '_blank'); // Open the bill link in a new tab
+        };
+    } else {
+        document.getElementById('patraBillBtn').style.display = "none"; // Hide the button if no link
+    }
+
+    // Patra Receipt 
+
+    if (result.patraRec) {
+        const patraRecBtn = document.getElementById('patraRecBtn');
+        patraRecBtn.style.display = "inline-block";
+        patraRecBtn.onclick = () => {
+            window.open(result.patraRec, '_blank');
+        };
+    } else {
+        document.getElementById('patraRecBtn').style.display = "none";
+    }
+
+}
+
+
+function nameMatches(ownerName, searchInput) {
+    if (!ownerName) return false;
+
+    const ownerWords = ownerName.toUpperCase().split(" ");
+    const searchWords = searchInput.split(" ");
+
+    return searchWords.every(word => ownerWords.includes(word));
+
 }
