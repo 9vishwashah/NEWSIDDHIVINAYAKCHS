@@ -11,7 +11,7 @@ DEDIA DEVESH DINESH,1009,8172844688,,No,No,-1714,OWNER,,,,,,,https://drive.googl
 SONI SHILPA ARJUN & ARJUN MITHALAL SONI,1010,9833085071,,No,1,-1846,TENANT,,,,,,,https://drive.google.com/file/d/1vHbQR9VhJFQ26nSEK2oYNyc5uTirGh-k/view,,
 MORE ASHA PRAKASH,1011,9819704046,,No,1,46885,TENANT,,,,,,,,,
 BHANAGE UTTAM GENUBA,1012,9821167546,,No,1,0,OWNER,,,,https://drive.google.com/file/d/1FgWj2hvto-LnIHzenQ7um2jlhjVMTLrD/view,https://drive.google.com/file/d/1Gh-vidQFN4snsQdvo1BJE4Y2fca4C-PU/view,https://drive.google.com/file/d/1FH2Oud42KDxeckRuG5hAIgCpTQv82gTI/view,https://drive.google.com/file/d/1K5V5klT3DzpJn8CpXX8AISVGHRYPHzXt/view,,
-GANDHI AJAY NAGINDAS,1013,9322051984,ajaygandhi1956@gmail.com,No,1,7274,OWNER,MH43S8600,,,,,,,,
+GANDHI AJAY NAGINDAS,1013,9322051984,ajaygandhi2025@gmail.com,No,1,7274,OWNER,MH43S8600,,,,,,,,
 BHUJBAL DAGDU HANUMANT,1014,9322511895,,1,2,0,OWNER,,,,,,,https://drive.google.com/file/d/1nxz_cUtxZnbEdqWEWJsTq5P5RIf3H7bh/view,,
 PATIL MILIND VASANT,1015,9869250527,,No,1,7274,OWNER,,,,,,,,,
 MR. VIJAY NATHURAM MRS. RUPALI & MS. SIMRAN KHARPUDE ,1016,7718958556,,No,No,0,OWNER,,,,,,,https://drive.google.com/file/d/16WIBeWAfB9UGPHySR-L7su28-e6mrdhB/view,,
