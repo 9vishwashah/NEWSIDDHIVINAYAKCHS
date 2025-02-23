@@ -273,7 +273,7 @@ function searchFlat() {
         checkBalance(result);
         vehicleImages(result);
         bills(result)
-
+        checkEmail(result)
 
         resultCard.style.display = 'block';
     } else {
@@ -314,6 +314,15 @@ function checkTwoWheeler(result) {
     }
 }
 
+function checkEmail(result) {
+    const emailField = document.getElementById("email");
+
+    if (!result.email || result.email.trim() === "") {
+        emailField.innerText = "No Record";
+    } else {
+        emailField.innerText = result.email;
+    }
+}
 
 
 
@@ -328,7 +337,7 @@ function checkFourWheeler(flat) {
     if (flat.fourwheel === "N/A") {
         fourWheelLabel.style.display = 'none';
     } else {
-        fourWheelNo.innerText = flat.FourWNo || "N/A";
+        fourWheelNo.innerText = flat.FourWNo || "No Record";
     }
 }
 
@@ -369,28 +378,28 @@ function bills(result) {
     } else {
         document.getElementById('decBillBtn').style.display = "none";
     }
-    // December Receipt
+
+
     if (result.decRec) {
         const decRecBtn = document.getElementById('decRecBtn');
-        decRecBtn.style.display = "inline-block"; // Show the button
+        decRecBtn.style.display = "inline-block";
         decRecBtn.onclick = () => {
-            window.open(result.decRec, '_blank'); // Open the bill link in a new tab
+            window.open(result.decRec, '_blank');
         };
     } else {
-        document.getElementById('decRecBtn').style.display = "none"; // Hide the button if no link
+        document.getElementById('decRecBtn').style.display = "none";
     }
 
     if (result.patraBill) {
         const patraBillBtn = document.getElementById('patraBillBtn');
-        patraBillBtn.style.display = "inline-block"; // Show the button
+        patraBillBtn.style.display = "inline-block";
         patraBillBtn.onclick = () => {
-            window.open(result.patraBill, '_blank'); // Open the bill link in a new tab
+            window.open(result.patraBill, '_blank');
         };
     } else {
-        document.getElementById('patraBillBtn').style.display = "none"; // Hide the button if no link
+        document.getElementById('patraBillBtn').style.display = "none";
     }
 
-    // Patra Receipt 
 
     if (result.patraRec) {
         const patraRecBtn = document.getElementById('patraRecBtn');
@@ -422,11 +431,11 @@ function updatePhoneNumber(result) {
 
     if (result.phno) {
         phnoElement.innerText = result.phno;
-        phnoLink.href = `https://wa.me/${result.phno.replace(/\D/g, '')}`; // Convert number to WhatsApp link
-        phnoLink.style.display = "inline"; // Ensure the link is visible
+        phnoLink.href = `https://wa.me/${result.phno.replace(/\D/g, '')}`;
+        phnoLink.style.display = "inline";
     } else {
         phnoElement.innerText = "N/A";
-        phnoLink.href = "#"; // No link if no number
-        phnoLink.style.display = "none"; // Hide the link if no number
+        phnoLink.href = "#";
+        phnoLink.style.display = "none";
     }
 }
