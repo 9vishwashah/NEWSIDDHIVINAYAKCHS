@@ -385,6 +385,7 @@ section .title::after {
 }
 
 
+
 @media (max-width: 768px) {
     .container {
         max-width: 90%;
@@ -754,4 +755,86 @@ input[type="text"] {
 }
 
 
-/*  */
+
+
+.contact-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    background: #f9f9f9;
+}
+
+.form-cardDetails {
+    width: 100%;
+    max-width: 500px;
+    padding: 25px;
+    border-radius: 10px;
+    background: whitesmoke;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.form-cardDetails h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.form-cardDetails form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-cardDetails input,
+.form-cardDetails textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    background: white;
+    font-family: 'Ubuntu', sans-serif;
+    transition: border 0.3s ease;
+}
+
+.form-cardDetails input:focus,
+.form-cardDetails textarea:focus {
+    border-color: crimson;
+    outline: none;
+}
+
+.form-cardDetails button {
+    background: crimson;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Ubuntu', sans-serif;
+    transition: background 0.3s ease;
+}
+
+.form-cardDetails button:hover {
+    background: darkred;
+}
+
+@media (max-width: 600px) {
+    .form-cardDetails {
+        max-width: 90%;
+    }
+
+    .form-cardDetails h3 {
+        font-size: 20px;
+    }
+
+    .form-cardDetails input,
+    .form-cardDetails textarea {
+        font-size: 14px;
+    }
+}
