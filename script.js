@@ -242,12 +242,18 @@ function triggerSearch(event) {
 
 
 function searchFlat() {
-    const searchInput = document.getElementById('searchInput').value.trim().toUpperCase();
+    let searchInput = document.getElementById('searchInput').value.trim().toUpperCase();
     document.getElementById('searchInput').value = "";
-    const result = flatData.find(flat => flat.flatNo === searchInput ||
+
+    // Normalize input for flat numbers
+    const normalizedFlatNo = normalizeFlatNo(searchInput);
+
+    const result = flatData.find(flat =>
+        (normalizedFlatNo && flat.flatNo === normalizedFlatNo) || // Match normalized flat no
         (flat.TwoWNo && flat.TwoWNo.toUpperCase() === searchInput) ||
         (flat.FourWNo && flat.FourWNo.toUpperCase() === searchInput) ||
-        nameMatches(flat.ownerName, searchInput));
+        nameMatches(flat.ownerName, searchInput) // Match owner name
+    );
 
     const resultCard = document.getElementById('resultCard');
     resetField()
@@ -412,6 +418,19 @@ function bills(result) {
     }
 
 }
+
+function normalizeFlatNo(input) {
+    // Extract digits only
+    let digits = input.replace(/\D/g, ""); // Remove all non-numeric characters
+
+    // Ensure 4-digit format: If only 3 digits, insert '0' in 3rd place
+    if (digits.length === 3) {
+        digits = digits.substring(0, 2) + "0" + digits.substring(2);
+    }
+
+    return digits.length === 4 ? digits : null; // Ensure it's exactly 4 digits
+}
+
 
 
 function nameMatches(ownerName, searchInput) {
