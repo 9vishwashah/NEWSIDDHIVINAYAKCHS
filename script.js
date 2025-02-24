@@ -224,9 +224,17 @@ VIRENDRAKUMAR AMRUTLAL VAISHYA,2314,9821393350,,N/A,N/A,0,OWNER,,,,,,,https://dr
 HOLKAR CHANDRAKANT RAMCHANDRA,2315,8976991885,,N/A,N/A,5718,OWNER,,,,,,,,,
 HOLKAR CHANDRAKANT RAMCHANDRA,2316,8850233176,,N/A,1,0,OWNER,,,,,,,https://drive.google.com/file/d/1RIP1fjzdaxOCj6zXIAZ2IfJ4QTu96EXl/view,,`
 
-window.onload = function () {
-    document.getElementById("requestForm").reset();
-};
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("requestForm");
+    const submitButton = form.querySelector("button[type='submit']");
+
+    submitButton.addEventListener("click", function () {
+        setTimeout(() => {
+            form.reset(); // Reset form fields after submission
+        }, 1000); // Small delay to ensure submission occurs
+    });
+});
+
 
 let flatData = [];
 
