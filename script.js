@@ -257,6 +257,12 @@ function searchFlat() {
     let searchInput = document.getElementById('searchInput').value.trim().toUpperCase();
     document.getElementById('searchInput').value = "";
 
+
+    if (!searchInput || searchInput.length < 2) {
+        alert("Flat not found!");
+        return;
+    }
+
     // Normalize input for flat numbers
     const normalizedFlatNo = normalizeFlatNo(searchInput);
 
