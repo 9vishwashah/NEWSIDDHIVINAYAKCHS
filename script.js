@@ -476,3 +476,42 @@ function updatePhoneNumber(result) {
         phnoLink.style.display = "none";
     }
 }
+
+
+window.addEventListener("scroll", function () {
+    let navbar = document.querySelector(".navbar");
+    if (window.scrollY > 50) {
+        navbar.classList.add("shrink");
+    } else {
+        navbar.classList.remove("shrink");
+    }
+});
+
+
+// Image Pop Up Functionality
+
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("popupModal");
+    const modalImg = document.getElementById("popupImg");
+    const closeModal = document.querySelector(".close");
+
+    // Select all images with the custom data attribute "data-popup"
+    document.querySelectorAll("img[data-popup='true']").forEach(img => {
+        img.addEventListener("click", function () {
+            modal.style.display = "flex";
+            modalImg.src = this.src;
+        });
+    });
+
+    // Close modal when clicking close button
+    closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
