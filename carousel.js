@@ -3,11 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Committee members array
     const committeeMembers = [
-        { img: "/pfp/chairman img.png", name: "Mr Uttam Bhanage", role: "Chairman" },
-        { img: "/pfp/committe1.png", name: "Mr Meher Sripatrao", role: "Committee Member" },
-        { img: "/pfp/committee2.png", name: "Mr Babaji Shinde", role: "Committee Member" },
-        { img: "/pfp/committee3.png", name: "Mr Kesur Chavda", role: "Committee Member" },
-        { img: "/pfp/committee4.png", name: "Mr Chandrakant Holkar", role: "Committee Member" }
+        { img: "/pfp/bhanage.png", name: "Mr Uttam Bhanage", role: "Chairman" },
+        { img: "/pfp/ajaygandhi.png", name: "Mr Ajay Gandhi", role: "Committee Member" },
+        { img: "/pfp/shinde.png", name: "Mr Babaji Shinde", role: "Committee Member" },
+        { img: "/pfp/kesur.png", name: "Mr Kesur Chavda", role: "Committee Member" },
+        { img: "/pfp/meher.png", name: "Mr Meher Sripatrao", role: "Committee Member" },
+        { img: "/pfp/holkar.png", name: "Mr Chandrakant Holkar", role: "Committee Member" }
     ];
 
     // Function to create and append committee cards
