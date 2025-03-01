@@ -5,17 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEW SIDDHIVINAYAK CHS</title>
+    <link rel="icon" href="./logo.jpeg" type="image/jpeg">
     <script src="./vishwa2020.js"></script>
     <script src="./vishwa2021.js"></script>
     <script src="./vishwa2022.js"></script>
     <link rel="stylesheet" href="./style.css">
-    <!-- <link rel="stylesheet" href="./button.css"> -->
-    <link rel="stylesheet" href="./carousal.css">
     <script src="./script.js"></script>
+    <script src="./carousel.js"></script>
     <script src="./Finalscript.js"></script>
     <script src="./navigation.js"></script>
     <script src="https://kit.fontawesome.com/32255cd4c3.js" crossorigin="anonymous"></script>
+
     <meta name="google-adsense-account" content="ca-pub-7082006231641635">
+
+
 </head>
 
 
@@ -58,7 +61,7 @@
 
     <section class="member-details" id="new-member-details">
         <div class="container">
-            <h1 class="title" id="title"> MEMBER DETAILS </h1>
+            <h1 class="title" id="title"> MEMBERS </h1>
             <p>Search by Flat No Example Bldg B-10 & Flat NO 12<br>
             <p>OR Search By Flat Owner Name</p><br>
             <input type="text" id="searchInput" placeholder="Enter Flat No" onkeydown="triggerSearch(event)">
@@ -98,15 +101,9 @@
 
                 <h3 id="ownerName">DOWNLOAD BILLS & RECEIPTS</h3>
                 <div class="bill-section">
-
-                    <p><i class="fa-regular fa-file" style="color: #DC143C;"></i><strong> December 2024 Bill:
+                    <p><i class="fa-solid fa-receipt" style="color: #DC143C;"></i><strong> Final Patra Receipt:
                         </strong></p>
-                    <button id="decBillBtn" class="view-bill">View Bill</button></p>
-                </div>
-                <div class="bill-section">
-                    <p><i class="fa-solid fa-receipt" style="color: #DC143C;"></i><strong> December 2024 Receipt:
-                        </strong></p>
-                    <button id="decRecBtn" class="view-bill">View Receipt</button></p>
+                    <button id="patraRecBtn" class="view-bill">View Receipt</button></p>
                 </div>
                 <div class="bill-section">
                     <p><i class="fa-regular fa-file" style="color: #DC143C;"></i><strong> Final Patra Bill: </strong>
@@ -114,15 +111,78 @@
                     <button id="patraBillBtn" class="view-bill">View Bill</button></p>
                 </div>
                 <div class="bill-section">
-                    <p><i class="fa-solid fa-receipt" style="color: #DC143C;"></i><strong> Final Patra Receipt:
+                    <p><i class="fa-solid fa-receipt" style="color: #DC143C;"></i><strong> December 2024 Receipt:
                         </strong></p>
-                    <button id="patraRecBtn" class="view-bill">View Receipt</button></p>
+                    <button id="decRecBtn" class="view-bill">View Receipt</button></p>
+                </div>
+                <div class="bill-section">
+                    <p><i class="fa-regular fa-file" style="color: #DC143C;"></i><strong> December 2024 Bill:
+                        </strong></p>
+                    <button id="decBillBtn" class="view-bill">View Bill</button></p>
                 </div>
 
 
             </div>
         </div>
     </section>
+
+
+    <section class="committee" id="committee">
+        <div class="container">
+            <h2 class="title">Committee Members</h2>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="committee-card">
+                        <div class="image-container">
+                            <img src="/pfp/chairman img.png" alt="John Doe">
+                        </div>
+                        <div class="name">Mr Uttam Bhanage</div>
+                        <p>Chairman</p>
+                    </div>
+                    <div class="committee-card">
+                        <div class="image-container">
+                            <img src="/pfp/committe5.png" alt="Alice Brown">
+                        </div>
+                        <div class="name">Mr Ajay Gandhi</div>
+                        <p>Committee Member</p>
+                    </div>
+                    <div class="committee-card">
+                        <div class="image-container">
+                            <img src="/pfp/committe1.png" alt="Jane Smith">
+                        </div>
+                        <div class="name">Mr Meher Sripatrao</div>
+                        <p>Committee Member</p>
+                    </div>
+                    <div class="committee-card">
+                        <div class="image-container">
+                            <img src="/pfp/committee2.png" alt="David Johnson">
+                        </div>
+                        <div class="name">Mr Babaji Shinde</div>
+                        <p>Committee Member</p>
+                    </div>
+                    <div class="committee-card">
+                        <div class="image-container">
+                            <img src="/pfp/committee3.png" alt="Alice Brown">
+                        </div>
+                        <div class="name">Mr Kesur Chavda</div>
+                        <p>Committee Member</p>
+                    </div>
+                    <div class="committee-card">
+                        <div class="image-container">
+                            <img src="/pfp/committee4.png" alt="Alice Brown">
+                        </div>
+                        <div class="name">Mr Chandrakant Holkar</div>
+                        <p>Committee Member</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
 
 
     <section class="bankDetails">
@@ -143,7 +203,7 @@
             <h3>REQUEST OR SUGGESTION</h3>
             <form action="https://airform.io/nsiddhi2014@gmail.com" method="POST" id="requestForm">
                 <input type="text" name="FlatNo" placeholder="Enter your Flat No" required>
-                <input type="text" name="OwnerName" placeholder="Enter Owner name" required>
+                <input type="text" name="OwnerName" placeholder="Enter Applicant name" required>
                 <input type="tel" name="Mobile No" placeholder="Enter Your Mobile No" required>
                 <input type="email" name="Email" placeholder="Enter your email (Optional)">
                 <input type="text" name="Subject" placeholder="Write your Subject">

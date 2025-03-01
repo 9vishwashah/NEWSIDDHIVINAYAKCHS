@@ -586,6 +586,10 @@ input[type="text"] {
     content: "For Any Query";
 }
 
+.committee .title::after {
+    content: "Members";
+}
+
 .card p {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -801,6 +805,7 @@ input[type="text"] {
     width: 100%;
     height: 100%;
     padding: 5px;
+
 }
 
 
@@ -952,6 +957,156 @@ input[type="text"] {
 
 /* Fade In Animation */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+.committee {
+    background: white;
+    padding: 50px 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.committee .title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Carousel Container - Increased size */
+.carousel-container {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    /* width: 40vw; */
+    /* Increase width to prevent edge visibility */
+    justify-content: center;
+    padding: 20px 0;
+    /* Extra padding to remove visible edges */
+    margin: -10px auto;
+    /* Adjust margins */
+}
+
+/* Carousel Track */
+.carousel-track {
+    display: flex;
+    gap: 25px;
+    /* Increased spacing */
+    will-change: transform;
+    transform: translateX(0);
+    white-space: nowrap;
+}
+
+/* Committee Card */
+.committee-card {
+    min-width: 250px;
+    max-width: 300px;
+    background: whitesmoke;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Reduced shadow */
+    transition: transform 0.3s ease;
+}
+
+/* Remove hover effect that expands beyond the container */
+.committee-card:hover {
+    transform: scale(1.03);
+}
+
+/* Circular Image Container */
+.image-container {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid crimson;
+    margin: auto;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Name & Role */
+.committee-card .name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 12px;
+    color: #111;
+}
+
+.committee-card p {
+    font-size: 16px;
+    color: crimson;
+    margin-top: 6px;
+}
+
+/* 🔹 Mobile View (Small Screens) */
+@media (max-width: 768px) {
+    .committee .title {
+        font-size: 26px;
+        margin-bottom: 15px;
+    }
+
+    .carousel-track {
+        gap: 15px;
+    }
+
+    .committee-card {
+        min-width: 220px;
+        max-width: 260px;
+        padding: 15px;
+    }
+
+    .image-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    .committee-card .name {
+        font-size: 18px;
+    }
+
+    .committee-card p {
+        font-size: 14px;
+    }
+}
+
+/* 🔹 Extra Small Screens */
+@media (max-width: 480px) {
+    .committee .title {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+    .committee-card {
+        min-width: 200px;
+        max-width: 240px;
+        padding: 12px;
+    }
+
+    .image-container {
+        width: 110px;
+        height: 110px;
+    }
+
+    .committee-card .name {
+        font-size: 16px;
+    }
+
+    .committee-card p {
+        font-size: 13px;
+    }
 }
