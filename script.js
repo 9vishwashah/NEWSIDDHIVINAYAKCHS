@@ -515,3 +515,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+// Function to close the popup
+function closePopup() {
+    document.getElementById("alertPopup").style.display = "none";
+}
+
+// Show popup when page loads
+window.onload = function () {
+    document.getElementById("alertPopup").style.display = "flex";
+};

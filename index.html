@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEW SIDDHIVINAYAK CHS</title>
-    <link rel="icon" href="./logo.jpeg" type="image/jpeg">
+    <link rel="icon" href="/asset/logo.jpeg" type="image/jpeg">
     <script src="./vishwa2020.js"></script>
     <script src="./vishwa2021.js"></script>
     <script src="./vishwa2022.js"></script>
@@ -23,19 +23,17 @@
 
 
 <body>
-    <!-- Scroll-to-top Button -->
     <div class=" scroll-up-btn">
         <i class="fas fa-angle-up"></i>
     </div>
 
-    <!-- Navigation Bar -->
     <nav class=" navbar">
         <div class="max-width">
-            <div class="logo"><a href="#"><img src="./logo.jpeg" alt=""></a></div>
+            <div class="logo"><a href="#"><img src="/asset/logo.jpeg" alt=""></a></div>
             <ul class="menu">
                 <li><a href="#home" class="menu-btn">Home</a></li>
                 <li><a href="#new-member-details" class="menu-btn">Members</a></li>
-                <li><a href="#request" class="menu-btn">Request</a></li>
+                <li><a href="#request" class="menu-btn">Applications</a></li>
                 <li><a href="#stats" class="menu-btn">Stats</a></li>
                 <li><a href="#contact" class="menu-btn">Contact</a></li>
             </ul>
@@ -45,7 +43,6 @@
         </div>
     </nav>
 
-    <!-- Home Section -->
     <section class="home" id="home">
         <div class="max-width">
             <div class="home-content">
@@ -57,15 +54,40 @@
         </div>
     </section>
 
+    <div id="alertPopup" class="popup-overlay">
+        <div class="popup-box">
+            <h2>Welcome to New Siddhivinayak CHS!</h2>
+            <p>Kindly Note: </p>
+
+            <div class="important-msg">
+                <p><i class="fa-solid fa-download" style="color: crimson;"></i> <strong>Kindly download March 2025
+                        Bills.</strong></p>
+            </div>
+
+            <div class="important-msg">
+                <p><i class="fa-solid fa-wallet" style="color: crimson;"></i> <strong>Pay all your outstanding amount
+                        before 20.03.2025.</strong></p>
+            </div>
+
+            <div class="important-msg warning">
+                <p><i class="fa-solid fa-ban" style="color: crimson;"></i> <strong>No payment will be accepted after the
+                        due date.</strong></p>
+            </div>
+
+            <button class="close-popup" onclick="closePopup()">okay</button>
+        </div>
+    </div>
+
 
 
     <section class="member-details" id="new-member-details">
         <div class="container">
-            <h1 class="title" id="title"> MEMBER DETAILS </h1>
+            <h1 class="title" id="title"> Members </h1>
             <p>Search by Flat No Example Bldg B-10 & Flat NO 12<br>
             <p>OR Search By Flat Owner Name</p><br>
-            <input type="text" id="searchInput" placeholder="Enter Flat No" onkeydown="triggerSearch(event)">
-            <button class=" view-bill" onclick="searchFlat()">Display</button>
+            <input type="text" class="search-bar" id="searchInput" placeholder="Enter Flat No"
+                onkeydown="triggerSearch(event)">
+            <button class="search-btn" onclick="searchFlat()">Display</button>
             <div class="card" id="resultCard">
                 <h2 id="ownerName"></h2>
                 <p><strong><i class="fa-solid fa-address-book" style="color: #DC143C;"></i> Flat No:</strong> <span
@@ -156,42 +178,42 @@
                 <div class="carousel-track">
                     <div class="committee-card">
                         <div class="image-container">
-                            <img src="/pfp/chairman img.png" alt="Mr Uttam Bhanage">
+                            <img src="/pfp/chairman img.png" loading="eager" alt="Mr Uttam Bhanage">
                         </div>
                         <div class="name">Mr Uttam Bhanage</div>
                         <p>Chairman</p>
                     </div>
                     <div class="committee-card">
                         <div class="image-container">
-                            <img src="/pfp/committe5.png" alt="Mr Ajay Gandhi">
+                            <img src="/pfp/committe5.png" loading="eager" alt="Mr Ajay Gandhi">
                         </div>
                         <div class="name">Mr Ajay Gandhi</div>
                         <p>Committee Member</p>
                     </div>
                     <div class="committee-card">
                         <div class="image-container">
-                            <img src="/pfp/committe1.png" alt="Mr Meher Sripatrao">
+                            <img src="/pfp/committe1.png" loading="eager" alt="Mr Meher Sripatrao">
                         </div>
                         <div class="name">Mr Meher Sripatrao</div>
                         <p>Committee Member</p>
                     </div>
                     <div class="committee-card">
                         <div class="image-container">
-                            <img src="/pfp/committee2.png" alt="Mr Babaji Shinde">
+                            <img src="/pfp/committee2.png" loading="eager" alt="Mr Babaji Shinde">
                         </div>
                         <div class="name">Mr Babaji Shinde</div>
                         <p>Committee Member</p>
                     </div>
                     <div class="committee-card">
                         <div class="image-container">
-                            <img src="/pfp/committee3.png" alt="Mr Kesur Chavda">
+                            <img src="/pfp/committee3.png" loading="eager" alt="Mr Kesur Chavda">
                         </div>
                         <div class="name">Mr Kesur Chavda</div>
                         <p>Committee Member</p>
                     </div>
                     <div class="committee-card">
                         <div class="image-container">
-                            <img src="/pfp/committee4.png" alt="Mr Chandrakant Holkar">
+                            <img src="/pfp/committee4.png" loading="eager" alt="Mr Chandrakant Holkar">
                         </div>
                         <div class="name">Mr Chandrakant Holkar</div>
                         <p>Committee Member</p>
@@ -222,12 +244,11 @@
                 <p>The corresponding Payments acknowledgements with flat numbers have not been received to the office.
                     We are unable to match these payments with the entries in our passbook.</p>
                 <p>Kindly verify the transaction and contact office with the details before 20th March 2025</p>
-                <img src="./otherincome.png" class="suspense-image" data-popup="true" alt="">
+                <img src="/asset/otherincome.png" class="suspense-image" data-popup="true" alt="">
             </div>
         </div>
     </section>
 
-    <!-- Popup Modal -->
     <div id="popupModal" class="modal">
         <span class="close">&times;</span>
         <img class="modal-content" id="popupImg">
@@ -236,25 +257,18 @@
 
     <section class="stats" id="stats">
         <div class="container">
-            <h1 class="title" id="title">STATS</h1>
+            <h1 class="title" id="title">Stats</h1>
             <p>Chart consist of No of Vehicles parked in Society at <br>A-Type & B-Type</p>
             <div class="cardDetails">
-                <img src="./ATYPESTAT.png" data-popup="true" alt="">
-                <img src="./BTYPESTAT.png" data-popup="true" alt="">
+                <img src="/asset/ATYPESTAT.png" data-popup="true" alt="">
+                <img src="/asset/BTYPESTAT.png" data-popup="true" alt="">
             </div>
         </div>
     </section>
-    <!-- Popup Modal -->
     <div id="popupModal" class="modal">
         <span class="close">&times;</span>
         <img class="modal-content" id="popupImg">
     </div>
-
-
-
-
-
-
 
     <section class="contactDetails" id="contact">
         <div class="container">
