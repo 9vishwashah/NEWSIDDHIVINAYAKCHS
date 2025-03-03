@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const carouselTrack = document.querySelector(".carousel-track");
 
-    // Committee members array
     const committeeMembers = [
         { img: "/pfp/bhanage.png", name: "Mr Uttam Bhanage", role: "Chairman" },
         { img: "/pfp/ajaygandhi.png", name: "Mr Ajay Gandhi", role: "Committee Member" },
@@ -11,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { img: "/pfp/holkar.png", name: "Mr Chandrakant Holkar", role: "Committee Member" }
     ];
 
-    // Function to create and append committee cards
     function createCarousel() {
         committeeMembers.forEach(member => {
             let card = document.createElement("div");
@@ -45,17 +43,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    createCarousel(); // Generate cards dynamically
+    createCarousel();
 
     let currentTranslate = 0;
     const cardWidth = document.querySelector(".committee-card").offsetWidth + 20; // Card width + gap
-    const speed = 1; // Adjust speed of movement
+    const speed = 1;
 
     function moveCarousel() {
         currentTranslate -= speed; // Move left continuously
         carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
 
-        // Reset position seamlessly when first set moves out of view
         if (Math.abs(currentTranslate) >= cardWidth * committeeMembers.length) {
             currentTranslate = 0; // Reset position smoothly
             carouselTrack.style.transform = `translateX(${currentTranslate}px)`;

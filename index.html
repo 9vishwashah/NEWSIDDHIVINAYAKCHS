@@ -83,8 +83,11 @@
     <section class="member-details" id="new-member-details">
         <div class="container">
             <h1 class="title" id="title"> Members </h1>
-            <p>Search by Flat No Example Bldg B-10 & Flat NO 12<br>
-            <p>OR Search By Flat Owner Name</p><br>
+            <div class="note-box">
+                <p><strong>NOTE :</strong> Search by Flat No (e.g., <strong>Bldg B-10 & Flat NO 12</strong>) OR Search
+                    By
+                    Flat Owner Name</p>
+            </div>
             <input type="text" class="search-bar" id="searchInput" placeholder="Enter Flat No"
                 onkeydown="triggerSearch(event)">
             <button class="search-btn" onclick="searchFlat()">Display</button>
@@ -165,7 +168,7 @@
                 <input type="text" name="Subject" placeholder="Write your Subject">
                 <textarea name="Message" rows="4" placeholder="Write down your Request Letter or Suggestion"
                     required></textarea>
-                <button type="submit">Send</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     </section>
@@ -241,9 +244,13 @@
         <div class="container">
             <h2 class="title" id="title">Suspense Entries</h2>
             <div class="cardDetails">
-                <p>The corresponding Payments acknowledgements with flat numbers have not been received to the office.
-                    We are unable to match these payments with the entries in our passbook.</p>
-                <p>Kindly verify the transaction and contact office with the details before 20th March 2025</p>
+                <div class="note-book">
+
+                    <p>The corresponding Payments acknowledgements with flat numbers have not been received to the
+                        office.
+                        We are unable to match these payments with the entries in our passbook.</p>
+                    <p>Kindly verify the transaction and contact office with the details before 20th March 2025</p>
+                </div>
                 <img src="/asset/otherincome.png" class="suspense-image" data-popup="true" alt="">
             </div>
         </div>
@@ -257,8 +264,11 @@
 
     <section class="stats" id="stats">
         <div class="container">
+
             <h1 class="title" id="title">Stats</h1>
-            <p>Chart consist of No of Vehicles parked in Society at <br>A-Type & B-Type</p>
+            <div class="note-book">
+                <p>Chart consist of No of Vehicles parked in Society at <br>A-Type & B-Type</p>
+            </div>
             <div class="cardDetails">
                 <img src="/asset/ATYPESTAT.png" data-popup="true" alt="">
                 <img src="/asset/BTYPESTAT.png" data-popup="true" alt="">
