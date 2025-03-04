@@ -400,11 +400,13 @@ function bills(result) {
         const marchBillbtn = document.getElementById('marchBillbtn');
         marchBillbtn.style.display = "inline-block";
         marchBillbtn.onclick = () => {
-            window.open(result.decBill, '_blank');
+            console.log("Opening URL:", result.MarchBill); // Debugging
+            window.open(result.MarchBill, '_blank'); // Use correct property
         };
     } else {
         document.getElementById('marchBillbtn').style.display = "none";
     }
+
 
 
     if (result.decBill) {
