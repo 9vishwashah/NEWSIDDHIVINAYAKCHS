@@ -405,6 +405,8 @@ function bills(result) {
     } else {
         document.getElementById('marchBillbtn').style.display = "none";
     }
+
+
     if (result.decBill) {
         const decBillBtn = document.getElementById('decBillBtn');
         decBillBtn.style.display = "inline-block";
