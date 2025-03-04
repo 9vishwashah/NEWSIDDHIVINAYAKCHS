@@ -240,8 +240,8 @@ let flatData = [];
 
 const lines = csvData.split('\n');
 flatData = lines.slice(1).map(line => {
-    const [ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy, TwoWNo, SecondTwNo, FourWNo, decBill, decRec, patraBill, patraRec, vehicleImage1, vehicleImage2] = line.split(',').map(item => item.trim());
-    return { ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy, TwoWNo, SecondTwNo, FourWNo, decBill, decRec, patraBill, patraRec, vehicleImage1, vehicleImage2 };
+    const [ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy, TwoWNo, SecondTwNo, FourWNo, decBill, decRec, patraBill, patraRec, MarchBill, vehicleImage1, vehicleImage2,] = line.split(',').map(item => item.trim());
+    return { ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy, TwoWNo, SecondTwNo, FourWNo, decBill, decRec, patraBill, patraRec, MarchBill, vehicleImage1, vehicleImage2 };
 });
 
 
@@ -393,6 +393,18 @@ function vehicleImages(result) {
 }
 
 function bills(result) {
+
+
+
+    if (result.MarchBill) {
+        const marchBillbtn = document.getElementById('marchBillbtn');
+        marchBillbtn.style.display = "inline-block";
+        marchBillbtn.onclick = () => {
+            window.open(result.decBill, '_blank');
+        };
+    } else {
+        document.getElementById('marchBillbtn').style.display = "none";
+    }
     if (result.decBill) {
         const decBillBtn = document.getElementById('decBillBtn');
         decBillBtn.style.display = "inline-block";
