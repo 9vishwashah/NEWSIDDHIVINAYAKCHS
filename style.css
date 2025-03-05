@@ -495,13 +495,9 @@ input[type="text"] {
     font-size: 15px;
     font-family: Arial, sans-serif;
     text-align: left;
-    /* text-wrap: none; */
     line-break: auto;
     line-height: 1.5;
     margin-bottom: 5px;
-    /* text-align: left; */
-    /* white-space: nowrap; */
-
 }
 
 /* Styling for Display button in search */
@@ -546,8 +542,6 @@ input[type="text"] {
     font-size: 15px;
     font-family: Arial, sans-serif;
     text-align: center;
-    /* text-wrap: none; */
-    /* line-break: auto; */
     line-height: 1.5;
     margin-bottom: 5px;
     text-align: left;
@@ -568,9 +562,7 @@ input[type="text"] {
         font-size: 14px;
         line-height: 1.4;
         overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        /* Prevents text from wrapping */
+
     }
 
     .bill-section {
@@ -616,7 +608,6 @@ input[type="text"] {
         margin-top: 10px;
     }
 }
-
 
 
 @media (max-width: 768px) {
