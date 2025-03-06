@@ -467,6 +467,22 @@ input[type="text"] {
     background-color: #0056b3;
 }
 
+.stats-image-container {
+    text-align: center;
+    /* Centers the title and image */
+    margin-bottom: 20px;
+    border-radius: 90%;
+    /* Adds spacing between each image */
+}
+
+.image-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    /* Adds spacing between title and image */
+}
+
+
 .card {
     display: none;
     margin-top: 20px;
@@ -1164,18 +1180,6 @@ footer {
     transform: translateX(0);
     white-space: nowrap;
 }
-
-/* Committee Card */
-/* .committee-card {
-    min-width: 250px;
-    max-width: 300px;
-    background: whitesmoke;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-} */
 
 .committee-card {
     min-width: 240px;
