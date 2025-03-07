@@ -471,8 +471,18 @@ input[type="text"] {
     text-align: center;
     /* Centers the title and image */
     margin-bottom: 20px;
-    border-radius: 90%;
     /* Adds spacing between each image */
+}
+
+.stats-image-container img {
+    width: 100%;
+    /* Ensures responsiveness */
+    max-width: 500px;
+    /* Prevents image from becoming too large */
+    border-radius: 35px;
+    /* Gives smooth curved edges */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    /* Optional: Adds subtle shadow */
 }
 
 .image-title {
@@ -481,6 +491,7 @@ input[type="text"] {
     margin-bottom: 8px;
     /* Adds spacing between title and image */
 }
+
 
 
 .card {
