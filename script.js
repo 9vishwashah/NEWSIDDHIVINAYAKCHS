@@ -197,7 +197,7 @@ NITESH KUMAR PARASMAL BAFNA,2203,,,N/A,1,3205,OWNER,,,,,,,https://drive.google.c
 ALKABEN H CHOLERA &. PALAK ATULBHAI THAKKAR,2204,9824327506,,N/A,1,-1743,OWNER,,,,,,,https://drive.google.com/file/d/1FqbiYm_bfkwjlX3YR1JhDKFunbuLMUbp/view,,https://drive.google.com/file/d/1pu8AsKgLe-3Bd_Pd7b6jJlA_4EmhBF65/view,,
 JAGTAP SURESH NARAYANRAO & MANDAKINI SURESH JAGTAP,2205,9820737200,,N/A,N/A,-3570,TENANT,,,,,,,https://drive.google.com/file/d/1mymZOWF7O6OE4F6g2zTU433uToCocFXW/view,,https://drive.google.com/file/d/1Mgt6yiJcZ51KMSuDKhPMHWPdndKXsovT/view,,
 JADHAV SIDDHI SANTOSH,2206,9969025335,,N/A,1,8624,OWNER,,,,,,,,,https://drive.google.com/file/d/1TVJ105X9xHeE9ln2Q93B19rowMFmWgd4/view,,
-"TRIVEDI ANIL R, PRADEEP R, BHUPENDRA R, SANJAY R",2207,9967542020,,N/A,1,9470,TENANT,,,,,,,,,https://drive.google.com/file/d/1OmcN_oTeDaRXuiHdw--BODVUc_4W7Z3H/view,,
+TRIVEDI ANIL R & PRADEEP R & BHUPENDRA R & SANJAY R,2207,9967542020,,N/A,1,9470,TENANT,,,,,,,,,https://drive.google.com/file/d/1OmcN_oTeDaRXuiHdw--BODVUc_4W7Z3H/view,,
 SINGH RAMSUBHAG M. & SHIVLAL M. SINGH &,2208,9323251919,,N/A,3,4096,TENANT,,,,,,,https://drive.google.com/file/d/1s622Z1Ge09L2FR99n4Q51Kc2VSwTVfUA/view,,https://drive.google.com/file/d/1Z1nSSZxbUk7mBAG_1PoqPQrvrGi_FoeP/view,,
 GIDE KAILASH DATTARAYA & SAVITA KAILASH GIDE,2209,9987764946,,1,1,4105,OWNER,,,,,,,https://drive.google.com/file/d/1PWBVV0iJ4kRV-H3BZjtPSZveCuXGgcjX/view,,https://drive.google.com/file/d/1xrv1ReZ3d0b8Xo8hcqcTPLUk56PX-AG7/view,,
 DAVE NARAYAN KISHANLAL,2210,9004258489,,N/A,1,3646,TENANT,,,,,,,https://drive.google.com/file/d/1Z8vsF7mpHBdLxpdeLUbkyCgmmwfl9a_T/view,,https://drive.google.com/file/d/1qt0ohFBHseVC3GUbAJMbm0Smh3rky8Xc/view,,
