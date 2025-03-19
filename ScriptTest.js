@@ -1,4 +1,4 @@
-﻿ownerName,flatNo,phno,email,fourwheel,twowheel,balance,occupancy,TwoWNo,SecondTwNo,FourWNo,decBill,decRec,patraBill,patraRec,MarchReceipt,MarchBill,vehicleImage1,vehicleImage2
+const csvData = `ownerName,flatNo,phno,email,fourwheel,twowheel,balance,occupancy,TwoWNo,SecondTwNo,FourWNo,decBill,decRec,patraBill,patraRec,MarchReceipt,MarchBill,vehicleImage1,vehicleImage2
 DAVID JONES WALTER,1001,9323187731,,1,N/A,0,OWNER,,,,,,,https://drive.google.com/file/d/1msGvdQt1Vr8I_woEUoLpYV6wexQIWmXk/view,,https://drive.google.com/file/d/1I-anSLCRIN9rUHoEDcIal6oKZemXvTOe/view,,
 BHUJBAL DASHARAT MARUTI,1002,9920368673,,1,2,4405,OWNER,,,,,,,https://drive.google.com/file/d/1kUTRQHuTy0vv_SOHLnLw6ncSoURwjRxM/view,,https://drive.google.com/file/d/1aS-uyPo3px-6HjEz5I4jyXnD5WrrndGU/view,,
 TRIVEDI KUNDAN B.,1003,9892886649,,N/A,N/A,-8715,OWNER,,,,,,,https://drive.google.com/file/d/14V7n7-Ji-p5utpApDKXMC3324XR-TBvK/view,,https://drive.google.com/file/d/1isTn2zx2R7doQK77hTCw_D4W11zjaEXP/view,,
@@ -222,4 +222,388 @@ BHANUSHALI VALLABHJI K. & VIMLABEN V. BHANUSHALI,2312,9930898750,,1,1,0,OWNER,MH
 THAKKAR NITIN SHIVJIBHAI,2313,8691022390,,N/A,2,3505,OWNER,,,,,,,https://drive.google.com/file/d/1PMlSSy5K0DvyjiONmHR1vBQoBFJ1QYQH/view,,https://drive.google.com/file/d/1782v87bC7Fx8Ndc73uc8NQm-hVottLmG/view,,
 VIRENDRAKUMAR AMRUTLAL VAISHYA,2314,9821393350,,N/A,N/A,2905,OWNER,,,,,,,https://drive.google.com/file/d/1am8_gfjTxPht-hT7yf6yIEMxKo8t5Hnp/view,,https://drive.google.com/file/d/14Q1BkXFL1nqy8ESfOkebbxyroGOFISh_/view,,
 HOLKAR CHANDRAKANT RAMCHANDRA,2315,8976991885,,N/A,N/A,2905,OWNER,,,,,,,https://drive.google.com/file/d/1Vggp7cnTA1K43li_3EAgE6D54mkOqFgZ/view,,https://drive.google.com/file/d/1BEMF6zzMtav4fjAVq56G2ZTUwX7JI3FB/view,,
-HOLKAR CHANDRAKANT RAMCHANDRA,2316,8850233176,,N/A,1,3205,OWNER,,,,,,,https://drive.google.com/file/d/1RIP1fjzdaxOCj6zXIAZ2IfJ4QTu96EXl/view,,https://drive.google.com/file/d/1Mkr9sD9aZqk5f80pOaxacNVJv6DuSb7Z/view,,
+HOLKAR CHANDRAKANT RAMCHANDRA,2316,8850233176,,N/A,1,3205,OWNER,,,,,,,https://drive.google.com/file/d/1RIP1fjzdaxOCj6zXIAZ2IfJ4QTu96EXl/view,,https://drive.google.com/file/d/1Mkr9sD9aZqk5f80pOaxacNVJv6DuSb7Z/view,,`
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("requestForm");
+    const submitButton = form.querySelector("button[type='submit']");
+
+    submitButton.addEventListener("click", function () {
+        setTimeout(() => {
+            form.reset(); // Reset form fields after submission
+        }, 1000); // Small delay to ensure submission occurs
+    });
+});
+
+
+let flatData = [];
+
+const lines = csvData.split('\n');
+flatData = lines.slice(1).map(line => {
+    const [ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy, TwoWNo, SecondTwNo, FourWNo, decBill, decRec, patraBill, patraRec, MarchReceipt, MarchBill, vehicleImage1, vehicleImage2,] = line.split(',').map(item => item.trim());
+    return { ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy, TwoWNo, SecondTwNo, FourWNo, decBill, decRec, patraBill, patraRec, MarchReceipt, MarchBill, vehicleImage1, vehicleImage2 };
+});
+
+window.onload = function () {
+    document.getElementById("alertPopup").style.display = "flex";
+};
+
+// Close popup when clicking anywhere outside the popup box
+document.addEventListener("click", function (event) {
+    const popup = document.getElementById("alertPopup");
+    if (event.target === popup) {
+        closePopup();
+    }
+});
+
+
+
+function triggerSearch(event) {
+    if (event.key === "Enter") {
+        searchFlat();
+    }
+}
+
+
+
+function searchFlat() {
+    let searchInput = document.getElementById('searchInput').value.trim().toUpperCase();
+    let searchPhoneInput = document.getElementById('searchMobileNo').value.trim(); // Get phone number input
+    document.getElementById('searchInput').value = "";
+    document.getElementById('searchMobileNo').value = ""; // Clear input after search
+
+    // if (!searchInput || searchInput.length < 2) {
+    //     alert("Enter Flat No!");
+    //     return;
+    // }
+
+    if (!searchInput && !searchPhoneInput) {
+        alert("Please enter both Flat No and Mobile No!");
+        return;
+    } else if (!searchInput) {
+        alert("Please enter Flat No!");
+        return;
+    } else if (!searchPhoneInput) {
+        alert("Please enter Mobile No!");
+        return;
+    }
+
+    document.getElementById('searchInput').value = "";
+    document.getElementById('searchMobileNo').value = ""; // Clear inputs after search
+
+    // Normalize input for flat numbers
+    const normalizedFlatNo = normalizeFlatNo(searchInput);
+
+    const result = flatData.find(flat =>
+        (normalizedFlatNo && flat.flatNo === normalizedFlatNo) || // Match normalized flat no
+        (flat.TwoWNo && flat.TwoWNo.toUpperCase() === searchInput) ||
+        (flat.FourWNo && flat.FourWNo.toUpperCase() === searchInput) ||
+        nameMatches(flat.ownerName, searchInput) // Match owner name
+    );
+
+    const resultCard = document.getElementById('resultCard');
+    resetField();
+
+    if (result) {
+        // Check if phone number matches before displaying the result
+        // if (searchPhoneInput && searchPhoneInput !== result.phno.trim()) {
+        //     alert("Phone number does not match the flat number!");
+        //     resultCard.style.display = 'none';
+        //     return;
+        // }
+
+
+        if (searchPhoneInput !== result.phno.trim()) {
+            alert("Phone number does not match the flat number!");
+            resultCard.style.display = 'none';
+            return;
+        }
+
+        document.getElementById('ownerName').innerText = result.ownerName;
+        document.getElementById('flatNo').innerText = result.flatNo;
+        document.getElementById('phno').innerText = result.phno;
+        document.getElementById('email').innerText = result.email;
+        document.getElementById('twowheel').innerText = result.twowheel;
+        document.getElementById('fourwheel').innerText = result.fourwheel;
+        document.getElementById('balance').classList.remove('red-text', 'green-text');
+        document.getElementById('occupancy').innerText = result.occupancy;
+
+        updatePhoneNumber(result);
+        checkTwoWheeler(result);
+        checkFourWheeler(result);
+        checkBalance(result);
+        vehicleImages(result);
+        bills(result);
+        checkEmail(result);
+
+        resultCard.style.display = 'block';
+    } else {
+        resultCard.style.display = 'none';
+        alert('Flat Not Found');
+    }
+}
+
+// Function to search by phone number directly
+function searchByPhoneNumber() {
+    let searchPhoneInput = document.getElementById('searchMobileNo').value.trim();
+
+    if (!searchPhoneInput) {
+        alert("Please enter a phone number!");
+        return;
+    }
+
+    const result = flatData.find(flat => flat.phno && flat.phno.trim() === searchPhoneInput);
+
+    if (result) {
+        document.getElementById('searchInput').value = result.flatNo; // Auto-fill flat number
+        searchFlat(); // Call the main search function
+    } else {
+        alert("No matching flat found for this phone number!");
+    }
+}
+
+
+
+
+function resetField() {
+
+    document.getElementById('ownerName').innerText = "";
+    document.getElementById('flatNo').innerText = "";
+    document.getElementById('phno').innerText = "";
+    document.getElementById('email').innerText = "";
+    document.getElementById('fourwheel').innerText = "";
+    document.getElementById('twowheel').innerText = "";
+    document.getElementById('balance').innerText = "";
+    document.getElementById('occupancy').innerText = "";
+    document.getElementById('TwoWNo').innerText = "";
+    document.getElementById('SecondTwNo').innerText = "";
+    document.getElementById('FourWNo').innerText = "";
+    document.getElementById('SecondTwNopara').style.display = "none";
+}
+
+
+
+function checkTwoWheeler(result) {
+    const twowheellabel = document.getElementById('twoWLabel');
+    const twowheelno = document.getElementById("TwoWNo");
+
+    twowheellabel.style.display = "block";
+    twowheelno.innerText = ""
+
+    if (result.twowheel == "N/A") {
+        twowheellabel.style.display = 'none';
+    } else {
+        twowheelno.innerText = result.TwoWNo || "No Record";
+    }
+}
+
+function checkEmail(result) {
+    const emailField = document.getElementById("email");
+
+    if (!result.email || result.email.trim() === "") {
+        emailField.innerText = "No Record";
+    } else {
+        emailField.innerText = result.email;
+    }
+}
+
+
+
+function checkFourWheeler(flat) {
+
+    const fourWheelLabel = document.getElementById("flabel")
+    const fourWheelNo = document.getElementById("FourWNo")
+
+    fourWheelLabel.style.display = "block"
+    fourWheelNo.innerText = ""
+
+    if (flat.fourwheel === "N/A") {
+        fourWheelLabel.style.display = 'none';
+    } else {
+        fourWheelNo.innerText = flat.FourWNo || "No Record";
+    }
+}
+
+
+function checkBalance(result) {
+    if (result.balance > 0) {
+
+        document.getElementById('balance').classList.add('red-text');
+    } else {
+        document.getElementById('balance').classList.add('green-text');
+    }
+    document.getElementById('balance').innerText = "₹" + Math.abs(result.balance);
+}
+
+function vehicleImages(result) {
+    if (result.vehicleImage1) {
+        document.getElementById('vehicleImage1').src = result.vehicleImage1;
+        document.getElementById('vehicleImage1').style.display = 'block';
+    } else {
+        document.getElementById('vehicleImage1').style.display = 'none';
+    }
+
+    if (result.vehicleImage2) {
+        document.getElementById('vehicleImage2').src = result.vehicleImage2;
+        document.getElementById('vehicleImage2').style.display = 'block';
+    } else {
+        document.getElementById('vehicleImage2').style.display = 'none';
+    }
+}
+
+function bills(result) {
+
+    if (result.MarchReceipt) {
+        const marchReceiptBtn = document.getElementById('marchReceiptBtn');
+        marchReceiptBtn.style.display = "inline-block";
+        marchReceiptBtn.onclick = () => {
+            console.log("Opening URL:", result.MarchReceipt); // Debugging
+            window.open(result.MarchReceipt, '_blank'); // Use correct property
+        };
+    } else {
+        document.getElementById('marchReceiptBtn').style.display = "none";
+    }
+
+    if (result.MarchBill) {
+        const marchBillbtn = document.getElementById('marchBillbtn');
+        marchBillbtn.style.display = "inline-block";
+        marchBillbtn.onclick = () => {
+            console.log("Opening URL:", result.MarchBill); // Debugging
+            window.open(result.MarchBill, '_blank'); // Use correct property
+        };
+    } else {
+        document.getElementById('marchBillbtn').style.display = "none";
+    }
+
+
+
+    if (result.decBill) {
+        const decBillBtn = document.getElementById('decBillBtn');
+        decBillBtn.style.display = "inline-block";
+        decBillBtn.onclick = () => {
+            window.open(result.decBill, '_blank');
+        };
+    } else {
+        document.getElementById('decBillBtn').style.display = "none";
+    }
+
+
+    if (result.decRec) {
+        const decRecBtn = document.getElementById('decRecBtn');
+        decRecBtn.style.display = "inline-block";
+        decRecBtn.onclick = () => {
+            window.open(result.decRec, '_blank');
+        };
+    } else {
+        document.getElementById('decRecBtn').style.display = "none";
+    }
+
+    if (result.patraBill) {
+        const patraBillBtn = document.getElementById('patraBillBtn');
+        patraBillBtn.style.display = "inline-block";
+        patraBillBtn.onclick = () => {
+            window.open(result.patraBill, '_blank');
+        };
+    } else {
+        document.getElementById('patraBillBtn').style.display = "none";
+    }
+
+
+    if (result.patraRec) {
+        const patraRecBtn = document.getElementById('patraRecBtn');
+        patraRecBtn.style.display = "inline-block";
+        patraRecBtn.onclick = () => {
+            window.open(result.patraRec, '_blank');
+        };
+    } else {
+        document.getElementById('patraRecBtn').style.display = "none";
+    }
+
+}
+
+function normalizeFlatNo(input) {
+    // Extract digits only
+    let digits = input.replace(/\D/g, ""); // Remove all non-numeric characters
+
+    // Ensure 4-digit format: If only 3 digits, insert '0' in 3rd place
+    if (digits.length === 3) {
+        digits = digits.substring(0, 2) + "0" + digits.substring(2);
+    }
+
+    return digits.length === 4 ? digits : null; // Ensure it's exactly 4 digits
+}
+
+
+
+function nameMatches(ownerName, searchInput) {
+    if (!ownerName) return false;
+
+    const ownerWords = ownerName.toUpperCase().split(" ");
+    const searchWords = searchInput.split(" ");
+
+    return searchWords.every(word => ownerWords.includes(word));
+
+}
+
+
+function updatePhoneNumber(result) {
+    const phnoElement = document.getElementById('phno');
+    const phnoLink = document.getElementById('phnoLink');
+
+    if (result.phno) {
+        phnoElement.innerText = result.phno;
+        phnoLink.href = `https://wa.me/${result.phno.replace(/\D/g, '')}`;
+        phnoLink.style.display = "inline";
+    } else {
+        phnoElement.innerText = "N/A";
+        phnoLink.href = "#";
+        phnoLink.style.display = "none";
+    }
+}
+
+
+
+
+window.addEventListener("scroll", function () {
+    let navbar = document.querySelector(".navbar");
+    if (window.scrollY > 50) {
+        navbar.classList.add("shrink");
+    } else {
+        navbar.classList.remove("shrink");
+    }
+});
+
+
+// Image Pop Up Functionality
+
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("popupModal");
+    const modalImg = document.getElementById("popupImg");
+    const closeModal = document.querySelector(".close");
+
+    // Select all images with the custom data attribute "data-popup"
+    document.querySelectorAll("img[data-popup='true']").forEach(img => {
+        img.addEventListener("click", function () {
+            modal.style.display = "flex";
+            modalImg.src = this.src;
+        });
+    });
+
+    // Close modal when clicking close button
+    closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+
+function closePopup() {
+    document.getElementById("alertPopup").style.display = "none";
+}
+
+// Show popup when page loads

@@ -10,7 +10,7 @@
     <script src="./vishwa2021.js"></script>
     <script src="./vishwa2022.js"></script>
     <link rel="stylesheet" href="./style.css">
-    <script src="./script.js"></script>
+    <script src="./ScriptTest.js"></script>
     <script src="./carousel.js"></script>
     <script src="./Finalscript.js"></script>
     <script src="./navigation.js"></script>
@@ -88,9 +88,13 @@
                     By
                     Flat Owner Name</p>
             </div>
-            <input type="text" class="search-bar" id="searchInput" placeholder="Enter Flat No"
-                onkeydown="triggerSearch(event)">
-            <button class="search-btn" onclick="searchFlat()">Display</button>
+            <div class="search-container">
+                <input type="text" class="search-bar" id="searchInput" placeholder="Enter Flat No"
+                    onkeydown="triggerSearch(event)">
+                <input type="text" class="search-bar" id="searchMobileNo" placeholder="Enter No"
+                    onkeydown="triggerSearch(event)">
+                <button class="search-btn" onclick="searchFlat()">Display</button>
+            </div>
             <div class="card" id="resultCard">
                 <h2 id="ownerName"></h2>
                 <p><strong><i class="fa-solid fa-address-book" style="color: #DC143C;"></i> Flat No:</strong> <span
@@ -103,7 +107,8 @@
                 </p> -->
                 <p><strong><i class="fa-solid fa-envelope" style="color: #DC143C;"></i> Email ID:</strong> <span
                         id="email"></span></p>
-                <p><strong><i class="fa-solid fa-motorcycle" style="color: #DC143C;"></i> Two Wheeler Parked:</strong>
+                <p><strong><i class="fa-solid fa-motorcycle" style="color: #DC143C;"></i> Two Wheeler
+                        Parked:</strong>
                     <span id="twowheel"></span>
                 </p>
                 <div id="twoWLabel">
@@ -114,16 +119,18 @@
                         Wheeler No:</strong>
                     <span id="SecondTwNo"></span>
                 </p>
-                <p><strong><i class="fa-solid fa-car" style="color: #DC143C;"></i> Four Wheeler Parked:</strong> <span
-                        id="fourwheel"></span></p>
+                <p><strong><i class="fa-solid fa-car" style="color: #DC143C;"></i> Four Wheeler Parked:</strong>
+                    <span id="fourwheel"></span>
+                </p>
                 <div id="flabel">
                     <p><strong><i class="fa-solid fa-hashtag" style="color: #DC143C;"></i> 4W No:</strong> <span
                             id="FourWNo"></span></p>
                 </div>
                 <p><strong><i class="fa-solid fa-wallet" style="color: #DC143C;"></i> Outstanding Balance
                         : </strong><span id="balance"></span></p>
-                <p><strong><i class="fa-solid fa-users" style="color: #DC143C;"></i> Current Occupancy: </strong> <span
-                        id="occupancy"></span></p>
+                <p><strong><i class="fa-solid fa-users" style="color: #DC143C;"></i> Current Occupancy: </strong>
+                    <span id="occupancy"></span>
+                </p>
                 <img id="vehicleImage1" src="" alt="Vehicle Image">
                 <img id="vehicleImage2" src="" alt="Vehicle Image">
 
@@ -145,7 +152,8 @@
                     <button id="patraRecBtn" class="view-bill">View Receipt</button></p>
                 </div>
                 <div class="bill-section">
-                    <p><i class="fa-regular fa-file" style="color: #DC143C;"></i><strong> Final Patra Bill: </strong>
+                    <p><i class="fa-regular fa-file" style="color: #DC143C;"></i><strong> Final Patra Bill:
+                        </strong>
                     </p>
                     <button id="patraBillBtn" class="view-bill">View Bill</button></p>
                 </div>
