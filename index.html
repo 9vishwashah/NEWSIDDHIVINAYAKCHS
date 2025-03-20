@@ -54,6 +54,18 @@
         </div>
     </section>
 
+    <!-- Alert Popup -->
+    <div id="customPopup" class="popup-overlay" style="display: none;">
+        <div class="popup-box">
+            <h2>Alert</h2>
+            <!-- <div class="important-msg">
+                <p><i class="important-msg warning" style="color: crimson;"></i><strong>Contact Office</strong></p>
+            </div> -->
+            <p id="popupMessage"></p>
+            <button class="close-popup" onclick="closePopup()">OK</button>
+        </div>
+    </div>
+
     <div id="alertPopup" class="popup-overlay">
         <div class="popup-box">
             <h2>Welcome to New Siddhivinayak CHS!</h2>
@@ -61,7 +73,7 @@
 
             <div class="important-msg">
                 <p><i class="fa-solid fa-download" style="color: crimson;"></i> <strong>Kindly download March 2025
-                        Bills.</strong></p>
+                        Receipts </strong></p>
             </div>
 
             <div class="important-msg">
@@ -84,14 +96,13 @@
         <div class="container">
             <h1 class="title" id="title"> Members </h1>
             <div class="note-box">
-                <p><strong>NOTE :</strong> Search by Flat No (e.g., <strong>Bldg B-10 & Flat NO 12</strong>) OR Search
-                    By
+                <p><strong>NOTE :</strong> Enter Flat No (e.g., <strong>Bldg B-10 & Flat NO 12</strong>) OR
                     Flat Owner Name</p>
             </div>
             <div class="search-container">
-                <input type="text" class="search-bar" id="searchInput" placeholder="Enter Flat No"
+                <input type="text" class="search-bar" id="searchInput" placeholder="Flat No"
                     onkeydown="triggerSearch(event)">
-                <input type="text" class="search-bar" id="searchMobileNo" placeholder="Enter No"
+                <input type="text" class="search-bar" id="searchMobileNo" placeholder="Owner Mobile No"
                     onkeydown="triggerSearch(event)">
                 <button class="search-btn" onclick="searchFlat()">Display</button>
             </div>
