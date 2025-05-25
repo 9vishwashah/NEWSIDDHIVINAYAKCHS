@@ -10,23 +10,57 @@
     <script src="./vishwa2021.js"></script>
     <script src="./vishwa2022.js"></script>
     <link rel="stylesheet" href="./style.css">
-    <script src="./ScriptTest.js"></script>
+    <script src="./data.js"></script>
     <script src="./carousel.js"></script>
     <script src="./Finalscript.js"></script>
     <script src="./navigation.js"></script>
     <script src="https://kit.fontawesome.com/32255cd4c3.js" crossorigin="anonymous"></script>
 
     <meta name="google-adsense-account" content="ca-pub-7082006231641635">
+    <script>
+        const galleryTrack = document.getElementById("galleryTrack");
+        let isDragging = false;
+        let startX;
+        let scrollLeft;
+
+        galleryTrack.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            startX = e.pageX - galleryTrack.offsetLeft;
+            scrollLeft = galleryTrack.scrollLeft;
+            galleryTrack.style.cursor = "grabbing";
+        });
+
+        galleryTrack.addEventListener("mouseleave", () => {
+            isDragging = false;
+            galleryTrack.style.cursor = "grab";
+        });
+
+        galleryTrack.addEventListener("mouseup", () => {
+            isDragging = false;
+            galleryTrack.style.cursor = "grab";
+        });
+
+        galleryTrack.addEventListener("mousemove", (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - galleryTrack.offsetLeft;
+            const walk = (x - startX) * 2; // scroll speed
+            galleryTrack.scrollLeft = scrollLeft - walk;
+        });
+
+        galleryTrack.style.cursor = "grab";
+    </script>
+
 
 
 </head>
 
 
 <body>
-    <div class=" scroll-up-btn">
+    <div class="scroll-up-btn">
         <i class="fas fa-angle-up"></i>
     </div>
-
+    <!-- Navbar -->
     <nav class=" navbar">
         <div class="max-width">
             <div class="logo"><a href="#"><img src="/asset/logo.jpeg" alt=""></a></div>
@@ -58,15 +92,12 @@
     <div id="customPopup" class="popup-overlay" style="display: none;">
         <div class="popup-box">
             <h2>Alert</h2>
-            <!-- <div class="important-msg">
-                <p><i class="important-msg warning" style="color: crimson;"></i><strong>Contact Office</strong></p>
-            </div> -->
             <p id="popupMessage"></p>
             <button class="close-popup" onclick="closePopup()">OK</button>
         </div>
     </div>
 
-    <div id="alertPopup" class="popup-overlay">
+    <!-- <div id="alertPopup" class="popup-overlay">
         <div class="popup-box">
             <h2>Welcome to New Siddhivinayak CHS!</h2>
             <p><strong>Note: </strong></p>
@@ -87,11 +118,15 @@
             </div>
 
             <button class="close-popup" onclick="closePopup()">okay</button>
+
         </div>
-    </div>
+    </div> -->
+    <!-- <div id="popupModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="popupImg">
+    </div> -->
 
-
-
+    <!-- Members Login -->
     <section class="member-details" id="new-member-details">
         <div class="container">
             <h1 class="title" id="title"> Members </h1>
@@ -113,9 +148,6 @@
                 <p><strong><i class="fa-solid fa-phone" style="color: #DC143C;"></i> Mobile No:</strong>
                     <a id="phnoLink" href="#" target="_blank"><span id="phno"></span></a></span>
                 </p>
-                <!-- <p><strong><i class="fa-solid fa-phone" style="color: #DC143C;"></i> Mobile No:</strong>
-                    <a id="phnoLink" href="tel:9876543210" target="_blank"><span id="phno"></span></a>
-                </p> -->
                 <p><strong><i class="fa-solid fa-envelope" style="color: #DC143C;"></i> Email ID:</strong> <span
                         id="email"></span></p>
                 <p><strong><i class="fa-solid fa-motorcycle" style="color: #DC143C;"></i> Two Wheeler
@@ -185,16 +217,40 @@
     </section>
 
 
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="title" id="title">Gallery</h2>
+            <div class="gallery-carousel">
+                <div class="gallery-track" id="galleryTrack">
+                    <div class="gallery-item">
+                        <img src="./asset/photo1.jpg" alt="Photo 1" loading="lazy">
+                        <div class="caption">Independence Day</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./asset/photo2.jpg" alt="Photo 2" loading="lazy">
+                        <div class="caption">Holi Dahan</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./asset/photo3.jpg" alt="Photo 3" loading="lazy">
+                        <div class="caption">Ganesh Chaturthi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
 
+
+
+
+    <!-- Application Forms -->
     <section class="contact-form" id="request">
         <h1 class="title" id="title">Application </h1>
         <div class="form-cardDetails">
             <div class="note-box">
                 <p>Fill The Form for Any Request or Complaint</p>
-                <!-- <h3>REQUEST OR SUGGESTION</h3> -->
             </div>
             <form action="https://airform.io/nsiddhi2014@gmail.com" method="POST" id="requestForm">
                 <input type="text" name="FlatNo" placeholder="Enter your Flat No" required>
@@ -283,8 +339,6 @@
         </div>
     </section>
 
-
-
     <section class="suspense" id="details">
         <div class="container">
             <h2 class="title" id="title">Suspense Entries</h2>
@@ -296,18 +350,17 @@
                         We are unable to match these payments with the entries in our passbook.</p>
                     <p>Kindly verify the transaction and contact office with the details before 20th March 2025</p>
                 </div>
-                <!-- <h2></h2> -->
                 <img src="/asset/otherincome.png" class="suspense-image" data-popup="true" alt="">
             </div>
         </div>
     </section>
-
+    <!-- Image PopUp -->
     <div id="popupModal" class="modal">
         <span class="close">&times;</span>
         <img class="modal-content" id="popupImg">
     </div>
 
-
+    <!-- Statistics Section -->
     <section class="stats" id="stats">
         <div class="container">
 
@@ -333,11 +386,8 @@
             </div>
         </div>
     </section>
-    <div id="popupModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="popupImg">
-    </div>
 
+    <!-- Contact -->
     <section class="contactDetails" id="contact">
         <div class="container">
             <h1 class="title" id="title">Contact</h1>
@@ -358,6 +408,7 @@
             </div>
         </div>
     </section>
+    <!-- Map -->
     <section>
         <div class="map-container">
             <iframe
