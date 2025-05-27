@@ -260,7 +260,6 @@ document.addEventListener("click", function (event) {
 
 
 
-
 function triggerSearch(event) {
     if (event.key === "Enter") {
         searchFlat();
@@ -278,28 +277,6 @@ function closePopup() {
     document.getElementById("alertPopup").style.display = "none";
     document.getElementById("customPopup").style.display = "none";
 }
-
-
-
-<div class="gallery-nav">
-    <button onclick="scrollGallery(-1)">&#10094;</button>
-    <button onclick="scrollGallery(1)">&#10095;</button>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function searchFlat() {
@@ -350,7 +327,7 @@ function searchFlat() {
 
 
         if (searchPhoneInput !== result.phno.trim()) {
-            showPopup("Invalid Details !");
+            showPopup("Kindly Enter Registered PhNo! Contact Office");
             resultCard.style.display = 'none';
             return;
         }
