@@ -17,6 +17,254 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.toast {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    /* background: rgba(255, 255, 255, 0.15); */
+    background: whitesmoke;
+    /* semi-transparent */
+    /* color: #ffffff; */
+    color: crimson;
+    padding: 14px 18px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    font-size: 15px;
+    font-weight: 500;
+    min-width: 280px;
+    max-width: 90%;
+    z-index: 9999;
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    overflow: hidden;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.toast-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.toast-message {
+    flex: 1;
+    word-break: break-word;
+    font-weight: 500;
+}
+
+.toast-progress {
+    height: 3px;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #17DF9D;
+    /* or dynamic via JS */
+    transform-origin: left;
+    /* <--- this is KEY */
+    animation: slideLeft 3s linear forwards;
+    border-radius: 4px;
+}
+
+@keyframes slideLeft {
+    from {
+        transform: scaleX(1);
+        /* full width */
+    }
+
+    to {
+        transform: scaleX(0);
+        /* shrink to zero */
+    }
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 480px) {
+    .toast {
+        font-size: 14px;
+        padding: 12px 14px;
+        border-radius: 10px;
+    }
+
+    .toast-icon {
+        font-size: 18px;
+    }
+}
+
+
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info-row .info-value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    display: inline-block;
+}
+
+/* === MEMBERS SEARCH SECTION STYLING === */
+
+.member-details {
+    padding: 50px 0;
+    background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.member-details .container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+/* .member-details .title {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #DC143C;
+    text-transform: uppercase;
+} */
+
+.note-box {
+    background-color: #fff7f7;
+    border: 1px solid #ffcccc;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    color: #a94442;
+    font-size: 15px;
+}
+
+.search-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    /* align-items: flex-end; */
+    margin-bottom: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    min-width: 250px;
+}
+
+.form-group h2 {
+    margin: 0 0 5px 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.search-container input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.search-btn {
+    background-color: #DC143C;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: fit-content;
+}
+
+.search-btn:hover {
+    background-color: #c01234;
+}
+
+.card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}
+
+.card h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 16px;
+    margin: 6px 0;
+    color: #555;
+}
+
+.card i {
+    margin-right: 6px;
+}
+
+.view-bill {
+    background-color: #fff;
+    color: #DC143C;
+    border: 2px solid #DC143C;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+}
+
+.view-bill:hover {
+    background-color: #DC143C;
+    color: #fff;
+}
+
+.bill-section {
+    margin-top: 15px;
+    border-top: 1px dashed #ccc;
+    padding-top: 10px;
+}
+
+#vehicleImage1,
+#vehicleImage2 {
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 8px;
+}
+
+
+
+
 .max-width {
     max-width: 1200px;
     padding: 0 20px;
@@ -292,7 +540,7 @@ body {
 }
 
 .home .home-content .text-3 {
-    font-size: 40px;
+    font-size: 20px;
     margin: 5px 0;
 }
 

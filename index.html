@@ -14,6 +14,7 @@
     <script src="./carousel.js"></script>
     <script src="./Finalscript.js"></script>
     <script src="./navigation.js"></script>
+    <script src="./showToast.js"></script>
     <script src="https://kit.fontawesome.com/32255cd4c3.js" crossorigin="anonymous"></script>
 
     <meta name="google-adsense-account" content="ca-pub-7082006231641635">
@@ -49,7 +50,9 @@
             <div class="home-content">
                 <div class="text-1"></div>
                 <div class="text-2">New Siddhivinayak CHS</div>
-                <div class="text-3">Your home for a <span class="highlight">peaceful lifestyle</span></div>
+                <div class="text-3">Plot No.48, MG Complex, Sec-14 Vashi, Navi Mumbai-400703 <span
+                        class="highlight">peaceful
+                        lifestyle</span></div>
                 <a href="#new-member-details">Members</a>
             </div>
         </div>
@@ -63,6 +66,16 @@
             <button class="close-popup" onclick="closePopup()">OK</button>
         </div>
     </div>
+
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <i id="toast-icon" class="toast-icon fa-solid fa-check-circle"></i>
+            <span class="toast-message" id="toast-message">Message goes here</span>
+        </div>
+        <div class="toast-progress" id="toast-progress"></div>
+    </div>
+
+
 
     <div id="alertPopup" class="popup-overlay">
         <div class="popup-box">
@@ -92,19 +105,35 @@
 
     <!-- Members Login -->
     <section class="member-details" id="new-member-details">
+        <h1 class="title" id="title"> Members </h1>
         <div class="container">
-            <h1 class="title" id="title"> Members </h1>
+            <!-- </div> -->
             <div class="note-box">
-                <p><strong>NOTE :</strong> Enter Flat No (e.g., <strong>Bldg B-10 & Flat NO 12</strong>) OR
-                    Flat Owner Name</p>
+                <p><strong>NOTE :</strong> Enter Flat <b>Owners Name</b> OR Flat No e.g.<strong>B-10 Room No 16</strong>
+                    OR <strong>1016</strong></p>
             </div>
-            <div class="search-container">
-                <input type="text" class="search-bar" id="searchInput" placeholder="Flat No"
+            <!-- <div class="search-container">
+                <h2>Flat No:</h2><input type="text" class="search-bar" id="searchInput" placeholder="Flat No"
                     onkeydown="triggerSearch(event)">
-                <input type="text" class="search-bar" id="searchMobileNo" placeholder="Owner Mobile No"
-                    onkeydown="triggerSearch(event)">
+                <h2>Mobile No:</h2><input type="text" class="search-bar" id="searchMobileNo"
+                    placeholder="Owner Mobile No" onkeydown="triggerSearch(event)">
                 <button class="search-btn" onclick="searchFlat()">Display</button>
+            </div> -->
+            <div class="search-container">
+                <div class="form-group">
+                    <h2>Flat No:</h2>
+                    <input type="text" class="search-bar" id="searchInput" placeholder="Flat No"
+                        onkeydown="triggerSearch(event)">
+                </div>
+                <div class="form-group">
+                    <h2>Mobile No:</h2>
+                    <input type="text" class="search-bar" id="searchMobileNo" placeholder="Owner Mobile No"
+                        onkeydown="triggerSearch(event)">
+                </div>
+                <button class="search-btn" onclick="searchFlat()">LOGIN</button>
             </div>
+
+
             <div class="card" id="resultCard">
                 <h2 id="ownerName"></h2>
                 <p><strong><i class="fa-solid fa-address-book" style="color: #DC143C;"></i> Flat No:</strong> <span
@@ -112,8 +141,10 @@
                 <p><strong><i class="fa-solid fa-phone" style="color: #DC143C;"></i> Mobile No:</strong>
                     <a id="phnoLink" href="#" target="_blank"><span id="phno"></span></a></span>
                 </p>
-                <p><strong><i class="fa-solid fa-envelope" style="color: #DC143C;"></i> Email ID:</strong> <span
-                        id="email"></span></p>
+                <div class="info-row">
+                    <p><strong><i class="fa-solid fa-envelope" style="color: #DC143C;"></i> Email ID:</strong> <span
+                            id="email"></span></p>
+                </div>
                 <p><strong><i class="fa-solid fa-motorcycle" style="color: #DC143C;"></i> Two Wheeler
                         Parked:</strong>
                     <span id="twowheel"></span>
@@ -151,7 +182,7 @@
                 <div class="bill-section">
                     <p><i class="fa-regular fa-file" style="color: #DC143C;"></i><strong> March 2025 Bill:
                         </strong></p>
-                    <button id="marchBillbtn" class="view-bill">View Bill</button></p>
+                    <button id="marchBillbtn" class="view-bill" target="blank">View Bill</button></p>
                 </div>
                 <div class="bill-section">
                     <p><i class="fa-solid fa-receipt" style="color: #DC143C;"></i><strong> Final Patra Receipt:
@@ -217,14 +248,13 @@
                 <p>Fill The Form for Any Request or Complaint</p>
             </div>
             <form action="https://airform.io/nsiddhi2014@gmail.com" method="POST" id="requestForm">
-                <input type="text" name="FlatNo" placeholder="Enter your Flat No" required>
-                <input type="text" name="OwnerName" placeholder="Enter Applicant name" required>
-                <input type="tel" name="Mobile No" placeholder="Enter Your Mobile No" required>
-                <input type="email" name="Email" placeholder="Enter your email (Optional)">
-                <input type="text" name="Subject" placeholder="Write your Subject">
-                <textarea name="Message" rows="4" placeholder="Write down your Request Letter or Suggestion"
-                    required></textarea>
-                <button type="submit">Submit</button>
+                <input type="text" name="FlatNo" placeholder="Flat No" required>
+                <input type="text" name="OwnerName" placeholder="Applicant name" required>
+                <input type="tel" name="Mobile No" placeholder="Mobile No" required>
+                <input type="email" name="Email" placeholder="Email (Optional)">
+                <input type="text" name="Subject" placeholder="Write Subject">
+                <textarea name="Message" rows="4" placeholder="To Chairman/Secretary" required></textarea>
+                <button type="submit" onclick="return checkApplication(event)">Submit</button>
             </form>
         </div>
     </section>
