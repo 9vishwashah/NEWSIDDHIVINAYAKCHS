@@ -282,17 +282,17 @@ fetch('asset/member_details.csv')  // Make sure the path is correct and public
 //     return { ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy, TwoWNo, SecondTwNo, FourWNo, decBill, decRec, patraBill, patraRec, MarchReceipt, MarchBill, vehicleImage1, vehicleImage2 };
 // });
 
-window.onload = function () {
-    document.getElementById("alertPopup").style.display = "flex";
-};
+// window.onload = function () {
+//     document.getElementById("alertPopup").style.display = "flex";
+// };
 
-// Close popup when clicking anywhere outside the popup box
-document.addEventListener("click", function (event) {
-    const popup = document.getElementById("alertPopup");
-    if (event.target === popup) {
-        closePopup();
-    }
-});
+// // Close popup when clicking anywhere outside the popup box
+// document.addEventListener("click", function (event) {
+//     const popup = document.getElementById("alertPopup");
+//     if (event.target === popup) {
+//         closePopup();
+//     }
+// });
 
 
 
