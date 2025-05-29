@@ -141,14 +141,6 @@ body {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
 }
 
-/* .member-details .title {
-    font-size: 32px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #DC143C;
-    text-transform: uppercase;
-} */
 
 .note-box {
     background-color: #fff7f7;
@@ -248,6 +240,23 @@ body {
     color: #fff;
 }
 
+.view-receipt {
+    background-color: #1D3956;
+    color: white;
+    border: 2px solid #1D3956;
+    border-radius: 6px;
+    padding: 12px 24px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+}
+
+.view-receipt:hover {
+    background-color: white;
+    color: #1D3956;
+}
+
 .bill-section {
     margin-top: 15px;
     border-top: 1px dashed #ccc;
@@ -300,21 +309,6 @@ body {
     flex-shrink: 0;
     transition: transform 0.3s ease;
 }
-
-/* .gallery-item img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    max-height: 300px;
-} */
-
-/* .gallery-item img {
-    height: 250px;
-    object-fit: cover;
-} */
 
 
 
@@ -878,17 +872,54 @@ input[type="text"] {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     gap: 10px;
-    /* Adds space between input fields */
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-group label {
+    min-width: 100px;
+    /* Fixed label width */
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+    /* padding-top: 2px; */
+    padding-bottom: 10px;
+    /* ✅ Prevent extra vertical spacing */
+    margin: 0;
+    white-space: nowrap;
+    text-align: right;
 }
 
 .search-bar {
-    width: 100%;
-    max-width: 300px;
-    /* Adjust width as needed */
+    flex: 1;
     padding: 10px;
+    font-size: 16px;
     border: 2px solid crimson;
-    border-radius: 5px;
+    border-radius: 6px;
+    width: 100%;
+    /* Ensure input stretches */
+    box-sizing: border-box;
+}
+
+@media (max-width: 500px) {
+    .form-group {
+        flex-direction: row;
+        align-items: left;
+    }
+
+    .form-group label {
+        text-align: right;
+        margin-bottom: 5px;
+    }
 }
 
 
@@ -905,6 +936,7 @@ input[type="text"] {
 .search-btn:hover {
     background-color: darkred;
 }
+
 
 /* Mobile Responsive */
 @media screen and (max-width: 768px) {
@@ -955,7 +987,7 @@ input[type="text"] {
         font-size: 24px;
         margin-right: 5px;
         flex-shrink: 0;
-        overflow: hidden;
+        overflow: visible;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
@@ -967,12 +999,17 @@ input[type="text"] {
         white-space: nowrap;
     }
 
+
+
+
+
+
     .cardDetails p span,
     #phnoLink,
     #email {
         display: inline-block;
         max-width: 100%;
-        overflow: hidden;
+        overflow: visible;
         text-overflow: ellipsis;
         white-space: nowrap;
         vertical-align: middle;
@@ -1065,7 +1102,7 @@ input[type="text"] {
 }
 
 .card h3 {
-    color: crimson;
+    color: #1D3956;
     margin-bottom: 2px;
 }
 
