@@ -59,12 +59,12 @@
     </section>
 
     <!-- Alert Popup -->
-    <div id="customPopup" class="popup-overlay" style="display: none;">
+    <!-- <div id="customPopup" class="popup-overlay" style="display: none;">
         <div class="popup-box">
             <h2 id="popupMessage"></h2>
             <button class="close-popup" onclick="closePopup()">OK</button>
         </div>
-    </div>
+    </div> -->
 
     <div id="toast" class="toast">
         <div class="toast-content">
@@ -76,14 +76,14 @@
 
 
 
-    <div id="alertPopup" class="popup-overlay">
+    <!-- <div id="alertPopup" class="toast-notification">
         <div class="popup-box">
             <h2>Welcome to New Siddhivinayak CHS!</h2>
             <p><strong>Note: </strong></p>
 
             <div class="important-msg">
                 <p><i class="fa-solid fa-download" style="color: crimson;"></i> <strong>Kindly download March 2025
-                        Receipts </strong></p>
+                        Receipts</strong></p>
             </div>
 
             <div class="important-msg">
@@ -97,9 +97,35 @@
             </div>
 
             <button class="close-popup" onclick="closePopup()">okay</button>
-
         </div>
+    </div> -->
+
+    <div id="welcome-toast" class="toast">
+        <div class="toast-content">
+            <!-- <i id="toast-icon" class="toast-icon fa-solid fa-circle-info"></i> -->
+            <div class="toast-message" id="welcome-toast-message">
+                <h3>Welcome to New Siddhivinayak CHS!</h3>
+                <!-- <p><strong>Note:</strong></p> -->
+
+                <div class="important-msg">
+                    <p><i class="fa-solid fa-download" style="color: crimson;"></i> <strong>Kindly download June 2025
+                            Bills</strong></p>
+                </div>
+
+                <div class="important-msg">
+                    <p><i class="fa-solid fa-wallet" style="color: crimson;"></i> <strong>Pay outstanding
+                            Amount before 30-06-2025</strong></p>
+                </div>
+
+                <div class="important-msg warning">
+                    <p><i class="fa-solid fa-ban" style="color: crimson;"></i> <strong>No payment will be accepted after
+                            the due date.</strong></p>
+                </div>
+            </div>
+        </div>
+        <div class="toast-progress" id="welcome-toast-progress"></div>
     </div>
+
 
 
     <!-- Members Login -->
@@ -383,7 +409,7 @@
     <!-- Contact -->
     <section class="contactDetails" id="contact">
         <div class="container">
-            <h1 class="title" id="title">Contact</h1>
+            <h1 class="title" id="title">Contact Us</h1>
             <div class="cardDetails" id="resultCard">
                 <div class="note-box">
                     Click on The Mobile no to Whatsapp
