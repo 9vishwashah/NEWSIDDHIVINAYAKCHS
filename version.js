@@ -1,5 +1,5 @@
-const versionInfo = { 
-  updatedAt: "^"2025-06-02" 
-}; 
- 
-export default versionInfo; 
+const versionInfo = {
+  updatedAt: "%datetime%"
+};
+
+export default versionInfo;
