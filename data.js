@@ -1,3 +1,5 @@
+import versionInfo from './version.js';
+document.getElementById('last-updated').textContent = `Last updated: ${versionInfo.updatedAt}`;
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("requestForm");
