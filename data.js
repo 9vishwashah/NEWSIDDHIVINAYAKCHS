@@ -1,11 +1,13 @@
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("requestForm");
-    const submitButton = form.querySelector("button[type='submit']");
 
-    submitButton.addEventListener("click", function () {
-        setTimeout(() => {
-            form.reset();
-        }, 1000);
+    form.addEventListener("submit", function () {
+        if (submitted) {
+            setTimeout(() => {
+                form.reset();
+            }, 2000);
+        }
     });
 });
 
@@ -219,6 +221,8 @@ function searchByPhoneNumber() {
 
 
 
+let submitted = false;
+
 function checkApplication(event) {
     event.preventDefault();
 
@@ -229,37 +233,19 @@ function checkApplication(event) {
     const mobile = form.querySelector('input[name="Mobile No"]').value.trim();
     const message = form.querySelector('textarea[name="Message"]').value.trim();
 
-    if (!flatNo) {
-        showToast("Please enter your Flat No.", "info");
-        form.querySelector('input[name="FlatNo"]').focus();
-        return false;
-    }
-
-    if (!ownerName) {
-        showToast("Please enter your Name.", "info");
-        form.querySelector('input[name="OwnerName"]').focus();
-        return false;
-    }
-
-    if (!mobile) {
-        showToast("Please enter your Mobile No.", "info");
-        form.querySelector('input[name="Mobile No"]').focus();
-        return false;
-    }
-
-    if (!message) {
-        showToast("Please write the message.", "info");
-        form.querySelector('input[name="Message"]').focus();
+    if (!flatNo || !ownerName || !mobile || !message) {
+        showToast("Please fill in all required fields.", "info");
         return false;
     }
 
     showToast("Form details filled! Submitting...", "success");
 
+    submitted = true;
+
     setTimeout(() => {
         form.submit();
     }, 1200);
 }
-
 
 function resetField() {
 
