@@ -1,6 +1,3 @@
-import versionInfo from './version.js';
-document.getElementById('last-updated').textContent = `Last updated: ${versionInfo.updatedAt}`;
-
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("requestForm");
 
@@ -16,14 +13,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function showWelcomeToast(duration = 5000) {
     const toast = document.getElementById("welcome-toast");
-    // const icon = document.getElementById("toast-icon");
     const progress = document.getElementById("welcome-toast-progress");
-
-    // Reset icon
-    // icon.className = "toast-icon fa-solid fa-circle-info";
     progress.style.backgroundColor = "crimson";
 
-    // Reset and restart animation
     progress.style.animation = "none";
     void progress.offsetWidth;
     progress.style.animation = `slideLeft ${duration}ms linear forwards`;
