@@ -1,5 +1,5 @@
 @echo off
-for /f "delims=" %%a in ('powershell -command "Get-Date -Format \"yyyy-MM-dd HH:mm\""') do set datetime=%%a
+for /f "delims=" %%a in ('powershell -command "Get-Date -Format \"dd-MM-yyyy HH:mm tt\""') do set datetime=%%a
 
 echo const versionInfo = { > version.js
 echo   updatedAt: "%datetime%" >> version.js
