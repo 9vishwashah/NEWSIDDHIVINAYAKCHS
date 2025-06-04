@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function showWelcomeToast(duration = 5000) {
+function showWelcomeToast(duration = 3000) {
     const toast = document.getElementById("welcome-toast");
     const progress = document.getElementById("welcome-toast-progress");
     progress.style.backgroundColor = "crimson";
@@ -68,26 +68,6 @@ fetch('asset/member_details.csv')
         console.error('Error loading CSV:', error);
         console.log('Error loading member data. Please check the console for details.');
     });
-
-
-// window.onload = function () {
-//     const popup = document.getElementById("alertPopup");
-//     popup.style.display = "block";
-
-//     // Optional: Auto-dismiss after 8 seconds
-//     setTimeout(() => {
-//         closePopup();
-//     }, 8000);
-// };
-
-// function closePopup() {
-//     document.getElementById("alertPopup").style.display = "none";
-// }
-
-
-
-
-
 
 
 
