@@ -50,14 +50,14 @@ fetch('asset/member_details.csv')
             const [
                 ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy,
                 TwoWNo, SecondTwNo, FourWNo, decBill, decRec,
-                patraBill, patraRec, MarchReceipt, MarchBill,
+                patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill,
                 vehicleImage1, vehicleImage2
             ] = line.split(',').map(item => item.trim());
 
             return {
                 ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy,
                 TwoWNo, SecondTwNo, FourWNo, decBill, decRec,
-                patraBill, patraRec, MarchReceipt, MarchBill,
+                patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill,
                 vehicleImage1, vehicleImage2
             };
         });
@@ -328,6 +328,28 @@ function vehicleImages(result) {
 }
 
 function bills(result) {
+
+    if (result.JuneRec) {
+        const juneReceiptBtn = document.getElementById('juneReceiptBtn');
+        juneReceiptBtn.style.display = "inline-block";
+        juneReceiptBtn.onclick = () => {
+            console.log("Opening URL:", result.JuneRec);
+            window.open(result.JuneRec, '_blank');
+        };
+    } else {
+        document.getElementById('juneReceiptBtn').style.display = "none";
+    }
+
+    if (result.JuneBill) {
+        const juneBillbtn = document.getElementById('juneBillbtn');
+        juneBillbtn.style.display = "inline-block";
+        juneBillbtn.onclick = () => {
+            console.log("Opening URL:", result.JuneBill);
+            window.open(result.JuneBill, '_blank');
+        };
+    } else {
+        document.getElementById('juneBillbtn').style.display = "none";
+    }
 
     if (result.MarchReceipt) {
         const marchReceiptBtn = document.getElementById('marchReceiptBtn');
