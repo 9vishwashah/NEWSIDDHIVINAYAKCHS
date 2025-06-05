@@ -5,4 +5,3 @@ call update-version.bat
 echo Committing to Git...
 git add .
 git commit -m "Auto commit with version update"
-git push
