@@ -1049,16 +1049,16 @@ input[type="text"] {
     background-color: rgb(29, 32, 138);
 }
 
-.Notice .title::after{
+.Notice .title::after {
     content: "Rules and SOPS";
 }
 
 .gallery .title::after {
-    content: "Photos";
+    content: "Festivals";
 }
 
 .member-details .title::after {
-    content: "Get Details";
+    content: "Login";
 }
 
 .bankDetails .title::after {
