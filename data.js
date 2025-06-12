@@ -125,6 +125,9 @@ function searchFlat() {
 
     const normalizeNo = normalizeMobileNumber(searchPhoneInput);
     const normalizedFlatNo = normalizeFlatNo(searchInput);
+    const isAdminKey = normalizeNo === "2424";
+
+    // (isAdminKey && normalizeFlatNo) ||
 
     const result = flatData.find(flat =>
         (normalizedFlatNo && flat.flatNo === normalizedFlatNo) ||
@@ -132,13 +135,25 @@ function searchFlat() {
         (flat.FourWNo && flat.FourWNo.toUpperCase() === searchInput) ||
         nameMatches(flat.ownerName, searchInput)
     );
+    // const result = flatData.find(flat => {
+    //     const flatMatch = flat.flatNo === normalizedFlatNo;
+    //     const phoneMatch = normalizeMobileNumber(flat.PhNo) === normalizeNo;
+
+    //     return (
+    //         (isAdminKey && flatMatch) ||  // Admin access: only flat number needed
+    //         (flatMatch && phoneMatch) ||  // Normal user access
+    //         (flat.TwoWNo && flat.TwoWNo.toUpperCase() === searchInput) ||
+    //         (flat.FourWNo && flat.FourWNo.toUpperCase() === searchInput) ||
+    //         nameMatches(flat.ownerName, searchInput)
+    //     );
+    // });
 
     const resultCard = document.getElementById('resultCard');
     resetField();
 
     if (result) {
 
-        if (normalizeNo !== result.phno.trim()) {
+        if (!isAdminKey && normalizeNo !== result.phno.trim()) {
             showToast("Kindly Enter Registered PhNo! Contact Office", "error");
             resultCard.style.display = 'none';
             return;
