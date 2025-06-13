@@ -32,6 +32,10 @@ window.onload = function () {
     showWelcomeToast();
 };
 
+// window.addEventListener("DOMContentLoaded", function () {
+//     const target = document.getElementById("payment-section");
+//     if (target) observer.observe(target);
+// });
 
 
 let flatData = [];
@@ -63,6 +67,10 @@ fetch('asset/member_details.csv')
         });
 
         console.log('CSV Data Loaded:', flatData);
+        const target = document.getElementById("payment-section");
+        if (target) observer.observe(target);
+        countPayments();
+        countVehicles();
     })
     .catch(error => {
         console.error('Error loading CSV:', error);
@@ -103,6 +111,91 @@ function normalizeMobileNumber(input) {
 }
 
 
+
+function countPayments() {
+    let totalPayments = 0;
+    const TOTAL_FLATS = 224;
+
+    flatData.forEach(flat => {
+        const value = flat["JuneRec"]?.trim();
+        if (value && value !== "") {
+            totalPayments++;
+        }
+    });
+
+    animateCounter("animatedCount", totalPayments);
+    animateProgressCircle(totalPayments, TOTAL_FLATS);
+}
+
+function animateCounter(id, target) {
+    const el = document.getElementById(id);
+    let count = 0;
+    const duration = 1000;
+    const step = Math.ceil(target / (duration / 16));
+
+    const interval = setInterval(() => {
+        count += step;
+        if (count >= target) {
+            count = target;
+            clearInterval(interval);
+        }
+        el.textContent = count;
+    }, 80);
+}
+
+function animateProgressCircle(current, total) {
+    const circle = document.querySelector('.progress-ring__circle');
+    const radius = circle.r.baseVal.value;
+    const circumference = 2 * Math.PI * radius;
+
+    const percent = current / total;
+    const offset = circumference * (1 - percent);
+
+    circle.style.strokeDasharray = `${circumference}`;
+    circle.style.strokeDashoffset = offset;
+}
+
+let hasAnimated = false;
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !hasAnimated) {
+            hasAnimated = true;
+            countPayments()
+            countVehicles()
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.8, // At least 80% of the section must be visible
+    root: null,
+    rootMargin: "0px" // no early triggering
+});
+
+
+const target = document.getElementById("payment-section");
+if (target) observer.observe(target);
+
+function countVehicles() {
+    let twoW = 0;
+    let fourW = 0;
+
+    flatData.forEach(flat => {
+        const two = parseInt(flat.twowheel);
+        const four = parseInt(flat.fourwheel);
+
+        if (!isNaN(two)) twoW += two;
+        if (!isNaN(four)) fourW += four;
+    });
+
+    animateCounter("twoWheelerCount", twoW);
+    animateCounter("fourWheelerCount", fourW);
+}
+
+
+const vehicleTarget = document.getElementById("payment-section");
+if (vehicleTarget) observer.observe(vehicleTarget);
+
 function searchFlat() {
     let searchInput = document.getElementById('searchInput').value.trim().toUpperCase();
     let searchPhoneInput = document.getElementById('searchMobileNo').value.trim();
@@ -135,18 +228,7 @@ function searchFlat() {
         (flat.FourWNo && flat.FourWNo.toUpperCase() === searchInput) ||
         nameMatches(flat.ownerName, searchInput)
     );
-    // const result = flatData.find(flat => {
-    //     const flatMatch = flat.flatNo === normalizedFlatNo;
-    //     const phoneMatch = normalizeMobileNumber(flat.PhNo) === normalizeNo;
 
-    //     return (
-    //         (isAdminKey && flatMatch) ||  // Admin access: only flat number needed
-    //         (flatMatch && phoneMatch) ||  // Normal user access
-    //         (flat.TwoWNo && flat.TwoWNo.toUpperCase() === searchInput) ||
-    //         (flat.FourWNo && flat.FourWNo.toUpperCase() === searchInput) ||
-    //         nameMatches(flat.ownerName, searchInput)
-    //     );
-    // });
 
     const resultCard = document.getElementById('resultCard');
     resetField();

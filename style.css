@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
 
-
+/* Prevent horizontal scrolling */
+body,
+html {
+    overflow-x: hidden;
+}
 
 * {
     margin: 0;
@@ -1771,4 +1775,85 @@ footer {
     font-family: Arial, sans-serif;
     font-size: 14px;
     color: black;
+}
+
+
+.payment-summary {
+    background-color: whitesmoke;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 300px;
+    margin: 30px auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.circle-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: auto;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring__background {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 10;
+}
+
+.progress-ring__circle {
+    fill: none;
+    stroke: crimson;
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 502;
+    /* 2πr for r = 80 */
+    stroke-dashoffset: 502;
+    transition: stroke-dashoffset 1s ease-out;
+}
+
+.count-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.count-number {
+    font-size: 36px;
+    font-weight: bold;
+    color: crimson;
+}
+
+.count-label {
+    font-size: 14px;
+    color: #444;
+    margin-top: 5px;
+}
+
+.vehicle-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    gap: 30px;
+}
+
+.vehicle-box {
+    text-align: center;
+    color: crimson;
+}
+
+.vehicle-number {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.vehicle-label {
+    font-size: 14px;
+    color: #444;
 }
