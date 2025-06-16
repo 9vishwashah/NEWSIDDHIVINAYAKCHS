@@ -30,6 +30,8 @@ function showWelcomeToast(duration = 3000) {
 
 window.onload = function () {
     showWelcomeToast();
+    countPayments();
+    countVehicles();
 };
 
 // window.addEventListener("DOMContentLoaded", function () {
