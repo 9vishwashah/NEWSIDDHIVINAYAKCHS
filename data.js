@@ -114,13 +114,38 @@ function normalizeMobileNumber(input) {
 
 
 
+// function countPayments() {
+//     let totalPayments = 0;
+//     const TOTAL_FLATS = 224;
+
+//     flatData.forEach(flat => {
+//         const value = flat["JuneRec"]?.trim();
+//         if (value && value !== "") {
+//             totalPayments++;
+//         }
+//     });
+
+//     animateCounter("animatedCount", totalPayments);
+//     animateProgressCircle(totalPayments, TOTAL_FLATS);
+// }
+
 function countPayments() {
     let totalPayments = 0;
     const TOTAL_FLATS = 224;
 
     flatData.forEach(flat => {
-        const value = flat["JuneRec"]?.trim();
-        if (value && value !== "") {
+        const receiptLink = flat["JuneRec"]?.trim();
+        const balanceValue = flat["balance"]?.trim();
+
+        const isReceiptPresent = receiptLink && receiptLink !== "";
+
+        let isAdvancePaid = false;
+        if (balanceValue) {
+            const numericBalance = parseFloat(balanceValue.replace(/[^0-9.-]+/g, ""));
+            isAdvancePaid = !isNaN(numericBalance) && numericBalance < 0;
+        }
+
+        if (isReceiptPresent || isAdvancePaid) {
             totalPayments++;
         }
     });
@@ -128,6 +153,8 @@ function countPayments() {
     animateCounter("animatedCount", totalPayments);
     animateProgressCircle(totalPayments, TOTAL_FLATS);
 }
+
+
 
 function animateCounter(id, target) {
     const el = document.getElementById(id);
