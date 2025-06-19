@@ -1,3 +1,24 @@
+const visitCounterElement = document.getElementById('visitCount');
+const endpoint = 'https://api.npoint.io/904d98838056b56a8316'; // replace with your real URL
+
+fetch(endpoint)
+    .then(res => res.json())
+    .then(data => {
+        let count = data.visits + 1;
+
+        visitCounterElement.innerText = count;
+
+        // Update the value
+        fetch(endpoint, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ visits: count })
+        });
+    });
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("requestForm");
 
