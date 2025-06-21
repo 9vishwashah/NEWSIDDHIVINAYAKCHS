@@ -1,5 +1,5 @@
 const visitCounterElement = document.getElementById('visitCount');
-const endpoint = 'https://api.npoint.io/904d98838056b56a8316'; // replace with your real URL
+const endpoint = 'https://api.npoint.io/904d98838056b56a8316/visits'; // replace with your real URL
 
 fetch(endpoint)
     .then(res => res.json())
