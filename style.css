@@ -1857,3 +1857,99 @@ footer {
     font-size: 13px;
     color: #444;
 }
+
+
+/* Penalty */
+
+.penalty-section {
+    background: #f8f8f8;
+    padding: 24px;
+    margin: 40px auto;
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    max-width: 1000px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.penalty-section h3 {
+    font-size: 20px;
+    color: #DC143C;
+    margin-bottom: 20px;
+}
+
+/* ✅ Table Wrapper with Scroll */
+.penalty-table {
+    overflow-x: auto;
+    width: 100%;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ✅ Table Layout */
+.penalty-header,
+.penalty-row {
+    min-width: 950px;
+    /* Enables scroll on small screens */
+    display: grid;
+    grid-template-columns: 100px 70px 120px 1fr 80px 90px 80px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    align-items: center;
+    background: #fff;
+    font-size: 15px;
+}
+
+.penalty-header {
+    background: #ffe8eb;
+    font-weight: bold;
+    color: #DC143C;
+}
+
+.penalty-row:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+/* ✅ Badge Styling */
+.badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.badge.paid {
+    background-color: #28a745;
+}
+
+.badge.unpaid {
+    background-color: #dc3545;
+}
+
+/* ✅ View Photo Button */
+.photo-btn {
+    background-color: #DC143C;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.photo-btn:hover {
+    background-color: #b5112f;
+}
+
+/* ✅ Responsive tweaks for outer padding */
+@media (max-width: 768px) {
+    .penalty-section {
+        padding: 16px;
+        margin: 24px 12px;
+    }
+}
