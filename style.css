@@ -1969,6 +1969,22 @@ footer {
     background-color: #dc3545;
 }
 
+.penalty-box {
+    background-color: rgba(255, 0, 0, 0.1);
+    /* Light yellow background */
+    border-left: 5px solid crimson;
+    /* Orange left border */
+    min-width: 800px;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: black;
+}
+
+
 /* ✅ Responsive Padding Only */
 @media (max-width: 768px) {
     .penalty-section {
@@ -1987,7 +2003,7 @@ footer {
         scrollbar-color: #ccc #f8f8f8;
     }
 
-    .penalty-box  {
+    .penalty-box {
         background-color: rgba(255, 0, 0, 0.1);
         /* Light yellow background */
         border-left: 5px solid crimson;
@@ -2000,5 +2016,15 @@ footer {
         font-family: Arial, sans-serif;
         font-size: 14px;
         color: black;
+    }
+
+    .penalty-box {
+        background-color: #fff7f7;
+        border: 1px solid #ffcccc;
+        padding: 10px 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        color: #a94442;
+        font-size: 15px;
     }
 }
