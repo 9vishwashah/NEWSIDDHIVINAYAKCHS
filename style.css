@@ -1987,7 +1987,7 @@ footer {
         scrollbar-color: #ccc #f8f8f8;
     }
 
-    .note-box {
+    .penalty-box  {
         background-color: rgba(255, 0, 0, 0.1);
         /* Light yellow background */
         border-left: 5px solid crimson;
