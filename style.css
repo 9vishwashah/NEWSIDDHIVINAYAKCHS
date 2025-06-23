@@ -1053,6 +1053,10 @@ input[type="text"] {
     background-color: rgb(29, 32, 138);
 }
 
+.penalty .title::after {
+    content: "Penalty Records";
+}
+
 .Notice .title::after {
     content: "Rules and SOPS";
 }
@@ -1981,5 +1985,20 @@ footer {
         height: auto;
         scrollbar-width: auto;
         scrollbar-color: #ccc #f8f8f8;
+    }
+
+    .note-box {
+        background-color: rgba(255, 0, 0, 0.1);
+        /* Light yellow background */
+        border-left: 5px solid crimson;
+        /* Orange left border */
+        min-width: 800px;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: left;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: black;
     }
 }
