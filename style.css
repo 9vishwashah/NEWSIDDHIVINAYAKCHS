@@ -1877,21 +1877,40 @@ footer {
     margin-bottom: 20px;
 }
 
-/* ✅ Table Wrapper with Scroll */
+/* ✅ Table Wrapper for Horizontal Scroll */
 .penalty-table {
-    overflow-x: auto;
-    width: 100%;
+    position: relative;
+    overflow-x: scroll !important;
+    overflow-y: hidden;
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+    min-width: 100%;
+    height: auto;
+    scrollbar-width: auto;
+    scrollbar-color: #ccc #f8f8f8;
 }
 
-/* ✅ Table Layout */
+/* 
+.penalty-table::-webkit-scrollbar {
+    height: 10px;
+}
+
+.penalty-table::-webkit-scrollbar-track {
+    background: #f8f8f8;
+    border-radius: 10px;
+}
+
+.penalty-table::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 10px;
+    border: 2px solid #f8f8f8;
+} */
+
+
 .penalty-header,
 .penalty-row {
     min-width: 950px;
-    /* Enables scroll on small screens */
     display: grid;
-    grid-template-columns: 100px 70px 120px 1fr 80px 90px 80px;
+    grid-template-columns: 100px 70px 130px 1fr 80px 90px 90px;
     padding: 12px 16px;
     border-radius: 8px;
     align-items: center;
@@ -1909,7 +1928,25 @@ footer {
     margin-bottom: 8px;
 }
 
-/* ✅ Badge Styling */
+/* ✅ Button Styling */
+.photo-btn {
+    background-color: #DC143C;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.photo-btn:hover {
+    background-color: #b5112f;
+}
+
+/* ✅ Optional Badge Support */
 .badge {
     padding: 4px 10px;
     border-radius: 12px;
@@ -1928,28 +1965,21 @@ footer {
     background-color: #dc3545;
 }
 
-/* ✅ View Photo Button */
-.photo-btn {
-    background-color: #DC143C;
-    color: white;
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 8px;
-    font-size: 12px;
-    display: inline-block;
-    text-align: center;
-    white-space: nowrap;
-    transition: background-color 0.2s ease;
-}
-
-.photo-btn:hover {
-    background-color: #b5112f;
-}
-
-/* ✅ Responsive tweaks for outer padding */
+/* ✅ Responsive Padding Only */
 @media (max-width: 768px) {
     .penalty-section {
         padding: 16px;
         margin: 24px 12px;
+    }
+
+    .penalty-table {
+        position: relative;
+        overflow-x: scroll !important;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        min-width: 100%;
+        height: auto;
+        scrollbar-width: auto;
+        scrollbar-color: #ccc #f8f8f8;
     }
 }
