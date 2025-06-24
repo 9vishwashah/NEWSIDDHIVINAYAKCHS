@@ -678,9 +678,7 @@ section .title::after {
         font-size: 25px;
     }
 
-    /* .home .home-content .text-2 {
-        font-size: clamp(24px, 5vw, 48px);
-    } */
+
 
     .home .home-content .text-2 {
         font-size: 32px;
@@ -1897,7 +1895,7 @@ footer {
 /* ✅ Table Wrapper for Horizontal Scroll */
 .penalty-table {
     position: relative;
-    overflow-x: scroll !important;
+    overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
     min-width: 100%;
@@ -1931,23 +1929,72 @@ footer {
     margin-bottom: 8px;
 }
 
-/* ✅ Button Styling */
-.photo-btn {
+.penalty-bill {
     background-color: #DC143C;
-    color: white;
-    text-decoration: none;
-    padding: 5px 10px;
+    color: #fff;
+    border: 2px solid #DC143C;
     border-radius: 8px;
+    padding: 5px 10px;
     font-size: 12px;
-    display: inline-block;
-    text-align: center;
-    white-space: nowrap;
-    transition: background-color 0.2s ease;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: all 0.3s ease;
 }
 
-.photo-btn:hover {
-    background-color: #b5112f;
+.penalty-bill:hover {
+    background-color: #fff;
+    color: #DC143C;
 }
+
+.penalty-receipt {
+    background-color: #1D3956;
+    color: #fff;
+    border: 2px solid #1D3956;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+}
+
+.penalty-receipt:hover {
+    background-color: white;
+    color: #1D3956;
+}
+
+
+
+
+.penalty-rows .penalty-row {
+    transition: all 0.2s ease;
+}
+
+
+
+.penalty-toggle-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.penalty-toggle-buttons button {
+    padding: 6px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    background-color: #DC143C;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.penalty-toggle-buttons button:hover {
+    background-color: #a00;
+}
+
+
 
 /* ✅ Optional Badge Support */
 .badge {

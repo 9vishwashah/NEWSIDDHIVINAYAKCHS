@@ -205,73 +205,37 @@
 
     <!-- Vehicle Penalty Section -->
     <section class="penalty">
-        <!-- <h3>🚫🅿️ Vehicle Penalty Records</h3> -->
         <h2 class="title" id="title">Vehicle</h2>
+
         <div class="penalty-section">
             <div class="penalty-table">
+
                 <div class="penalty-box">
                     <p>📌 Outside/Guest Vehicle Overnight park is not permitted. Kindly Pay Penalty
                         immediately to avoid Interest in upcoming billing.</p>
                 </div>
-                <div class="penalty-header">
-                    <span>DATE</span>
-                    <span>FLAT NO</span>
-                    <span>VEHICLE NO</span>
-                    <span>REASON</span>
-                    <span>AMOUNT</span>
-                    <span>VEHICLE</span>
-                    <span>BILL</span>
-                </div>
 
-                <div class="penalty-row">
-                    <span>21 June</span>
-                    <span>1208</span>
-                    <span>MH04FF7914</span>
-                    <span>Wrong Parking of 4W</span>
-                    <span>₹ 500</span>
-                    <span><a href="https://drive.google.com/file/d/1z4GN-wo1Wc5D2DbTOM3xKLVqj2gsr7bX/view"
-                            target="_blank" class="photo-btn">View
-                            Photo</a></span>
-                    <span><a href="https://drive.google.com/file/d/1u4y8p_icrF-MApFoeucHa5Azwzj4eONZ/view"
-                            target="_blank" class="photo-btn">View
-                            Bill</a></span>
+
+                <!-- ✅ Scroll container starts here -->
+                <div class="penalty-scroll-wrapper">
+                    <div class="penalty-header">
+                        <span>DATE</span>
+                        <span>FLAT</span>
+                        <span>VEHICLE NO</span>
+                        <span>REASON</span>
+                        <span>AMOUNT</span>
+                        <span>VEHICLE</span>
+                        <span>BILL</span>
+                    </div>
+
+                    <!-- ✅ Move the rows inside this scrollable container -->
+                    <div id="penalty-rows"></div>
                 </div>
-                <div class="penalty-row">
-                    <span>21 June</span>
-                    <span>1202</span>
-                    <span>MH04DX1523</span>
-                    <span>Wrong Parking of 2W </span>
-                    <span>₹ 200</span>
-                    <span><a href="https://drive.google.com/file/d/1aBTi6w5iRFM3NNp6sdBVqWqaJBUHl5HI/view"
-                            target="_blank" class="photo-btn">View
-                            Photo</a></span>
-                    <span><a href="https://drive.google.com/file/d/1oxt3_aSGOU9mTGaplTGs6OSwBXYusk4H/view"
-                            target="_blank" class="photo-btn">View
-                            Bill</a></span>
-                </div>
-                <div class="penalty-row">
-                    <span>1 June</span>
-                    <span>2209</span>
-                    <span>MH26AD2424</span>
-                    <span>Overnight Parking of Outside 4W</span>
-                    <span>₹ 500</span>
-                    <span><a href="" target="_blank" class="photo-btn">View
-                            Photo</a></span>
-                    <span><a href="https://drive.google.com/file/d/1Q4LPbN0vLMgF5RUodsTc6IJFLkdFV2xf/view"
-                            target="_blank" class="photo-btn">View
-                            Bill</a></span>
-                </div>
-                <div class="penalty-row">
-                    <span>1 June</span>
-                    <span>2311</span>
-                    <span>MH43BY2971</span>
-                    <span>Overnight Parking of Outside 4W</span>
-                    <span>₹ 500</span>
-                    <span><a href="" target="_blank" class="photo-btn">View
-                            Photo</a></span>
-                    <span><a href="https://drive.google.com/file/d/1r32gccGUat__gSeIrfm1piqSuqywXBGU/view"
-                            target="_blank" class="photo-btn">View
-                            Bill</a></span>
+                <div class="penalty-toggle-buttons">
+                    <button id="show-previous"><i class="fa-solid fa-arrow-left" style="color: whitesmoke;"></i>
+                        Latest</button>
+                    <button id="show-latest">Previous <i class="fa-solid fa-arrow-right"
+                            style="color: whitesmoke;"></i></button>
                 </div>
             </div>
         </div>

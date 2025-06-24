@@ -1,22 +1,131 @@
-const visitCounterElement = document.getElementById('visitCount');
-const endpoint = 'https://api.npoint.io/904d98838056b56a8316/visits'; // replace with your real URL
+const penaltyData = [
+    {
+        date: "24 June",
+        flat: "1515",
+        vehicleNo: "MH12XE7492",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 500",
+        photo: "https://drive.google.com/file/d/1LjGAdXsc4EiSdj8KfPZohBReDJj24kGq/view",
+        bill: "https://drive.google.com/file/d/1bvUyOVDCj0cL5DhAKtq0-BUpfmyWIs92/view"
+    },
+    {
+        date: "24 June",
+        flat: "1507",
+        vehicleNo: "MH14FZ3552",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "https://drive.google.com/file/d/1AFvC3FsyFD8CCusXJHrB6Nd1z7-yHc7u/view",
+        bill: "https://drive.google.com/file/d/1IVjISSkICaM-HnXkWC13NG0bCl_MnZBU/view"
+    },
+    {
+        date: "24 June",
+        flat: "1108",
+        vehicleNo: "MH43CM7413",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 500",
+        photo: "https://drive.google.com/file/d/16updcy99alkwcwAg0qskQ3Hm2JItIfSH/view",
+        bill: "https://drive.google.com/file/d/10hy79IQoKM9e6nA4KLMi_SmoXQLDoJQs/view"
+    },
+    {
+        date: "24 June",
+        flat: "1111",
+        vehicleNo: "MH43AQ6513",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "https://drive.google.com/file/d/1XcOVGh4YMnHTSKbEIAyXe8f-FnAWqqW6/view",
+        bill: "https://drive.google.com/file/d/1l_CU4TvnW2NbZ_asTtRsmnTFTkPCT-Ca/view"
+    },
+    {
+        date: "24 June",
+        flat: "1107",
+        vehicleNo: "MH14HH9235",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "https://drive.google.com/file/d/1y5iS7pIBuVHIejC65SpWQVFhrw8WKAUz/view",
+        bill: "https://drive.google.com/file/d/1km1anpDkcLP5afv6z9xw1SmWAuO1eYpJ/view"
+    },
+    {
+        date: "21 June",
+        flat: "1208",
+        vehicleNo: "MH04FF7914",
+        reason: "Wrong Parking of 4W",
+        amount: "₹ 500",
+        photo: "https://drive.google.com/file/d/1z4GN-wo1Wc5D2DbTOM3xKLVqj2gsr7bX/view",
+        bill: "https://drive.google.com/file/d/1u4y8p_icrF-MApFoeucHa5Azwzj4eONZ/view"
+    },
+    {
+        date: "21 June",
+        flat: "1202",
+        vehicleNo: "MH04DX1523",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "https://drive.google.com/file/d/1aBTi6w5iRFM3NNp6sdBVqWqaJBUHl5HI/view",
+        bill: "https://drive.google.com/file/d/1oxt3_aSGOU9mTGaplTGs6OSwBXYusk4H/view"
+    },
+    {
+        date: "1 June",
+        flat: "2209",
+        vehicleNo: "MH26AD2424",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 500",
+        photo: "https://newsv.netlify.app/",
+        bill: "https://drive.google.com/file/d/1Q4LPbN0vLMgF5RUodsTc6IJFLkdFV2xf/view"
+    },
+    {
+        date: "1 June",
+        flat: "2311",
+        vehicleNo: "MH43BY2971",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 500",
+        photo: "https://newsv.netlify.app/",
+        bill: "https://drive.google.com/file/d/1r32gccGUat__gSeIrfm1piqSuqywXBGU/view"
+    }
+];
+const batchSize = 5;
+let currentPage = 0;
 
-fetch(endpoint)
-    .then(res => res.json())
-    .then(data => {
-        let count = data.visits + 1;
+document.addEventListener("DOMContentLoaded", function () {
+    const container = document.getElementById("penalty-rows");
+    const showLatestBtn = document.getElementById("show-latest");
+    const showPreviousBtn = document.getElementById("show-previous");
 
-        visitCounterElement.innerText = count;
-
-        // Update the value
-        fetch(endpoint, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ visits: count })
+    // Render Entries (batch)
+    function renderPenalties(batch) {
+        container.innerHTML = ""; // Clear previous
+        batch.forEach(entry => {
+            const row = document.createElement("div");
+            row.className = "penalty-row";
+            row.innerHTML = `
+                <span>${entry.date}</span>
+                <span>${entry.flat}</span>
+                <span>${entry.vehicleNo}</span>
+                <span>${entry.reason}</span>
+                <span>${entry.amount}</span>
+                <span>${entry.photo ? `<a href="${entry.photo}" target="_blank" class="penalty-receipt">Image</a>` : "-"}</span>
+                <span>${entry.bill ? `<a href="${entry.bill}" target="_blank" class="penalty-bill">View Bill</a>` : "-"}</span>
+            `;
+            container.appendChild(row);
         });
+    }
+
+    // Show latest 5 (last entries)
+    showLatestBtn.addEventListener("click", () => {
+        const latestBatch = penaltyData.slice(-batchSize);
+        currentPage = Math.floor(penaltyData.length / batchSize);
+        renderPenalties(latestBatch);
     });
+
+    // Show previous 5 (first entries)
+    showPreviousBtn.addEventListener("click", () => {
+        const firstBatch = penaltyData.slice(0, batchSize);
+        currentPage = 0;
+        renderPenalties(firstBatch);
+    });
+
+    // Load default (latest)
+    const defaultBatch = penaltyData.slice(-batchSize);
+    renderPenalties(defaultBatch);
+});
 
 
 document.addEventListener("DOMContentLoaded", function () {
