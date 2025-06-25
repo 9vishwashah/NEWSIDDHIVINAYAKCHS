@@ -1,5 +1,41 @@
 const penaltyData = [
     {
+        date: "25 June",
+        flat: "1507",
+        vehicleNo: "MH14FZ3552",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "https://drive.google.com/file/d/1AFvC3FsyFD8CCusXJHrB6Nd1z7-yHc7u/view",
+        bill: "https://drive.google.com/file/d/1TV7VwGd-8evSTBsg9FJP3srRQ5uzX9WF/view"
+    },
+    {
+        date: "25 June",
+        flat: "1205",
+        vehicleNo: "MH01EV5055",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 500",
+        photo: "https://drive.google.com/file/d/15CZnPzZLulqpYMUfbp4XZBjVdK4XXhZQ/view",
+        bill: "https://drive.google.com/file/d/1PtKG4xomPbXeu4Vk1OXtIL5LRJF-SThZ/view"
+    },
+    {
+        date: "25 June",
+        flat: "1111",
+        vehicleNo: "MH43AQ6513",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "https://drive.google.com/file/d/1XcOVGh4YMnHTSKbEIAyXe8f-FnAWqqW6/view",
+        bill: "https://drive.google.com/file/d/1PgFG_ZHoTmvjdh4LsNknWR1384Pu7Flr/view"
+    },
+    {
+        date: "25 June",
+        flat: "1011",
+        vehicleNo: "MH43AS1611",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "https://drive.google.com/file/d/1TYi4a62ipOVH4HSuy9R2nNce5RMmiwZJ/view",
+        bill: "https://drive.google.com/file/d/14x6ORyRJ-33wxoq3ZrPzjJVppeoXq1Ad/view"
+    },
+    {
         date: "24 June",
         flat: "1515",
         vehicleNo: "MH12XE7492",
@@ -82,49 +118,43 @@ const penaltyData = [
     }
 ];
 const batchSize = 5;
-let currentPage = 0;
+let currentPage = 0; // 0 = latest batch
+
+function renderPenalties(batch) {
+    const container = document.getElementById("penalty-rows");
+    container.innerHTML = ""; // Clear previous
+    batch.forEach(entry => {
+        const row = document.createElement("div");
+        row.className = "penalty-row";
+        row.innerHTML = `
+            <span>${entry.date}</span>
+            <span>${entry.flat}</span>
+            <span>${entry.vehicleNo}</span>
+            <span>${entry.reason}</span>
+            <span>${entry.amount}</span>
+            <span>${entry.photo ? `<a href="${entry.photo}" target="_blank" class="penalty-receipt"><i class="fa-solid fa-eye"></i> Photo</a>` : "-"}</span>
+            <span>${entry.bill ? `<a href="${entry.bill}" target="_blank" class="penalty-bill"><i class="fa-solid fa-file-invoice"></i> Bill</a>` : "-"}</span>
+        `;
+        container.appendChild(row);
+    });
+}
 
 document.addEventListener("DOMContentLoaded", function () {
-    const container = document.getElementById("penalty-rows");
     const showLatestBtn = document.getElementById("show-latest");
     const showPreviousBtn = document.getElementById("show-previous");
 
-    // Render Entries (batch)
-    function renderPenalties(batch) {
-        container.innerHTML = ""; // Clear previous
-        batch.forEach(entry => {
-            const row = document.createElement("div");
-            row.className = "penalty-row";
-            row.innerHTML = `
-                <span>${entry.date}</span>
-                <span>${entry.flat}</span>
-                <span>${entry.vehicleNo}</span>
-                <span>${entry.reason}</span>
-                <span>${entry.amount}</span>
-                <span>${entry.photo ? `<a href="${entry.photo}" target="_blank" class="penalty-receipt">Image</a>` : "-"}</span>
-                <span>${entry.bill ? `<a href="${entry.bill}" target="_blank" class="penalty-bill">View Bill</a>` : "-"}</span>
-            `;
-            container.appendChild(row);
-        });
-    }
+    // Load default (latest batch at top of array)
+    renderPenalties(penaltyData.slice(0, batchSize));
 
-    // Show latest 5 (last entries)
     showLatestBtn.addEventListener("click", () => {
-        const latestBatch = penaltyData.slice(-batchSize);
-        currentPage = Math.floor(penaltyData.length / batchSize);
-        renderPenalties(latestBatch);
-    });
-
-    // Show previous 5 (first entries)
-    showPreviousBtn.addEventListener("click", () => {
-        const firstBatch = penaltyData.slice(0, batchSize);
         currentPage = 0;
-        renderPenalties(firstBatch);
+        renderPenalties(penaltyData.slice(0, batchSize)); // First 5 (latest)
     });
 
-    // Load default (latest)
-    const defaultBatch = penaltyData.slice(-batchSize);
-    renderPenalties(defaultBatch);
+    showPreviousBtn.addEventListener("click", () => {
+        currentPage = 1;
+        renderPenalties(penaltyData.slice(batchSize, batchSize * 2)); // Next 5
+    });
 });
 
 
@@ -164,10 +194,6 @@ window.onload = function () {
     countVehicles();
 };
 
-// window.addEventListener("DOMContentLoaded", function () {
-//     const target = document.getElementById("payment-section");
-//     if (target) observer.observe(target);
-// });
 
 
 let flatData = [];
@@ -242,22 +268,6 @@ function normalizeMobileNumber(input) {
     return digitsOnly;
 }
 
-
-
-// function countPayments() {
-//     let totalPayments = 0;
-//     const TOTAL_FLATS = 224;
-
-//     flatData.forEach(flat => {
-//         const value = flat["JuneRec"]?.trim();
-//         if (value && value !== "") {
-//             totalPayments++;
-//         }
-//     });
-
-//     animateCounter("animatedCount", totalPayments);
-//     animateProgressCircle(totalPayments, TOTAL_FLATS);
-// }
 
 function countPayments() {
     let totalPayments = 0;

@@ -1942,9 +1942,47 @@ footer {
 }
 
 .penalty-bill:hover {
-    background-color: #fff;
+    background-color: white;
     color: #DC143C;
 }
+
+.penalty-receipt,
+.penalty-bill {
+    display: inline-flex;
+    /* Use flexbox */
+    align-items: center;
+    /* Center icon + text vertically */
+    gap: 6px;
+    /* Space between icon and text */
+    justify-content: center;
+
+    background-color: #1D3956;
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.penalty-bill {
+    background-color: #DC143C;
+    border: 2px solid #DC143C;
+}
+
+.penalty-receipt:hover {
+    background-color: #102538;
+}
+
+/* 
+.penalty-bill:hover {
+    background-color: #a80e2b;
+} */
+
+
 
 .penalty-receipt {
     background-color: #1D3956;
