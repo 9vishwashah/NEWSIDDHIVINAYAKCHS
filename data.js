@@ -108,7 +108,7 @@ const penaltyData = [
         bill: "https://drive.google.com/file/d/1Q4LPbN0vLMgF5RUodsTc6IJFLkdFV2xf/view"
     },
     {
-        date: "1 June",
+        date: "18 May",
         flat: "2311",
         vehicleNo: "MH43BY2971",
         reason: "Overnight Parking of Outside 4W",
@@ -118,44 +118,65 @@ const penaltyData = [
     }
 ];
 const batchSize = 5;
-let currentPage = 0; // 0 = latest batch
-
-function renderPenalties(batch) {
-    const container = document.getElementById("penalty-rows");
-    container.innerHTML = ""; // Clear previous
-    batch.forEach(entry => {
-        const row = document.createElement("div");
-        row.className = "penalty-row";
-        row.innerHTML = `
-            <span>${entry.date}</span>
-            <span>${entry.flat}</span>
-            <span>${entry.vehicleNo}</span>
-            <span>${entry.reason}</span>
-            <span>${entry.amount}</span>
-            <span>${entry.photo ? `<a href="${entry.photo}" target="_blank" class="penalty-receipt"><i class="fa-solid fa-eye"></i> Photo</a>` : "-"}</span>
-            <span>${entry.bill ? `<a href="${entry.bill}" target="_blank" class="penalty-bill"><i class="fa-solid fa-file-invoice"></i> Bill</a>` : "-"}</span>
-        `;
-        container.appendChild(row);
-    });
-}
+let currentPage = 0;
 
 document.addEventListener("DOMContentLoaded", function () {
     const showLatestBtn = document.getElementById("show-latest");
     const showPreviousBtn = document.getElementById("show-previous");
 
-    // Load default (latest batch at top of array)
-    renderPenalties(penaltyData.slice(0, batchSize));
+    const totalBatches = Math.ceil(penaltyData.length / batchSize);
 
-    showLatestBtn.addEventListener("click", () => {
-        currentPage = 0;
-        renderPenalties(penaltyData.slice(0, batchSize)); // First 5 (latest)
-    });
+    // Load default: latest entries (first 5 in the array)
+    renderPenalties(currentPage);
 
     showPreviousBtn.addEventListener("click", () => {
-        currentPage = 1;
-        renderPenalties(penaltyData.slice(batchSize, batchSize * 2)); // Next 5
+        if (currentPage < totalBatches - 1) {
+            currentPage++;
+            renderPenalties(currentPage);
+        }
     });
+
+    showLatestBtn.addEventListener("click", () => {
+        if (currentPage > 0) {
+            currentPage--;
+            renderPenalties(currentPage);
+        }
+    });
+
+    function renderPenalties(page) {
+        const container = document.getElementById("penalty-rows");
+        container.innerHTML = "";
+
+        const start = page * batchSize;
+        const end = start + batchSize;
+        const batch = penaltyData.slice(start, end);
+
+        batch.forEach(entry => {
+            const row = document.createElement("div");
+            row.className = "penalty-row";
+            row.innerHTML = `
+                <span>${entry.date}</span>
+                <span>${entry.flat}</span>
+                <span>${entry.vehicleNo}</span>
+                <span>${entry.reason}</span>
+                <span>${entry.amount}</span>
+                <span>${entry.photo ? `<a href="${entry.photo}" target="_blank" class="penalty-receipt"><i class="fa-solid fa-eye"></i> Photo</a>` : "-"}</span>
+                <span>${entry.bill ? `<a href="${entry.bill}" target="_blank" class="penalty-bill"><i class="fa-solid fa-file-invoice"></i> Bill</a>` : "-"}</span>
+            `;
+            container.appendChild(row);
+        });
+
+        // Button disabling (optional)
+        showLatestBtn.disabled = currentPage === 0;
+        showPreviousBtn.disabled = currentPage >= totalBatches - 1;
+        const pageCounter = document.getElementById("penalty-page-counter");
+        pageCounter.textContent = `Page ${page + 1} of ${totalBatches}`;
+    }
+    // Update page counter
+
 });
+
+
 
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -1949,13 +1949,9 @@ footer {
 .penalty-receipt,
 .penalty-bill {
     display: inline-flex;
-    /* Use flexbox */
     align-items: center;
-    /* Center icon + text vertically */
     gap: 6px;
-    /* Space between icon and text */
     justify-content: center;
-
     background-color: #1D3956;
     color: white;
     border-radius: 8px;
@@ -1972,16 +1968,6 @@ footer {
     background-color: #DC143C;
     border: 2px solid #DC143C;
 }
-
-.penalty-receipt:hover {
-    background-color: #102538;
-}
-
-/* 
-.penalty-bill:hover {
-    background-color: #a80e2b;
-} */
-
 
 
 .penalty-receipt {
@@ -2014,14 +2000,15 @@ footer {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
+    padding-top: 15px;
 }
 
 .penalty-toggle-buttons button {
     padding: 6px 16px;
     font-size: 14px;
     border-radius: 6px;
-    border: none;
+    /* border: none; */
     background-color: #DC143C;
     color: #fff;
     cursor: pointer;
@@ -2029,9 +2016,18 @@ footer {
 }
 
 .penalty-toggle-buttons button:hover {
-    background-color: #a00;
+    background-color: white;
+    color: crimson;
+    border: 2px solid crimson;
 }
 
+.penalty-page-counter {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 5px;
+    font-weight: 700;
+    color: crimson;
+}
 
 
 /* ✅ Optional Badge Support */
