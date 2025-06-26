@@ -388,7 +388,7 @@ body {
     /* padding-top: ; */
     width: 70px;
     border-radius: 30%;
-    margin-left: -100px;
+    margin-left: -300px;
     height: auto;
     display: inline-block;
 }
@@ -835,10 +835,13 @@ input[type="text"] {
 .cardDetails {
     margin-top: 20px;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     animation: fadeIn 0.5s ease;
     background-color: whitesmoke;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     /* white-space: nowrap; */
 
 }
@@ -1787,20 +1790,43 @@ footer {
     margin: 10px 0;
     text-align: left;
     border-radius: 5px;
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
+    font-family: 'Segoe UI', sans-serif;
     font-size: 14px;
     color: black;
 }
+
+.note-box p {
+    font-size: 17px;
+    font-weight: 600;
+    color: #222;
+    margin: 0;
+    /* display: flex; */
+    /* align-items: center; */
+}
+
+.rule-divider {
+    border: 0;
+    height: 1px;
+    margin: 12px 0;
+    /* background: linear-gradient(to right, #ccc, #eee, #ccc); */
+    border-bottom: 2px solid rgba(220, 220, 220, 0.9);
+    /* opacity: 0.7; */
+}
+
 
 
 .payment-summary {
     background-color: whitesmoke;
     padding: 30px;
-    border-radius: 12px;
+    border-radius: 20px;
     text-align: center;
     max-width: 400px;
     margin: 30px auto;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .circle-container {
@@ -1860,6 +1886,7 @@ footer {
 .vehicle-box {
     text-align: center;
     color: crimson;
+
 }
 
 .vehicle-number {
@@ -1878,17 +1905,20 @@ footer {
 
 .penalty-section {
     background: #f8f8f8;
-    padding: 24px;
-    margin: 40px auto;
-    border-radius: 16px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    padding: 16px;
+    margin: 30px auto;
+    border-radius: 20px;
     max-width: 1000px;
     font-family: 'Segoe UI', sans-serif;
+    /* background: rgba(255, 255, 255, 0.7); */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .penalty-section h3 {
     font-size: 20px;
-    color: #DC143C;
+    /* color: #DC143C; */
     margin-bottom: 20px;
 }
 
@@ -1912,17 +1942,23 @@ footer {
     min-width: 950px;
     display: grid;
     grid-template-columns: 100px 70px 130px 1fr 80px 90px 90px;
-    padding: 12px 16px;
+    padding: 6px 12px;
     border-radius: 8px;
     align-items: center;
     background: #fff;
     font-size: 15px;
+    /* border-bottom: 1px solid rgba(220, 220, 220, 0.5); */
+    border-bottom: 1px solid rgba(220, 220, 220, 0.8);
 }
 
 .penalty-header {
     background: #ffe8eb;
     font-weight: bold;
     color: #DC143C;
+    text-align: center;
+    background: rgba(255, 228, 235, 0.8);
+    /* Light pink tint with opacity */
+    backdrop-filter: blur(5px);
 }
 
 .penalty-row:not(:last-child) {
@@ -1992,8 +2028,13 @@ footer {
 
 .penalty-rows .penalty-row {
     transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(220, 220, 220, 0.5);
 }
 
+.penalty-row:hover {
+    background-color: #fff0f3;
+    transition: background-color 0.3s ease;
+}
 
 
 .penalty-toggle-buttons {
