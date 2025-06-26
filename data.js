@@ -1,5 +1,23 @@
 const penaltyData = [
     {
+        date: "26 June",
+        flat: "1107",
+        vehicleNo: "Not Visible",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "https://drive.google.com/file/d/1y5iS7pIBuVHIejC65SpWQVFhrw8WKAUz/view",
+        bill: "https://drive.google.com/file/d/1yG4lzNd4Hma64RBDqomzs2UIxkIBB1Zm/view"
+    },
+    {
+        date: "26 June",
+        flat: "1008",
+        vehicleNo: "Not Visible",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "https://drive.google.com/file/d/1J6VQ2AiqwEkBwyA_Ou7GjAnWFUrGyBOb/view",
+        bill: "https://drive.google.com/file/d/111rc6LIngmDJGlUcGxj-wrw4lbdRrPdh/view"
+    },
+    {
         date: "25 June",
         flat: "1507",
         vehicleNo: "MH14FZ3552",
