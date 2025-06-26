@@ -1,7 +1,7 @@
 const penaltyData = [
     {
         date: "26 June",
-        flat: "1107",
+        flat: "B-11/07",
         vehicleNo: "MH14HH9235",
         reason: "Wrong Parking of 2W",
         amount: "₹ 200",
@@ -10,7 +10,7 @@ const penaltyData = [
     },
     {
         date: "26 June",
-        flat: "1008",
+        flat: "B-10/08",
         vehicleNo: "Not Visible",
         reason: "Wrong Parking of 2W",
         amount: "₹ 200",
@@ -19,7 +19,7 @@ const penaltyData = [
     },
     {
         date: "25 June",
-        flat: "1507",
+        flat: "A-15/07",
         vehicleNo: "MH14FZ3552",
         reason: "Wrong Parking of 2W",
         amount: "₹ 200",
@@ -28,7 +28,7 @@ const penaltyData = [
     },
     {
         date: "25 June",
-        flat: "1205",
+        flat: "B-12/05",
         vehicleNo: "MH01EV5055",
         reason: "Overnight Parking of Outside 4W",
         amount: "₹ 500",
@@ -37,7 +37,7 @@ const penaltyData = [
     },
     {
         date: "25 June",
-        flat: "1111",
+        flat: "B-11/11",
         vehicleNo: "MH43AQ6513",
         reason: "Wrong Parking of 2W",
         amount: "₹ 200",
@@ -46,7 +46,7 @@ const penaltyData = [
     },
     {
         date: "25 June",
-        flat: "1011",
+        flat: "B-10/11",
         vehicleNo: "MH43AS1611",
         reason: "Wrong Parking of 2W",
         amount: "₹ 200",
@@ -55,7 +55,7 @@ const penaltyData = [
     },
     {
         date: "24 June",
-        flat: "1515",
+        flat: "A-15/15",
         vehicleNo: "MH12XE7492",
         reason: "Overnight Parking of Outside 4W",
         amount: "₹ 500",
@@ -64,7 +64,7 @@ const penaltyData = [
     },
     {
         date: "24 June",
-        flat: "1507",
+        flat: "A-15/07",
         vehicleNo: "MH14FZ3552",
         reason: "Wrong Parking of 2W",
         amount: "₹ 200",
@@ -73,7 +73,7 @@ const penaltyData = [
     },
     {
         date: "24 June",
-        flat: "1108",
+        flat: "B-11/08",
         vehicleNo: "MH43CM7413",
         reason: "Overnight Parking of Outside 4W",
         amount: "₹ 500",
@@ -82,7 +82,7 @@ const penaltyData = [
     },
     {
         date: "24 June",
-        flat: "1111",
+        flat: "B-11/11",
         vehicleNo: "MH43AQ6513",
         reason: "Wrong Parking of 2W",
         amount: "₹ 200",
@@ -91,7 +91,7 @@ const penaltyData = [
     },
     {
         date: "24 June",
-        flat: "1107",
+        flat: "B-11/07",
         vehicleNo: "MH14HH9235",
         reason: "Wrong Parking of 2W",
         amount: "₹ 200",
@@ -100,7 +100,7 @@ const penaltyData = [
     },
     {
         date: "21 June",
-        flat: "1208",
+        flat: "B-12/08",
         vehicleNo: "MH04FF7914",
         reason: "Wrong Parking of 4W",
         amount: "₹ 500",
@@ -109,7 +109,7 @@ const penaltyData = [
     },
     {
         date: "21 June",
-        flat: "1202",
+        flat: "B-12/02",
         vehicleNo: "MH04DX1523",
         reason: "Wrong Parking of 2W",
         amount: "₹ 200",
@@ -118,7 +118,7 @@ const penaltyData = [
     },
     {
         date: "1 June",
-        flat: "2209",
+        flat: "B-22/09",
         vehicleNo: "MH26AD2424",
         reason: "Overnight Parking of Outside 4W",
         amount: "₹ 500",
@@ -127,7 +127,7 @@ const penaltyData = [
     },
     {
         date: "18 May",
-        flat: "2311",
+        flat: "B-23/11",
         vehicleNo: "MH43BY2971",
         reason: "Overnight Parking of Outside 4W",
         amount: "₹ 500",
@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
             row.className = "penalty-row";
             row.innerHTML = `
                 <span>${entry.date}</span>
-                <span>${entry.flat}</span>
+                <span><strong>${entry.flat}</strong></span>
                 <span>${entry.vehicleNo}</span>
                 <span>${entry.reason}</span>
                 <span>${entry.amount}</span>
