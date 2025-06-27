@@ -1,5 +1,5 @@
 const versionInfo = { 
-  updatedAt: "26-06-2025 08:03 PM" 
+  updatedAt: "27-06-2025 10:38 AM" 
 }; 
  
 export default versionInfo; 
