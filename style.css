@@ -388,7 +388,7 @@ body {
     /* padding-top: ; */
     width: 70px;
     border-radius: 30%;
-    margin-left: -300px;
+    margin-left: -150px;
     height: auto;
     display: inline-block;
 }
@@ -1080,7 +1080,7 @@ input[type="text"] {
 }
 
 .member-details .title::after {
-    content: "Login";
+    content: "📱 Login";
 }
 
 .bankDetails .title::after {
