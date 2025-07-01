@@ -1854,6 +1854,7 @@ footer {
 
 .progress-ring__background {
     fill: none;
+    /* stroke: #eee; */
     stroke: #eee;
     stroke-width: 10;
 }
@@ -1877,9 +1878,11 @@ footer {
 }
 
 .count-number {
-    font-size: 36px;
+    font-size: 45px;
     font-weight: bold;
-    color: crimson;
+    /* color: crimson; */
+    color: #1D3956;
+
 }
 
 .count-label {
