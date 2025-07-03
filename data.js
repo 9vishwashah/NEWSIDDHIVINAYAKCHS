@@ -1,5 +1,32 @@
 const penaltyData = [
     {
+        date: "3 July",
+        flat: "A-14/04",
+        vehicleNo: "MH43AM7405",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "https://drive.google.com/file/d/1gShR4W9ushoPSwTx750pRAG3KfROX_yQ/view",
+        bill: "https://drive.google.com/file/d/1ZLiJtN6Rbjnb3JWiPP2eT-fcL8IWsb07/view"
+    },
+    {
+        date: "2 July",
+        flat: "A-14/12",
+        vehicleNo: "MH43CN8123",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "https://drive.google.com/file/d/1HHSSR17gbVJSKfhQDSNajjfX3Yk2sGzY/view",
+        bill: "https://drive.google.com/file/d/1_a3Mn6eEGvTiubsq5YR2nvojXRV354P4/view"
+    },
+    {
+        date: "1 July",
+        flat: "B-13/04",
+        vehicleNo: "OUTSIDE 2W",
+        reason: "Parking of Outside 2W",
+        amount: "₹ 200",
+        photo: "",
+        bill: "https://drive.google.com/file/d/1gJAmPk29MR1S7sBSRtDddi-xo-R3mBwW/view"
+    },
+    {
         date: "1 July",
         flat: "A-14/05",
         vehicleNo: "MH43LJ4452",
@@ -20,7 +47,7 @@ const penaltyData = [
     {
         date: "29 July",
         flat: "A-14/04",
-        vehicleNo: "MH43AN7405",
+        vehicleNo: "MH43AM7405",
         reason: "Wrong Parking of 2W",
         amount: "₹ 200",
         photo: "https://drive.google.com/file/d/1D83AKye_pE-eYr0UextlLDnr1vq5xBMS/view",
@@ -29,7 +56,7 @@ const penaltyData = [
     {
         date: "28 June",
         flat: "A-14/04",
-        vehicleNo: "MH43AN7405",
+        vehicleNo: "MH43AM7405",
         reason: "Wrong Parking of 2W",
         amount: "₹ 200",
         photo: "https://drive.google.com/file/d/1nljxT9LzmV5D9FGehQm28clhjIO2A3kx/view",
