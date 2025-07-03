@@ -23,7 +23,7 @@ const penaltyData = [
         vehicleNo: "OUTSIDE 2W",
         reason: "Parking of Outside 2W",
         amount: "₹ 200",
-        photo: "",
+        photo: " ",
         bill: "https://drive.google.com/file/d/1gJAmPk29MR1S7sBSRtDddi-xo-R3mBwW/view"
     },
     {
