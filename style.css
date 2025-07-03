@@ -255,7 +255,7 @@ body {
     background-color: #1D3956;
     color: white;
     border: 2px solid #1D3956;
-    border-radius: 6px;
+    border-radius: 20px;
     padding: 12px 24px;
     font-size: 14px;
     cursor: pointer;
@@ -1298,7 +1298,7 @@ input[type="text"] {
     font-size: 16px;
     padding: 10px 16px;
     /* Set uniform padding */
-    border-radius: 6px;
+    border-radius: 20px;
     border: 2px solid crimson;
     cursor: pointer;
     transition: all 0.3s ease;
