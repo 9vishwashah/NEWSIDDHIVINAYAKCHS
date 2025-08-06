@@ -20,7 +20,7 @@ const penaltyData = [
     {
         date: "4 July",
         flat: "A-14/07",
-        vehicleNo: "MH43CN8123",
+        vehicleNo: "MH4302EG8209",
         reason: "Wrong Parking of 2W",
         amount: "₹ 200",
         photo: "https://drive.google.com/file/d/1C5iX11Mf9bCZ0SjJvzXgA62aIOhSol4I/view",
