@@ -459,14 +459,14 @@ fetch('asset/SepData.csv')
             const [
                 ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy,
                 TwoWNo, SecondTwNo, FourWNo, decBill, decRec,
-                patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepBill, SepRec,
+                patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepRec, SepBill,
                 vehicleImage1, vehicleImage2
             ] = line.split(',').map(item => item.trim());
 
             return {
                 ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy,
                 TwoWNo, SecondTwNo, FourWNo, decBill, decRec,
-                patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepBill, SepRec,
+                patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepRec, SepBill,
                 vehicleImage1, vehicleImage2
             };
         });
@@ -520,7 +520,7 @@ function countPayments() {
     const TOTAL_FLATS = 224;
 
     flatData.forEach(flat => {
-        const receiptLink = flat["JuneRec"]?.trim();
+        const receiptLink = flat["SepRec"]?.trim();
         const balanceValue = flat["balance"]?.trim();
 
         const isReceiptPresent = receiptLink && receiptLink !== "";
