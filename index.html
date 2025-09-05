@@ -20,7 +20,7 @@
         crossorigin="anonymous"></script>
     <meta name="google-adsense-account" content="ca-pub-7082006231641635">
     <script src="./gallery.js"></script>
-
+    <!-- <script src="./form.js"></script> -->
 
 </head>
 
@@ -74,13 +74,14 @@
                 <h3>Welcome to New Siddhivinayak CHS!</h3>
 
                 <div class="important-msg">
-                    <p><i class="fa-solid fa-download" style="color: crimson;"></i> <strong>Kindly download June 2025
+                    <p><i class="fa-solid fa-download" style="color: crimson;"></i> <strong>Kindly download September
+                            2025
                             Bills</strong></p>
                 </div>
 
                 <div class="important-msg">
                     <p><i class="fa-solid fa-wallet" style="color: crimson;"></i> <strong>Pay outstanding
-                            Amount before 30-06-2025</strong></p>
+                            Amount before 30-09-2025</strong></p>
                 </div>
 
             </div>
@@ -157,6 +158,16 @@
 
                 <h3 id="ownerName">DOWNLOAD BILLS & RECEIPTS</h3>
                 <div class="note-box">📌 Receipts will be updated once the payment reflects in passbook.</div>
+                <div class="bill-section">
+                    <p><i class="fa-regular fa-file" style="color: #DC143C;"></i><strong> Sep 2025 Bill:
+                        </strong></p>
+                    <button id="sepBillbtn" class="view-bill" target="blank">View Bill</button></p>
+                </div>
+                <div class="bill-section">
+                    <p><i class="fa-solid fa-receipt" style="color: #1D3956;"></i><strong> Sep 2025 Receipt:
+                        </strong></p>
+                    <button id="sepReceiptBtn" class="view-receipt" target="_blank">View Receipt</button></p>
+                </div>
                 <div class="bill-section">
                     <p><i class="fa-solid fa-receipt" style="color: #1D3956;"></i><strong> June 2025 Receipt:
                         </strong></p>
@@ -353,7 +364,7 @@
 
 
     <!-- Application Forms -->
-    <section class="contact-form" id="request">
+    <!-- <section class="contact-form" id="request">
         <h1 class="title" id="title">💬 Application </h1>
         <div class="form-cardDetails">
             <div class="note-box">
@@ -369,8 +380,74 @@
                 <button type="submit" onclick="return checkApplication(event)">Submit</button>
             </form>
         </div>
-    </section>
+    </section> -->
 
+    <section class="survey-section" id="survey">
+        <div class="form-container">
+            <h2 class="form-title">Society Member Survey</h2>
+            <p class="form-subtitle">Please fill out the form to help us update our records.</p>
+
+            <form id="member-survey-form">
+                <label for="flat_no">Flat No</label>
+                <input type="text" id="flat_no" name="flat_no" required>
+
+                <label for="owner_name">Owner's Name</label>
+                <input type="text" id="owner_name" name="owner_name" required>
+
+                <label for="primary_mobile">Owner's Mobile No</label>
+                <input type="tel" id="primary_mobile" name="primary_mobile" required>
+
+                <label for="secondary_mobile">Secondary Mobile No (Optional)</label>
+                <input type="tel" id="secondary_mobile" name="secondary_mobile">
+
+                <label for="email">Email (Optional)</label>
+                <input type="email" id="email" name="email">
+
+                <label>Number of Two-Wheelers</label>
+                <div class="toggle-group">
+                    <input type="radio" id="2w-0" name="two_wheeler_count" value="0" checked><label
+                        for="2w-0">No</label>
+                    <input type="radio" id="2w-1" name="two_wheeler_count" value="1"><label for="2w-1">1</label>
+                    <input type="radio" id="2w-2" name="two_wheeler_count" value="2"><label for="2w-2">2</label>
+                    <input type="radio" id="2w-3" name="two_wheeler_count" value="3"><label for="2w-3">3+</label>
+                </div>
+                <div id="two-wheeler-inputs" class="conditional-inputs"></div>
+
+                <label>Do you own a Four-Wheeler?</label>
+                <div class="toggle-group">
+                    <input type="radio" id="4w-no" name="has_four_wheeler" value="no" checked><label
+                        for="4w-no">No</label>
+                    <input type="radio" id="4w-yes" name="has_four_wheeler" value="yes"><label for="4w-yes">Yes</label>
+                </div>
+                <div id="four-wheeler-input" class="conditional-inputs"></div>
+
+                <label>Current Occupancy</label>
+                <div class="toggle-group">
+                    <input type="radio" id="occ-owner" name="occupancy_status" value="Owner" checked><label
+                        for="occ-owner">Owner</label>
+                    <input type="radio" id="occ-rental" name="occupancy_status" value="Rental"><label
+                        for="occ-rental">Rental</label>
+                </div>
+
+                <label for="residents_count">Number of People Living</label>
+                <input type="number" id="residents_count" name="residents_count" min="1" required>
+
+                <label>Which redevelopment process do you prefer?</label>
+                <div class="toggle-group">
+                    <input type="radio" id="redev-self" name="redevelopment_preference" value="Self Development"
+                        checked><label for="redev-self">Self Development</label>
+                    <input type="radio" id="redev-builder" name="redevelopment_preference" value="Builder"><label
+                        for="redev-builder">Through Builder</label>
+                </div>
+
+                <label for="feedback">Any Suggestion/Feedback/Issue? (Optional)</label>
+                <textarea id="feedback" name="feedback" rows="4"></textarea>
+
+                <button type="submit" id="submit-survey-btn">Submit</button>
+                <p id="form-status"></p>
+            </form>
+        </div>
+    </section>
 
     <section class="committee" id="committee">
         <div class="container">

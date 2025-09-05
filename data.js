@@ -261,10 +261,17 @@ const penaltyData = [
         bill: "https://drive.google.com/file/d/1r32gccGUat__gSeIrfm1piqSuqywXBGU/view"
     }
 ];
+
+
 const batchSize = 5;
 let currentPage = 0;
 
+
 document.addEventListener("DOMContentLoaded", function () {
+
+
+
+
     const showLatestBtn = document.getElementById("show-latest");
     const showPreviousBtn = document.getElementById("show-previous");
 
@@ -316,24 +323,99 @@ document.addEventListener("DOMContentLoaded", function () {
         const pageCounter = document.getElementById("penalty-page-counter");
         pageCounter.textContent = `Page ${page + 1} of ${totalBatches}`;
     }
-    // Update page counter
 
-});
+    // Forms 
+    const SUPABASE_URL = 'https://exuwgrqeecccowoymxxs.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_Ov-hEYH3LoEzkQtvzq1URg_TKf5QdeR';
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    // --- 1. Form Elements ---
+    const surveyForm = document.getElementById('member-survey-form');
+    const twoWheelerToggles = document.querySelectorAll('input[name="two_wheeler_count"]');
+    const twoWheelerInputsContainer = document.getElementById('two-wheeler-inputs');
+    const hasFourWheelerToggles = document.querySelectorAll('input[name="has_four_wheeler"]');
+    const fourWheelerInputContainer = document.getElementById('four-wheeler-input');
+    const formStatus = document.getElementById('form-status');
 
+    // --- 2. Conditional Logic for Form ---
+    twoWheelerToggles.forEach(toggle => {
+        toggle.addEventListener('change', (e) => {
+            const count = parseInt(e.target.value);
+            twoWheelerInputsContainer.innerHTML = ''; // Clear previous inputs
+            for (let i = 1; i <= count; i++) {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = `Two-Wheeler #${i} Number`;
+                input.name = `two_wheeler_no_${i}`;
+                input.style.marginBottom = '10px';
+                twoWheelerInputsContainer.appendChild(input);
+            }
+        });
+    });
 
+    hasFourWheelerToggles.forEach(toggle => {
+        toggle.addEventListener('change', (e) => {
+            if (e.target.value === 'yes') {
+                fourWheelerInputContainer.innerHTML = `<input type="text" name="four_wheeler_number" placeholder="Four-Wheeler Number">`;
+            } else {
+                fourWheelerInputContainer.innerHTML = '';
+            }
+        });
+    });
 
+    // --- 3. Form Submission Logic ---
+    surveyForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); // This is the line that STOPS the page from reloading
 
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("requestForm");
+        const submitBtn = document.getElementById('submit-survey-btn');
+        submitBtn.disabled = true;
+        formStatus.textContent = 'Submitting...';
 
-    form.addEventListener("submit", function () {
-        if (submitted) {
+        const formData = new FormData(surveyForm);
+
+        const twoWheelerNumbers = [];
+        const twoWheelerCount = parseInt(formData.get('two_wheeler_count'));
+        for (let i = 1; i <= twoWheelerCount; i++) {
+            const vehicleNo = formData.get(`two_wheeler_no_${i}`);
+            if (vehicleNo) twoWheelerNumbers.push(vehicleNo);
+        }
+
+        const surveyData = {
+            flat_no: formData.get('flat_no'),
+            owner_name: formData.get('owner_name'),
+            primary_mobile: formData.get('primary_mobile'),
+            secondary_mobile: formData.get('secondary_mobile') || null,
+            email: formData.get('email') || null,
+            two_wheeler_count: twoWheelerCount,
+            two_wheeler_numbers: twoWheelerNumbers,
+            has_four_wheeler: formData.get('has_four_wheeler') === 'yes',
+            four_wheeler_number: formData.get('four_wheeler_number') || null,
+            occupancy_status: formData.get('occupancy_status'),
+            residents_count: parseInt(formData.get('residents_count')),
+            redevelopment_preference: formData.get('redevelopment_preference'),
+            feedback: formData.get('feedback') || null
+        };
+
+        // This uses the 'supabaseClient' variable created in your main script.js
+        const { error } = await supabaseClient.from('member_survey').insert([surveyData]);
+
+        if (error) {
+            console.error('Error submitting survey:', error);
+            formStatus.textContent = `Error: ${error.message}`;
+            submitBtn.disabled = false;
+        } else {
+            formStatus.textContent = 'Thank you! Your response has been recorded.';
+            surveyForm.reset();
+            twoWheelerInputsContainer.innerHTML = '';
+            fourWheelerInputContainer.innerHTML = '';
             setTimeout(() => {
-                form.reset();
-            }, 2000);
+                formStatus.textContent = '';
+                submitBtn.disabled = false;
+            }, 4000);
         }
     });
+
 });
+
 
 
 function showWelcomeToast(duration = 3000) {
@@ -377,14 +459,14 @@ fetch('asset/member_details.csv')
             const [
                 ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy,
                 TwoWNo, SecondTwNo, FourWNo, decBill, decRec,
-                patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill,
+                patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepBill, SepRec,
                 vehicleImage1, vehicleImage2
             ] = line.split(',').map(item => item.trim());
 
             return {
                 ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy,
                 TwoWNo, SecondTwNo, FourWNo, decBill, decRec,
-                patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill,
+                patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepBill, SepRec,
                 vehicleImage1, vehicleImage2
             };
         });
@@ -422,16 +504,15 @@ function closePopup() {
 
 
 function normalizeMobileNumber(input) {
-    // Remove all non-digit characters
     let digitsOnly = input.replace(/\D/g, '');
 
-    // If the number is longer than 10 digits and starts with 91, take last 10
     if (digitsOnly.length > 10 && digitsOnly.startsWith('91')) {
         digitsOnly = digitsOnly.slice(-10);
     }
 
     return digitsOnly;
 }
+
 
 
 function countPayments() {
@@ -623,35 +704,6 @@ function searchByPhoneNumber() {
     }
 }
 
-
-
-
-let submitted = false;
-
-function checkApplication(event) {
-    event.preventDefault();
-
-    const form = document.getElementById("requestForm");
-
-    const flatNo = form.querySelector('input[name="FlatNo"]').value.trim();
-    const ownerName = form.querySelector('input[name="OwnerName"]').value.trim();
-    const mobile = form.querySelector('input[name="Mobile No"]').value.trim();
-    const message = form.querySelector('textarea[name="Message"]').value.trim();
-
-    if (!flatNo || !ownerName || !mobile || !message) {
-        showToast("Please fill in all required fields.", "info");
-        return false;
-    }
-
-    showToast("Form details filled! Submitting...", "success");
-
-    submitted = true;
-
-    setTimeout(() => {
-        form.submit();
-    }, 1200);
-}
-
 function resetField() {
 
     document.getElementById('ownerName').innerText = "";
@@ -739,6 +791,29 @@ function vehicleImages(result) {
 }
 
 function bills(result) {
+
+    if (result.SepRec) {
+        const sepReceiptBtn = document.getElementById('sepReceiptBtn');
+        sepReceiptBtn.style.display = "inline-block";
+        sepReceiptBtn.onclick = () => {
+            console.log("Opening URL:", result.SepRec);
+            window.open(result.SepRec, '_blank');
+        };
+    } else {
+        document.getElementById('sepReceiptBtn').style.display = "none";
+    }
+
+    if (result.SepBill) {
+        const sepBillbtn = document.getElementById('sepBillbtn');
+        sepBillbtn.style.display = "inline-block";
+        sepBillbtn.onclick = () => {
+            console.log("Opening URL:", result.SepBill);
+            window.open(result.SepBill, '_blank');
+        };
+    } else {
+        document.getElementById('sepBillbtn').style.display = "none";
+    }
+
 
     if (result.JuneRec) {
         const juneReceiptBtn = document.getElementById('juneReceiptBtn');
