@@ -1,264 +1,174 @@
 const penaltyData = [
     {
-        date: "6 July",
-        flat: "A-14/12",
-        vehicleNo: "MH43CN8123",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1JfSVzNzWz0gVIJyg58Gk5Y4qOBKd7fI4/view",
-        bill: "https://drive.google.com/file/d/1f0VU3bOd5l0xF1DA9Z6DIwczCrJms0hW/view"
+        date: "8 Nov",
+        flat: "A-19/03",
+        vehicleNo: "",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 500",
+        photo: "",
+        bill: "https://drive.google.com/file/d/1wMNTiqpJuVo7kzTgW8dM9GPP1ur54LFM/view"
     },
     {
-        date: "5 July",
-        flat: "A-14/12",
-        vehicleNo: "MH43CN8123",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1HHSSR17gbVJSKfhQDSNajjfX3Yk2sGzY/view",
-        bill: "https://drive.google.com/file/d/1OMjHpRwfRCcQznXqbxul9AQZX9RFxReb/view"
+        date: "2 Nov",
+        flat: "B-10/01",
+        vehicleNo: "",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 500",
+        photo: "",
+        bill: "https://drive.google.com/file/d/1eGQHJ1fgJLOMa5Wub1jd3aO_Zgudtkmy/view"
     },
     {
-        date: "4 July",
-        flat: "A-14/07",
-        vehicleNo: "MH4302EG8209",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1C5iX11Mf9bCZ0SjJvzXgA62aIOhSol4I/view",
-        bill: "https://drive.google.com/file/d/1s8li37kee4YtMHtBCR6jbeZY6i5dYugc/view"
+        date: "13 Sep",
+        flat: "B-11/01",
+        vehicleNo: "",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 500",
+        photo: "",
+        bill: "https://drive.google.com/file/d/13ky-f9uoeajljaFzEJ0ZgROPGvdBG9ed/view"
     },
     {
-        date: "4 July",
-        flat: "A-14/12",
-        vehicleNo: "MH43CN8123",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1HHSSR17gbVJSKfhQDSNajjfX3Yk2sGzY/view",
-        bill: "https://drive.google.com/file/d/1OMjHpRwfRCcQznXqbxul9AQZX9RFxReb/view"
+        date: "13 Sep",
+        flat: "A-20/02",
+        vehicleNo: "",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 500",
+        photo: "",
+        bill: "https://drive.google.com/file/d/1G4keHLj2mRF18c6DIJbXlIedeaiwJKSk/view"
     },
     {
-        date: "3 July",
-        flat: "A-14/12",
-        vehicleNo: "MH43CN8123",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1HHSSR17gbVJSKfhQDSNajjfX3Yk2sGzY/view",
-        bill: "https://drive.google.com/file/d/1OMjHpRwfRCcQznXqbxul9AQZX9RFxReb/view"
-    },
-    {
-        date: "3 July",
-        flat: "A-14/04",
-        vehicleNo: "MH43AM7405",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1gShR4W9ushoPSwTx750pRAG3KfROX_yQ/view",
-        bill: "https://drive.google.com/file/d/1ZLiJtN6Rbjnb3JWiPP2eT-fcL8IWsb07/view"
-    },
-    {
-        date: "2 July",
-        flat: "A-14/12",
-        vehicleNo: "MH43CN8123",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1HHSSR17gbVJSKfhQDSNajjfX3Yk2sGzY/view",
-        bill: "https://drive.google.com/file/d/1_a3Mn6eEGvTiubsq5YR2nvojXRV354P4/view"
-    },
-    {
-        date: "1 July",
-        flat: "B-13/04",
-        vehicleNo: "OUTSIDE 2W",
-        reason: "Parking of Outside 2W",
-        amount: "₹ 200",
-        photo: "https://newsv.netlify.app/",
-        bill: "https://drive.google.com/file/d/1gJAmPk29MR1S7sBSRtDddi-xo-R3mBwW/view"
-    },
-    {
-        date: "1 July",
-        flat: "A-14/05",
-        vehicleNo: "MH43LJ4452",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1d5DNTtvCpgsV_i-1m1qpJPqKHW6gaTOP/view",
-        bill: "https://drive.google.com/file/d/1Reg1en6-ewNSgudaYzZYUD946qwV0YQD/view"
-    },
-    {
-        date: "1 July",
-        flat: "A-14/12",
-        vehicleNo: "MH43CN8123",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1HHSSR17gbVJSKfhQDSNajjfX3Yk2sGzY/view",
-        bill: "https://drive.google.com/file/d/1kNnQSGbLfBb9f1tUT6-G7a4f72G-Mntc/view"
-    },
-    {
-        date: "29 July",
-        flat: "A-14/04",
-        vehicleNo: "MH43AM7405",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1D83AKye_pE-eYr0UextlLDnr1vq5xBMS/view",
-        bill: "https://drive.google.com/file/d/1QotdhHkh529_QpuQckHZ3kTKe1d53xwi/view"
-    },
-    {
-        date: "28 June",
-        flat: "A-14/04",
-        vehicleNo: "MH43AM7405",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1nljxT9LzmV5D9FGehQm28clhjIO2A3kx/view",
-        bill: "https://drive.google.com/file/d/1QotdhHkh529_QpuQckHZ3kTKe1d53xwi/view"
-    },
-    {
-        date: "27 June",
-        flat: "B-11/02",
-        vehicleNo: "MH43AQ6513",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1XcOVGh4YMnHTSKbEIAyXe8f-FnAWqqW6/view",
-        bill: "https://drive.google.com/file/d/1FntOg8O8KwlCqm_-gy12rAlj703HKNEs/view"
-    },
-    {
-        date: "27 June",
-        flat: "B-11/11",
-        vehicleNo: "MH43AQ6513",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1XcOVGh4YMnHTSKbEIAyXe8f-FnAWqqW6/view",
-        bill: "https://drive.google.com/file/d/1Wm594acr2G5u65mGc1DuDkSqlLzhQcLA/view"
-    },
-    {
-        date: "26 June",
-        flat: "B-11/07",
-        vehicleNo: "MH14HH9235",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1y5iS7pIBuVHIejC65SpWQVFhrw8WKAUz/view",
-        bill: "https://drive.google.com/file/d/1yG4lzNd4Hma64RBDqomzs2UIxkIBB1Zm/view"
-    },
-    {
-        date: "26 June",
-        flat: "B-10/08",
-        vehicleNo: "Not Visible",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1J6VQ2AiqwEkBwyA_Ou7GjAnWFUrGyBOb/view",
-        bill: "https://drive.google.com/file/d/111rc6LIngmDJGlUcGxj-wrw4lbdRrPdh/view"
-    },
-    {
-        date: "25 June",
-        flat: "A-15/07",
-        vehicleNo: "MH14FZ3552",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1AFvC3FsyFD8CCusXJHrB6Nd1z7-yHc7u/view",
-        bill: "https://drive.google.com/file/d/1TV7VwGd-8evSTBsg9FJP3srRQ5uzX9WF/view"
-    },
-    {
-        date: "25 June",
+        date: "17 Aug",
         flat: "B-12/05",
-        vehicleNo: "MH01EV5055",
+        vehicleNo: "",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 1000",
+        photo: "",
+        bill: "https://drive.google.com/file/d/1mxPuMyeCKky1hRiqGdXz9YO1i-2IDnM9/view"
+    },
+    {
+        date: "17 Aug",
+        flat: "A-19/08",
+        vehicleNo: "",
         reason: "Overnight Parking of Outside 4W",
         amount: "₹ 500",
-        photo: "https://drive.google.com/file/d/15CZnPzZLulqpYMUfbp4XZBjVdK4XXhZQ/view",
-        bill: "https://drive.google.com/file/d/1PtKG4xomPbXeu4Vk1OXtIL5LRJF-SThZ/view"
+        photo: "",
+        bill: "https://drive.google.com/file/d/1vk_AdoHHNInjMLBVeSd7YnY8vgmzy03-/view"
     },
     {
-        date: "25 June",
-        flat: "B-11/11",
-        vehicleNo: "MH43AQ6513",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1XcOVGh4YMnHTSKbEIAyXe8f-FnAWqqW6/view",
-        bill: "https://drive.google.com/file/d/1PgFG_ZHoTmvjdh4LsNknWR1384Pu7Flr/view"
-    },
-    {
-        date: "25 June",
-        flat: "B-10/11",
-        vehicleNo: "MH43AS1611",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1TYi4a62ipOVH4HSuy9R2nNce5RMmiwZJ/view",
-        bill: "https://drive.google.com/file/d/14x6ORyRJ-33wxoq3ZrPzjJVppeoXq1Ad/view"
-    },
-    {
-        date: "24 June",
-        flat: "A-15/15",
-        vehicleNo: "MH12XE7492",
+        date: "17 Aug",
+        flat: "B-11/14",
+        vehicleNo: "",
         reason: "Overnight Parking of Outside 4W",
         amount: "₹ 500",
-        photo: "https://drive.google.com/file/d/1LjGAdXsc4EiSdj8KfPZohBReDJj24kGq/view",
-        bill: "https://drive.google.com/file/d/1bvUyOVDCj0cL5DhAKtq0-BUpfmyWIs92/view"
+        photo: "",
+        bill: "https://drive.google.com/file/d/1vk_AdoHHNInjMLBVeSd7YnY8vgmzy03-/view"
     },
     {
-        date: "24 June",
-        flat: "A-15/07",
-        vehicleNo: "MH14FZ3552",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1AFvC3FsyFD8CCusXJHrB6Nd1z7-yHc7u/view",
-        bill: "https://drive.google.com/file/d/1IVjISSkICaM-HnXkWC13NG0bCl_MnZBU/view"
-    },
-    {
-        date: "24 June",
-        flat: "B-11/08",
-        vehicleNo: "MH43CM7413",
-        reason: "Overnight Parking of Outside 4W",
-        amount: "₹ 500",
-        photo: "https://drive.google.com/file/d/16updcy99alkwcwAg0qskQ3Hm2JItIfSH/view",
-        bill: "https://drive.google.com/file/d/10hy79IQoKM9e6nA4KLMi_SmoXQLDoJQs/view"
-    },
-    {
-        date: "24 June",
-        flat: "B-11/11",
-        vehicleNo: "MH43AQ6513",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1XcOVGh4YMnHTSKbEIAyXe8f-FnAWqqW6/view",
-        bill: "https://drive.google.com/file/d/1l_CU4TvnW2NbZ_asTtRsmnTFTkPCT-Ca/view"
-    },
-    {
-        date: "24 June",
-        flat: "B-11/07",
-        vehicleNo: "MH14HH9235",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1y5iS7pIBuVHIejC65SpWQVFhrw8WKAUz/view",
-        bill: "https://drive.google.com/file/d/1km1anpDkcLP5afv6z9xw1SmWAuO1eYpJ/view"
-    },
-    {
-        date: "21 June",
-        flat: "B-12/08",
-        vehicleNo: "MH04FF7914",
-        reason: "Wrong Parking of 4W",
-        amount: "₹ 500",
-        photo: "https://drive.google.com/file/d/1z4GN-wo1Wc5D2DbTOM3xKLVqj2gsr7bX/view",
-        bill: "https://drive.google.com/file/d/1u4y8p_icrF-MApFoeucHa5Azwzj4eONZ/view"
-    },
-    {
-        date: "21 June",
-        flat: "B-12/02",
-        vehicleNo: "MH04DX1523",
-        reason: "Wrong Parking of 2W",
-        amount: "₹ 200",
-        photo: "https://drive.google.com/file/d/1aBTi6w5iRFM3NNp6sdBVqWqaJBUHl5HI/view",
-        bill: "https://drive.google.com/file/d/1oxt3_aSGOU9mTGaplTGs6OSwBXYusk4H/view"
-    },
-    {
-        date: "1 June",
+        date: "17 Aug",
         flat: "B-22/09",
-        vehicleNo: "MH26AD2424",
+        vehicleNo: "",
         reason: "Overnight Parking of Outside 4W",
         amount: "₹ 500",
-        photo: "https://newsv.netlify.app/",
-        bill: "https://drive.google.com/file/d/1Q4LPbN0vLMgF5RUodsTc6IJFLkdFV2xf/view"
+        photo: "",
+        bill: "https://drive.google.com/file/d/1hg6dDdUDh2hphzQl1czfw4mgBixnV2pN/view"
     },
     {
-        date: "18 May",
-        flat: "B-23/11",
-        vehicleNo: "MH43BY2971",
+        date: "17 Aug",
+        flat: "B-22/04",
+        vehicleNo: "",
         reason: "Overnight Parking of Outside 4W",
         amount: "₹ 500",
-        photo: "https://newsv.netlify.app/",
-        bill: "https://drive.google.com/file/d/1r32gccGUat__gSeIrfm1piqSuqywXBGU/view"
+        photo: "",
+        bill: "https://drive.google.com/file/d/1f7w4vgBdC7Q6OMqM_qIBfMN32Ru_yyZe/view"
+    },
+    {
+        date: "17 Aug",
+        flat: "A-17/08",
+        vehicleNo: "",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "",
+        bill: "https://drive.google.com/file/d/1f7w4vgBdC7Q6OMqM_qIBfMN32Ru_yyZe/view"
+    },
+    {
+        date: "17 Aug",
+        flat: "A-14/02",
+        vehicleNo: "",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "",
+        bill: "https://drive.google.com/file/d/1f7w4vgBdC7Q6OMqM_qIBfMN32Ru_yyZe/view"
+    },
+    {
+        date: "17 Aug",
+        flat: "B-12/05",
+        vehicleNo: "",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 500",
+        photo: "",
+        bill: "https://drive.google.com/file/d/1mxPuMyeCKky1hRiqGdXz9YO1i-2IDnM9/view"
+    },
+    {
+        date: "17 Aug",
+        flat: "A-17/04",
+        vehicleNo: "",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 500",
+        photo: "",
+        bill: "https://drive.google.com/file/d/17nw2fIqSQKymy5Ue9h7G1D5UBQElUoP1/view"
+    },
+    {
+        date: "15 Aug",
+        flat: "B-22/09",
+        vehicleNo: "",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 500",
+        photo: "",
+        bill: "https://drive.google.com/file/d/1hg6dDdUDh2hphzQl1czfw4mgBixnV2pN/view"
+    },
+    {
+        date: "10 Aug",
+        flat: "B-23/11",
+        vehicleNo: "",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 500",
+        photo: "",
+        bill: "https://drive.google.com/file/d/1Il8dvNHPh_aEVX-ev9pOptD5B3IwczJA/view"
+    },
+    {
+        date: "7 July",
+        flat: "A-14/07",
+        vehicleNo: "",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "",
+        bill: "https://drive.google.com/file/d/1D20Ebb-q6rCcgazhHwSqNKUIy_vrCvBN/view"
+    },
+    {
+        date: "7 July",
+        flat: "A-19/04",
+        vehicleNo: "",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "",
+        bill: "https://drive.google.com/file/d/1TYOkddH1L8pcGydNO-I2fH_0R5j8i6bf/view"
+    },
+    {
+        date: "7 July",
+        flat: "B-11/09",
+        vehicleNo: "",
+        reason: "Wrong Parking of 2W",
+        amount: "₹ 200",
+        photo: "",
+        bill: "https://drive.google.com/file/d/1ST5gc6tAh689-r7oUOGdT4c_HjHwBIEw/view"
+    },
+    {
+        date: "6 July",
+        flat: "A-19/02",
+        vehicleNo: "",
+        reason: "Overnight Parking of Outside 4W",
+        amount: "₹ 500",
+        photo: "",
+        bill: "https://drive.google.com/file/d/1jo6BcHat56yvAbP0vOa8Y5IHdI_3LTWR/view"
     }
 ];
 
@@ -459,14 +369,14 @@ fetch('asset/UpdatedSepData.csv')
             const [
                 ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy,
                 TwoWNo, SecondTwNo, FourWNo, decBill, decRec,
-                patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepRec, SepBill,
+                patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepRec, SepBill, DecRec, DecBill,
                 vehicleImage1, vehicleImage2
             ] = line.split(',').map(item => item.trim());
 
             return {
                 ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy,
                 TwoWNo, SecondTwNo, FourWNo, decBill, decRec,
-                patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepRec, SepBill,
+                patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepRec, SepBill, DecRec, DecBill,
                 vehicleImage1, vehicleImage2
             };
         });
@@ -792,6 +702,27 @@ function vehicleImages(result) {
 
 function bills(result) {
 
+    if (result.DecRec) {
+        const decReceiptBtn = document.getElementById('decReceiptBtn');
+        decReceiptBtn.style.display = "inline-block";
+        decReceiptBtn.onclick = () => {
+            console.log("Opening URL:", result.DecRec);
+            window.open(result.DecRec, '_blank');
+        };
+    } else {
+        document.getElementById('decReceiptBtn').style.display = "none";
+    }
+        
+    if (result.DecBill) {
+        const decBillbtn = document.getElementById('decBillbtn');
+        decBillbtn.style.display = "inline-block";
+        decBillbtn.onclick = () => {
+            console.log("Opening URL:", result.DecBill);
+            window.open(result.DecBill, '_blank');
+        };
+    } else {
+        document.getElementById('decBillbtn').style.display = "none";
+    }
     if (result.SepRec) {
         const sepReceiptBtn = document.getElementById('sepReceiptBtn');
         sepReceiptBtn.style.display = "inline-block";
