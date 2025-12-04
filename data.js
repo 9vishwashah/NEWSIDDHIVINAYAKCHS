@@ -430,7 +430,7 @@ function countPayments() {
     const TOTAL_FLATS = 224;
 
     flatData.forEach(flat => {
-        const receiptLink = flat["SepRec"]?.trim();
+        const receiptLink = flat["DecRec"]?.trim();
         const balanceValue = flat["balance"]?.trim();
 
         const isReceiptPresent = receiptLink && receiptLink !== "";
@@ -712,7 +712,7 @@ function bills(result) {
     } else {
         document.getElementById('decReceiptBtn').style.display = "none";
     }
-        
+
     if (result.DecBill) {
         const decBillbtn = document.getElementById('decBillbtn');
         decBillbtn.style.display = "inline-block";
