@@ -501,21 +501,21 @@ const observer = new IntersectionObserver((entries, observer) => {
 const target = document.getElementById("payment-section");
 if (target) observer.observe(target);
 
-function countVehicles() {
-    let twoW = 0;
-    let fourW = 0;
+// function countVehicles() {
+//     let twoW = 0;
+//     let fourW = 0;
 
-    flatData.forEach(flat => {
-        const two = parseInt(flat.twowheel);
-        const four = parseInt(flat.fourwheel);
+//     flatData.forEach(flat => {
+//         const two = parseInt(flat.twowheel);
+//         const four = parseInt(flat.fourwheel);
 
-        if (!isNaN(two)) twoW += two;
-        if (!isNaN(four)) fourW += four;
-    });
+//         if (!isNaN(two)) twoW += two;
+//         if (!isNaN(four)) fourW += four;
+//     });
 
-    animateCounter("twoWheelerCount", twoW);
-    animateCounter("fourWheelerCount", fourW);
-}
+//     animateCounter("twoWheelerCount", twoW);
+//     animateCounter("fourWheelerCount", fourW);
+// }
 
 
 const vehicleTarget = document.getElementById("payment-section");
