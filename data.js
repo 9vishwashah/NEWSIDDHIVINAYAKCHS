@@ -468,17 +468,17 @@ function animateCounter(id, target) {
     }, 80);
 }
 
-function animateProgressCircle(current, total) {
-    const circle = document.querySelector('.progress-ring__circle');
-    const radius = circle.r.baseVal.value;
-    const circumference = 2 * Math.PI * radius;
+// function animateProgressCircle(current, total) {
+//     const circle = document.querySelector('.progress-ring__circle');
+//     const radius = circle.r.baseVal.value;
+//     const circumference = 2 * Math.PI * radius;
 
-    const percent = current / total;
-    const offset = circumference * (1 - percent);
+//     const percent = current / total;
+//     const offset = circumference * (1 - percent);
 
-    circle.style.strokeDasharray = `${circumference}`;
-    circle.style.strokeDashoffset = offset;
-}
+//     circle.style.strokeDasharray = `${circumference}`;
+//     circle.style.strokeDashoffset = offset;
+// }
 
 let hasAnimated = false;
 

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New Siddhivinayak CHS Vehicle Scanner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./vehicle-style.css">
+  <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body>
+  
+  <div class="page-header">
+    <h2><i class="fa fa-qrcode"></i> New Siddhivinayak CHS Vehicle Scanner</h2>
+  </div>
+
+  <div class="scanner-container">
+    <div id="reader"></div>
+  </div>
+
+  <div id="result" class="result-container"></div>
+
+  <!-- REPORT FORM -->
+  <div id="reportForm" class="report-form-container" style="display:none;">
+    <h4><i class="fa fa-flag"></i> Report Issue</h4>
+    
+    <div class="form-group">
+      <label class="form-label">Issue Type *</label>
+      <select id="issueType" class="form-control">
+        <option value="">Select Issue</option>
+        <option>Wrong Parking</option>
+        <option>Unauthorized Vehicle</option>
+        <option>Blocked Driveway</option>
+        <option>Misuse of QR</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Remarks (Optional)</label>
+      <textarea id="remarks" class="form-control" placeholder="Enter additional details..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Photo Evidence (Optional)</label>
+      <div class="file-input-wrapper">
+        <i class="fa fa-camera"></i>
+        <div class="file-label">Tap to capture or upload photo</div>
+        <input type="file" id="photoInput" accept="image/*" capture="environment">
+      </div>
+    </div>
+
+    <button id="submitReportBtn" onclick="submitReport()" class="btn btn-danger">
+      <i class="fa fa-paper-plane"></i> Submit Report
+    </button>
+  </div>
+
+  <button id="scanAgain" onclick="startScan()">
+    <i class="fa fa-qrcode"></i> Scan Next Vehicle
+  </button>
+
+  <!-- SCRIPT -->
+  <script>
+    let currentQR = "";
+    let currentFlat = "";
+    const API = "https://script.google.com/macros/s/AKfycbzsljUO22BMFw88gmbH7KNTdL2Dsi5WX1ZpC6OzB4HGOQ681OLS3S9SnordA9UMblZE/exec";
+    let html5QrCode;
+
+    function startScan() {
+      document.getElementById("result").innerHTML = "";
+      document.getElementById("reportForm").style.display = "none";
+      document.getElementById("scanAgain").style.display = "none";
+      document.getElementById("reader").style.display = "block";
+      html5QrCode = new Html5Qrcode("reader");
+      html5QrCode.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 250 },
+        onScanSuccess
+      );
+    }
+
+    function submitReport() {
+      if (!currentQR || !currentFlat) {
+        alert("Please scan a vehicle first");
+        return;
+      }
+      const issue = document.getElementById("issueType").value;
+      const remarks = document.getElementById("remarks").value;
+      const photoInput = document.getElementById("photoInput");
+      const btn = document.getElementById("submitReportBtn");
+      
+      if (!issue) {
+        alert("Please select an issue");
+        return;
+      }
+      
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Reporting...';
+      
+      if (photoInput.files.length > 0) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          sendReport(issue, remarks, reader.result, btn);
+        };
+        reader.readAsDataURL(photoInput.files[0]);
+      } else {
+        sendReport(issue, remarks, null, btn);
+      }
+    }
+
+    function sendReport(issue, remarks, photoBase64, btn) {
+      fetch(API, {
+        method: "POST",
+        body: JSON.stringify({
+          qrId: currentQR,
+          flatNo: currentFlat,
+          issue: issue,
+          remarks: remarks,
+          photo: photoBase64
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          btn.innerHTML = '<i class="fa fa-check"></i> Reported Successfully';
+          setTimeout(() => {
+            alert("Report submitted successfully");
+            document.getElementById("reportForm").style.display = "none";
+            document.getElementById("photoInput").value = "";
+            document.getElementById("issueType").value = "";
+            document.getElementById("remarks").value = "";
+            btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Report';
+            btn.disabled = false;
+          }, 800);
+        } else {
+          throw new Error("Submission failed");
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Error submitting report. Please try again.");
+        btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Report';
+        btn.disabled = false;
+      });
+    }
+
+    function onScanSuccess(decodedText) {
+      const reader = document.getElementById("reader");
+      const result = document.getElementById("result");
+      html5QrCode.stop().then(() => {
+        reader.style.display = "none";
+      });
+      
+      result.innerHTML = '<div class="checking-message"><i class="fa fa-spinner fa-spin"></i> Verifying vehicle...</div>';
+      
+      fetch(`${API}?qr=${encodeURIComponent(decodedText)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+            result.innerHTML = `<div class="error-message"><i class="fa fa-times-circle"></i> ${data.error}</div>`;
+            document.getElementById("scanAgain").style.display = "block";
+            return;
+          }
+
+          if (data.Status !== "Active") {
+            result.innerHTML = `
+              <div class="status-card access-denied">
+                <div class="status-header">
+                  <div class="status-icon"><i class="fa fa-times"></i></div>
+                  <div class="status-title">ACCESS DENIED</div>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Reason:</span>
+                  <span class="info-value">Inactive QR Code</span>
+                </div>
+              </div>
+            `;
+          } else {
+            currentQR = data["QR_ID"];
+            currentFlat = data["Flat No"];
+            const mobile = data["Mobile No"];
+            
+            result.innerHTML = `
+              <div class="status-card access-granted">
+                <div class="status-header">
+                  <div class="status-icon"><i class="fa fa-check"></i></div>
+                  <div class="status-title">ACCESS GRANTED</div>
+                </div>
+                
+                <div class="vehicle-info">
+                  <div class="info-row">
+                    <span class="info-label">Flat No</span>
+                    <span class="info-value">${data["Flat No"]}</span>
+                  </div>
+                  <div class="info-row">
+                    <span class="info-label">Owner</span>
+                    <span class="info-value">${data["Owner Name"]}</span>
+                  </div>
+                  <div class="info-row">
+                    <span class="info-label">Mobile</span>
+                    <span class="info-value">${mobile || "Not Available"}</span>
+                  </div>
+                </div>
+
+                <div class="vehicle-section">
+                  <div class="vehicle-section-header">
+                    <i class="fa fa-motorcycle"></i>
+                    <span>Two Wheelers</span>
+                    <span class="vehicle-count">${data["2W Count"]}</span>
+                  </div>
+                  <div class="vehicle-numbers">${data["2W Numbers"] || "None registered"}</div>
+                </div>
+
+                <div class="vehicle-section">
+                  <div class="vehicle-section-header">
+                    <i class="fa fa-car"></i>
+                    <span>Four Wheelers</span>
+                    <span class="vehicle-count">${data["4W Count"]}</span>
+                  </div>
+                  <div class="vehicle-numbers">${data["4W Numbers"] || "None registered"}</div>
+                </div>
+
+                <div class="action-buttons">
+                  ${mobile ? `
+                    <a href="tel:${mobile}" class="btn btn-call">
+                      <i class="fa fa-phone"></i> Call Owner
+                    </a>
+                  ` : ''}
+                  <button id="reportBtn" class="btn btn-danger">
+                    <i class="fa fa-flag"></i> Report Issue
+                  </button>
+                </div>
+              </div>
+            `;
+            
+            document.getElementById("reportBtn").onclick = () => {
+              document.getElementById("reportForm").style.display = "block";
+              document.getElementById("reportForm").scrollIntoView({ behavior: "smooth" });
+            };
+          }
+          
+          document.getElementById("scanAgain").style.display = "block";
+        })
+        .catch(err => {
+          console.error(err);
+          result.innerHTML = '<div class="error-message"><i class="fa fa-exclamation-triangle"></i> Error fetching data</div>';
+          document.getElementById("scanAgain").style.display = "block";
+        });
+    }
+
+    // Start scanning on load
+    startScan();
+  </script>
+</body>
+</html>

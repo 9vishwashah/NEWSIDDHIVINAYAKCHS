@@ -1,0 +1,580 @@
+/* ============================================
+   NEW SIDDHIVINAYAK CHS VEHICLE SCANNER
+   Production-Ready Mobile-First CSS
+   ============================================ */
+
+/* === RESET & BASE === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #f0f2f5;
+  color: #1c1e21;
+  line-height: 1.5;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* === PAGE HEADER === */
+.page-header {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  padding: 24px 20px 20px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.page-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: -0.3px;
+}
+
+.page-header p {
+  font-size: 14px;
+  opacity: 0.95;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-header p i {
+  font-size: 16px;
+}
+
+/* === SCANNER CONTAINER === */
+.scanner-container {
+  padding: 20px;
+  background: white;
+  margin: 16px;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+}
+
+#reader {
+  width: 100% !important;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+#reader video {
+  border-radius: 12px;
+}
+
+/* === RESULT CONTAINER === */
+.result-container {
+  padding: 0 16px 20px 16px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* === STATUS CARD === */
+.status-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-left: 6px solid;
+  margin-bottom: 16px;
+}
+
+.status-card.granted {
+  border-left-color: #10b981;
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+}
+
+.status-card.denied {
+  border-left-color: #ef4444;
+  background: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
+}
+
+/* === STATUS HEADER === */
+.status-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.status-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.status-card.granted .status-icon {
+  background: #10b981;
+  color: white;
+}
+
+.status-card.denied .status-icon {
+  background: #ef4444;
+  color: white;
+}
+
+.status-text {
+  flex: 1;
+}
+
+.status-title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.status-card.granted .status-title {
+  color: #10b981;
+}
+
+.status-card.denied .status-title {
+  color: #ef4444;
+}
+
+.status-subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+/* === VEHICLE INFO === */
+.vehicle-info {
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background 0.2s ease;
+}
+
+.info-item:active {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.info-item i {
+  width: 32px;
+  font-size: 18px;
+  color: #1e3c72;
+  flex-shrink: 0;
+}
+
+.info-content {
+  flex: 1;
+}
+
+.info-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b7280;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.info-value {
+  font-size: 16px;
+  color: #1c1e21;
+  font-weight: 600;
+}
+
+/* === VEHICLE SECTIONS === */
+.vehicle-section {
+  background: rgba(30, 60, 114, 0.04);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(30, 60, 114, 0.1);
+}
+
+.vehicle-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: #1e3c72;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.vehicle-section-title i {
+  font-size: 20px;
+}
+
+.vehicle-count {
+  margin-left: auto;
+  background: #1e3c72;
+  color: white;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.vehicle-numbers {
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.7;
+  padding-left: 30px;
+  font-weight: 500;
+}
+
+/* === ACTION BUTTONS === */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn {
+  width: 100%;
+  padding: 18px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+}
+
+.btn i {
+  font-size: 20px;
+}
+
+.btn.primary {
+  background: #10b981;
+  color: white;
+}
+
+.btn.primary:hover {
+  background: #059669;
+}
+
+.btn.danger {
+  background: #ef4444;
+  color: white;
+}
+
+.btn.danger:hover {
+  background: #dc2626;
+}
+
+.btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btn:disabled:active {
+  transform: none;
+}
+
+/* === REPORT FORM === */
+.report-form-container {
+  background: white;
+  border-radius: 16px;
+  padding: 24px 20px;
+  margin: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  border-top: 4px solid #ef4444;
+  animation: slideUp 0.3s ease-out;
+}
+
+.report-form-container h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ef4444;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.report-form-container h4 i {
+  font-size: 22px;
+}
+
+.report-form-container label {
+  display: block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b7280;
+  font-weight: 700;
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+
+.report-form-container label:first-of-type {
+  margin-top: 0;
+}
+
+.report-form-container select,
+.report-form-container textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: inherit;
+  background: white;
+  transition: all 0.2s ease;
+  color: #1c1e21;
+}
+
+.report-form-container select:focus,
+.report-form-container textarea:focus {
+  outline: none;
+  border-color: #1e3c72;
+  box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
+}
+
+.report-form-container select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%236b7280' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.report-form-container textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.6;
+}
+
+/* === FILE INPUT === */
+.report-form-container input[type="file"] {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border: 2px dashed #cbd5e0;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+  color: #6b7280;
+}
+
+.report-form-container input[type="file"]:hover {
+  border-color: #1e3c72;
+  background: #f0f9ff;
+}
+
+.report-form-container input[type="file"]::file-selector-button {
+  padding: 10px 16px;
+  border: none;
+  background: #1e3c72;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 12px;
+  font-size: 14px;
+}
+
+.report-form-container input[type="file"]::file-selector-button:hover {
+  background: #2a5298;
+}
+
+/* === PHOTO STATUS === */
+.photo-status {
+  margin-top: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.photo-status.attached {
+  display: flex;
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+}
+
+.photo-status.attached i {
+  font-size: 16px;
+}
+
+/* === SUBMIT BUTTON === */
+.report-form-container .btn {
+  margin-top: 24px;
+}
+
+/* === TOAST NOTIFICATION === */
+.toast {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1c1e21;
+  color: white;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  min-width: 280px;
+  max-width: 90%;
+  text-align: center;
+  transition: bottom 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.toast.show {
+  bottom: 24px;
+}
+
+.toast.success {
+  background: #10b981;
+}
+
+.toast.error {
+  background: #ef4444;
+}
+
+/* === CHECKING/ERROR STATES === */
+.checking-message {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 16px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.checking-message i {
+  font-size: 32px;
+  margin-bottom: 12px;
+  display: block;
+  color: #1e3c72;
+}
+
+.error-message {
+  background: white;
+  border: 2px solid #ef4444;
+  border-radius: 16px;
+  padding: 24px;
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.15);
+}
+
+.error-message i {
+  font-size: 40px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === SPINNER ANIMATION === */
+.fa-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* === RESPONSIVE === */
+@media (min-width: 640px) {
+  .scanner-container,
+  .result-container,
+  .report-form-container {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .action-buttons {
+    flex-direction: row;
+  }
+
+  .btn {
+    flex: 1;
+  }
+}
+
+/* === PRINT STYLES === */
+@media print {
+  body {
+    background: white;
+  }
+  
+  .scanner-container,
+  .action-buttons,
+  .report-form-container {
+    display: none;
+  }
+
+  .page-header {
+    position: static;
+  }
+}
