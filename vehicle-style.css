@@ -1,6 +1,6 @@
 /* ============================================
    NEW SIDDHIVINAYAK CHS VEHICLE SCANNER
-   Production-Ready Mobile-First CSS
+   Professional Access Control Interface
    ============================================ */
 
 /* === RESET & BASE === */
@@ -12,124 +12,196 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background: #f0f2f5;
-  color: #1c1e21;
+  background: #f8f9fa;
+  color: #202124;
   line-height: 1.5;
   padding: 0;
   min-height: 100vh;
 }
 
-/* === PAGE HEADER === */
+/* === 1️⃣ PAGE HEADER (White & Crimson Theme) === */
 .page-header {
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-  color: white;
-  padding: 24px 20px 20px 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+  color: #202124;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(220, 20, 60, 0.15);
+  border-bottom: 3px solid #dc143c;
   position: sticky;
   top: 0;
   z-index: 100;
-}
-
-.page-header h2 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 4px;
-  letter-spacing: -0.3px;
-}
-
-.page-header p {
-  font-size: 14px;
-  opacity: 0.95;
-  font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 14px;
 }
 
-.page-header p i {
-  font-size: 16px;
+.header-left {
+  flex-shrink: 0;
 }
 
-/* === SCANNER CONTAINER === */
+.society-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.header-title {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.header-title h2 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: #dc143c;
+  letter-spacing: -0.2px;
+}
+
+.header-title .subtitle {
+  font-size: 13px;
+  color: #5f6368;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.header-title .subtitle i {
+  font-size: 14px;
+}
+
+/* === 2️⃣ SCANNER CONTAINER === */
 .scanner-container {
-  padding: 20px;
-  background: white;
-  margin: 16px;
-  border-radius: 16px;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  padding: 12px;
+  background: #ffffff;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 #reader {
   width: 100% !important;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border: 3px solid #dc143c;
+  box-shadow: 0 4px 16px rgba(220, 20, 60, 0.2);
 }
 
 #reader video {
   border-radius: 12px;
+  display: block;
+  width: 100% !important;
+  height: auto !important;
 }
 
-/* === RESULT CONTAINER === */
+/* Scanner Instructions */
+.scanner-instructions {
+  text-align: center;
+  padding: 16px 20px;
+  background: #fff5f5;
+  border: 2px dashed #dc143c;
+  border-radius: 8px;
+  margin: 12px;
+  color: #5f6368;
+}
+
+.scanner-instructions h3 {
+  color: #dc143c;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.scanner-instructions h3 i {
+  font-size: 18px;
+}
+
+.scanner-instructions p {
+  font-size: 14px;
+  margin: 6px 0;
+  line-height: 1.6;
+}
+
+.scanner-instructions ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0 0;
+}
+
+.scanner-instructions li {
+  font-size: 13px;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.scanner-instructions li i {
+  color: #dc143c;
+  font-size: 14px;
+}
+
+/* === 3️⃣ RESULT CONTAINER === */
 .result-container {
   padding: 0 16px 20px 16px;
   animation: fadeIn 0.4s ease-out;
 }
 
-/* === STATUS CARD === */
+/* === STATUS CARDS === */
 .status-card {
-  background: white;
-  border-radius: 16px;
+  background: #ffffff;
+  border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  border-left: 6px solid;
+  box-shadow: 0 3px 16px rgba(0, 0, 0, 0.15);
   margin-bottom: 16px;
 }
 
-.status-card.granted {
-  border-left-color: #10b981;
-  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+.status-card.access-granted {
+  border-left: 6px solid #dc143c;
 }
 
-.status-card.denied {
-  border-left-color: #ef4444;
-  background: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
+.status-card.access-denied {
+  border-left: 6px solid #8b0000;
 }
 
 /* === STATUS HEADER === */
 .status-header {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   margin-bottom: 24px;
   padding-bottom: 20px;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 2px solid #e8eaed;
 }
 
 .status-icon {
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 30px;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.status-card.granted .status-icon {
-  background: #10b981;
-  color: white;
+.access-granted .status-icon {
+  background: #dc143c;
+  color: #ffffff;
 }
 
-.status-card.denied .status-icon {
-  background: #ef4444;
-  color: white;
-}
-
-.status-text {
-  flex: 1;
+.access-denied .status-icon {
+  background: #8b0000;
+  color: #ffffff;
 }
 
 .status-title {
@@ -139,19 +211,12 @@ body {
   text-transform: uppercase;
 }
 
-.status-card.granted .status-title {
-  color: #10b981;
+.access-granted .status-title {
+  color: #dc143c;
 }
 
-.status-card.denied .status-title {
-  color: #ef4444;
-}
-
-.status-subtitle {
-  font-size: 13px;
-  color: #6b7280;
-  margin-top: 2px;
-  font-weight: 500;
+.access-denied .status-title {
+  color: #8b0000;
 }
 
 /* === VEHICLE INFO === */
@@ -159,90 +224,75 @@ body {
   margin-bottom: 20px;
 }
 
-.info-item {
+.info-row {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
   margin-bottom: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: background 0.2s ease;
-}
-
-.info-item:active {
-  background: rgba(0, 0, 0, 0.03);
-}
-
-.info-item i {
-  width: 32px;
-  font-size: 18px;
-  color: #1e3c72;
-  flex-shrink: 0;
-}
-
-.info-content {
-  flex: 1;
+  border: 1px solid #e8eaed;
 }
 
 .info-label {
-  font-size: 12px;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #6b7280;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 2px;
+  color: #5f6368;
+  font-weight: 700;
 }
 
 .info-value {
   font-size: 16px;
-  color: #1c1e21;
+  color: #202124;
   font-weight: 600;
+  text-align: right;
 }
 
 /* === VEHICLE SECTIONS === */
 .vehicle-section {
-  background: rgba(30, 60, 114, 0.04);
-  border-radius: 12px;
+  background: #f1f3f4;
+  border-radius: 10px;
   padding: 16px;
   margin-bottom: 12px;
-  border: 1px solid rgba(30, 60, 114, 0.1);
+  border: 1px solid #dadce0;
 }
 
-.vehicle-section-title {
+.vehicle-section-header {
   display: flex;
   align-items: center;
   gap: 10px;
   font-weight: 700;
-  color: #1e3c72;
+  color: #2c3e50;
   font-size: 15px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-.vehicle-section-title i {
+.vehicle-section-header i {
   font-size: 20px;
+  color: #dc143c;
 }
 
 .vehicle-count {
   margin-left: auto;
-  background: #1e3c72;
-  color: white;
-  padding: 3px 12px;
+  background: #dc143c;
+  color: #ffffff;
+  padding: 4px 12px;
   border-radius: 12px;
   font-size: 13px;
   font-weight: 700;
 }
 
 .vehicle-numbers {
-  color: #374151;
+  color: #3c4043;
   font-size: 14px;
   line-height: 1.7;
   padding-left: 30px;
   font-weight: 500;
 }
 
-/* === ACTION BUTTONS === */
+/* === 4️⃣ ACTION BUTTONS === */
 .action-buttons {
   display: flex;
   flex-direction: column;
@@ -252,10 +302,10 @@ body {
 
 .btn {
   width: 100%;
-  padding: 18px 24px;
+  padding: 16px 24px;
   border: none;
-  border-radius: 12px;
-  font-size: 17px;
+  border-radius: 10px;
+  font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -263,41 +313,43 @@ body {
   justify-content: center;
   gap: 10px;
   transition: all 0.2s ease;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   text-decoration: none;
   color: inherit;
   font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  transform: translateY(1px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .btn i {
-  font-size: 20px;
+  font-size: 18px;
 }
 
-.btn.primary {
-  background: #10b981;
-  color: white;
+.btn-call {
+  background: #dc143c;
+  color: #ffffff;
 }
 
-.btn.primary:hover {
-  background: #059669;
+.btn-call:hover {
+  background: #b01030;
 }
 
-.btn.danger {
-  background: #ef4444;
-  color: white;
+.btn-danger {
+  background: #8b0000;
+  color: #ffffff;
 }
 
-.btn.danger:hover {
-  background: #dc2626;
+.btn-danger:hover {
+  background: #700000;
 }
 
 .btn:disabled {
-  background: #9ca3af;
+  background: #95a5a6;
   cursor: not-allowed;
   opacity: 0.7;
 }
@@ -306,21 +358,50 @@ body {
   transform: none;
 }
 
-/* === REPORT FORM === */
+/* === SCAN AGAIN BUTTON === */
+#scanAgain {
+  width: calc(100% - 32px);
+  max-width: 500px;
+  margin: 20px auto;
+  display: block;
+  padding: 16px 24px;
+  background: #dc143c;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(220, 20, 60, 0.25);
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#scanAgain i {
+  margin-right: 8px;
+}
+
+#scanAgain:active {
+  transform: translateY(1px);
+  background: #b01030;
+}
+
+/* === 5️⃣ REPORT FORM === */
 .report-form-container {
-  background: white;
-  border-radius: 16px;
+  background: #ffffff;
+  border-radius: 12px;
   padding: 24px 20px;
   margin: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-  border-top: 4px solid #ef4444;
+  box-shadow: 0 3px 16px rgba(0, 0, 0, 0.15);
+  border-top: 5px solid #8b0000;
   animation: slideUp 0.3s ease-out;
 }
 
 .report-form-container h4 {
   font-size: 20px;
   font-weight: 700;
-  color: #ef4444;
+  color: #8b0000;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
@@ -331,132 +412,107 @@ body {
   font-size: 22px;
 }
 
-.report-form-container label {
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
   display: block;
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #6b7280;
+  color: #5f6368;
   font-weight: 700;
   margin-bottom: 8px;
-  margin-top: 16px;
 }
 
-.report-form-container label:first-of-type {
-  margin-top: 0;
-}
-
-.report-form-container select,
-.report-form-container textarea {
+.form-control {
   width: 100%;
   padding: 14px 16px;
-  border: 2px solid #e5e7eb;
-  border-radius: 10px;
+  border: 2px solid #dadce0;
+  border-radius: 8px;
   font-size: 16px;
   font-family: inherit;
-  background: white;
+  background: #ffffff;
   transition: all 0.2s ease;
-  color: #1c1e21;
+  color: #202124;
 }
 
-.report-form-container select:focus,
-.report-form-container textarea:focus {
+.form-control:focus {
   outline: none;
-  border-color: #1e3c72;
-  box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
+  border-color: #dc143c;
+  box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.1);
 }
 
-.report-form-container select {
+select.form-control {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%236b7280' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%235f6368' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
   padding-right: 40px;
   cursor: pointer;
 }
 
-.report-form-container textarea {
+textarea.form-control {
   resize: vertical;
   min-height: 90px;
   line-height: 1.6;
 }
 
-/* === FILE INPUT === */
-.report-form-container input[type="file"] {
-  display: block;
-  width: 100%;
-  padding: 16px;
-  border: 2px dashed #cbd5e0;
-  border-radius: 10px;
-  font-size: 14px;
-  cursor: pointer;
-  background: #f9fafb;
-  transition: all 0.2s ease;
-  color: #6b7280;
-}
-
-.report-form-container input[type="file"]:hover {
-  border-color: #1e3c72;
-  background: #f0f9ff;
-}
-
-.report-form-container input[type="file"]::file-selector-button {
-  padding: 10px 16px;
-  border: none;
-  background: #1e3c72;
-  color: white;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-right: 12px;
-  font-size: 14px;
-}
-
-.report-form-container input[type="file"]::file-selector-button:hover {
-  background: #2a5298;
-}
-
-/* === PHOTO STATUS === */
-.photo-status {
-  margin-top: 8px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  display: none;
-  align-items: center;
-  gap: 8px;
-}
-
-.photo-status.attached {
+/* === FILE INPUT WRAPPER === */
+.file-input-wrapper {
+  position: relative;
   display: flex;
-  background: #d1fae5;
-  color: #065f46;
-  border: 1px solid #10b981;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 2px dashed #dadce0;
+  border-radius: 8px;
+  background: #f8f9fa;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.photo-status.attached i {
-  font-size: 16px;
+.file-input-wrapper:hover {
+  border-color: #dc143c;
+  background: #fff5f5;
 }
 
-/* === SUBMIT BUTTON === */
-.report-form-container .btn {
-  margin-top: 24px;
+.file-input-wrapper i {
+  font-size: 24px;
+  color: #dc143c;
 }
 
-/* === TOAST NOTIFICATION === */
+.file-label {
+  flex: 1;
+  font-size: 14px;
+  color: #5f6368;
+  font-weight: 500;
+}
+
+.file-input-wrapper input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* === 6️⃣ TOAST NOTIFICATIONS === */
 .toast {
   position: fixed;
   bottom: -100px;
   left: 50%;
   transform: translateX(-50%);
-  background: #1c1e21;
-  color: white;
+  background: #dc143c;
+  color: #ffffff;
   padding: 16px 24px;
-  border-radius: 12px;
+  border-radius: 10px;
   font-weight: 600;
   font-size: 15px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(220, 20, 60, 0.4);
   z-index: 1000;
   min-width: 280px;
   max-width: 90%;
@@ -469,11 +525,11 @@ body {
 }
 
 .toast.success {
-  background: #10b981;
+  background: #dc143c;
 }
 
 .toast.error {
-  background: #ef4444;
+  background: #8b0000;
 }
 
 /* === CHECKING/ERROR STATES === */
@@ -481,31 +537,34 @@ body {
   text-align: center;
   padding: 40px 20px;
   font-size: 16px;
-  color: #6b7280;
+  color: #5f6368;
   font-weight: 600;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .checking-message i {
-  font-size: 32px;
+  font-size: 36px;
   margin-bottom: 12px;
   display: block;
-  color: #1e3c72;
+  color: #dc143c;
 }
 
 .error-message {
-  background: white;
-  border: 2px solid #ef4444;
-  border-radius: 16px;
-  padding: 24px;
-  color: #dc2626;
+  background: #ffffff;
+  border: 3px solid #8b0000;
+  border-radius: 12px;
+  padding: 28px;
+  color: #8b0000;
   font-weight: 700;
   font-size: 16px;
   text-align: center;
-  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.15);
+  box-shadow: 0 3px 12px rgba(139, 0, 0, 0.2);
 }
 
 .error-message i {
-  font-size: 40px;
+  font-size: 44px;
   margin-bottom: 12px;
   display: block;
 }
@@ -547,18 +606,42 @@ body {
 @media (min-width: 640px) {
   .scanner-container,
   .result-container,
-  .report-form-container {
+  .report-form-container,
+  #scanAgain {
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
   }
-
+  
   .action-buttons {
     flex-direction: row;
   }
-
+  
   .btn {
     flex: 1;
+  }
+  
+  .header-title h2 {
+    font-size: 21px;
+  }
+  
+  .header-title .subtitle {
+    font-size: 14px;
+  }
+}
+
+/* === OUTDOOR READABILITY ENHANCEMENTS === */
+@media (prefers-contrast: high) {
+  .page-header {
+    border-bottom: 4px solid #dc143c;
+  }
+  
+  .status-icon {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  }
+  
+  .btn {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   }
 }
 
@@ -570,11 +653,16 @@ body {
   
   .scanner-container,
   .action-buttons,
-  .report-form-container {
+  .report-form-container,
+  #scanAgain {
     display: none;
   }
-
+  
   .page-header {
     position: static;
+    background: #ffffff;
+    border-bottom: 3px solid #dc143c;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 }
