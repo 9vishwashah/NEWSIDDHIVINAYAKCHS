@@ -355,7 +355,7 @@ window.onload = function () {
 
 let flatData = [];
 
-fetch('asset/UpdatedDecData.csv')
+fetch('asset/DecData.csv')
     .then(response => {
         if (!response.ok) {
             throw new Error('CSV file could not be loaded');
