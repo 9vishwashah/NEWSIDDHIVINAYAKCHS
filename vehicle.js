@@ -68,53 +68,85 @@ function onScanSuccess(decodedText) {
 
 
 /* ================= RESIDENT VERIFICATION ================= */
-function verifyResident() {
-  const flat = document.getElementById("verifyFlat").value.trim();
-  const mobile = document.getElementById("verifyMobile").value.trim();
-  const errorBox = document.getElementById("verifyError");
-  const btn = document.querySelector("#verifyModal button");
+function verifyResident_(ss, body) {
+  const flatNo   = String(body.flatNo || "").trim();
+  const mobileNo = String(body.mobileNo || "").trim();
+  const qrId     = String(body.qrId || "").trim();
 
-  if (!flat || !mobile) {
-    errorBox.innerText = "Flat No and Mobile No are required";
-    return;
+  if (!flatNo || !mobileNo || !qrId) {
+    return json({ success: false, reason: "Missing input" });
   }
 
-  // UI state
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Verifying...';
-  errorBox.innerText = "";
+  const sheet = ss.getSheetByName(DATA_SHEET);
+  const rows = sheet.getDataRange().getValues();
+  const headers = rows[0];
 
-  fetch(API, {
-    method: "POST",
-    body: JSON.stringify({
-      action: "verifyResident",
-      flatNo: flat,
-      mobileNo: mobile,
-      qrId: scannedQR
-    })
-  })
-  .then(res => res.json())
-  .then(resp => {
-    if (!resp.success) {
-      errorBox.innerText = "Verification failed. Details not matched.";
-      btn.disabled = false;
-      btn.innerHTML = "Verify & View";
-      return;
+  const flatIdx   = headers.indexOf("Flat No");
+  const mobileIdx = headers.indexOf("Mobile No");
+  const qrIdx     = headers.indexOf("QR_ID");
+
+  let scannerFlatMatched = false;
+  let targetFlat = null;
+
+  for (let i = 1; i < rows.length; i++) {
+
+    const rowFlat   = String(rows[i][flatIdx]).trim();
+    const rowMobile = String(rows[i][mobileIdx]).trim();
+    const rowQr     = String(rows[i][qrIdx]).trim();
+
+    // ✅ STRICT flat + mobile match
+    if (rowFlat === flatNo && rowMobile === mobileNo) {
+      scannerFlatMatched = true;
     }
 
-    // Success
-    document.getElementById("verifyModal").style.display = "none";
-    btn.disabled = false;
-    btn.innerHTML = "Verify & View";
-    fetchVehicleDetails(scannedQR);
-  })
-  .catch(() => {
-    errorBox.innerText = "Network error. Try again.";
-    btn.disabled = false;
-    btn.innerHTML = "Verify & View";
-  });
+    // 🎯 Identify QR owner
+    if (rowQr === qrId) {
+      targetFlat = rowFlat;
+    }
+  }
+
+  // ❌ If flat+mobile do not match EXACTLY → deny
+  if (!scannerFlatMatched || !targetFlat) {
+    logScan_(ss, flatNo, mobileNo, qrId, targetFlat, "DENIED");
+    return json({ success: false });
+  }
+
+  // ✅ Log successful scan
+  logScan_(ss, flatNo, mobileNo, qrId, targetFlat, "ALLOWED");
+
+  return json({ success: true });
 }
 
+
+function logScan_(ss, scannedByFlat, scannerMobile, qrId, scannedForFlat, result) {
+  let logSheet = ss.getSheetByName("ScanLogs");
+
+  if (!logSheet) {
+    logSheet = ss.insertSheet("ScanLogs");
+    logSheet.appendRow([
+      "SR NO",
+      "Timestamp",
+      "QR_ID",
+      "Scanned By",
+      "Scanner Mobile",
+      "Scanned For",
+      "Result"
+    ]);
+  }
+
+  const nextRow = logSheet.getLastRow() + 1;
+  const srNo = nextRow - 1;
+
+  logSheet.getRange(nextRow, 1, 1, 7).setValues([[
+    srNo,
+    Utilities.formatDate(new Date(), "Asia/Kolkata", "yyyy-MM-dd HH:mm:ss"),
+    qrId,
+    scannedByFlat,
+    scannerMobile,
+    scannedForFlat || "UNKNOWN",
+    result
+  ]]);
+}
 
 
 /* ================= FETCH VEHICLE DETAILS ================= */
