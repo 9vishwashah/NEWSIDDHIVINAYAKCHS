@@ -45,7 +45,7 @@ function onScanSuccess(decodedText) {
   // Legacy QR (ID only)
   if (!decodedText.startsWith("http")) {
     window.location.href =
-      `https://newsvvehicle.netlify.app/?qr=${encodeURIComponent(decodedText)}`;
+      `https://newsiddhivinayakchs.co.in/vehicle/?qr=${encodeURIComponent(decodedText)}`;
     return;
   }
 
