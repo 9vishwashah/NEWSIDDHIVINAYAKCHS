@@ -1,14 +1,12 @@
 let scannedQR = "";
 let currentQR = "";
 let currentFlat = "";
+let authToken = null;
 
 const API = "https://script.google.com/macros/s/AKfycbzsljUO22BMFw88gmbH7KNTdL2Dsi5WX1ZpC6OzB4HGOQ681OLS3S9SnordA9UMblZE/exec";
 let html5QrCode;
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   startScan();
-// });
-
+/* ================= PAGE LOAD ================= */
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const qrFromUrl = params.get("qr");
@@ -23,10 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ================= START SCAN ================= */
 function startScan() {
-  document.getElementById("result").innerHTML = "";
-  document.getElementById("reportForm").style.display = "none";
-  document.getElementById("scanAgain").style.display = "none";
-  document.getElementById("reader").style.display = "block";
+  resetState();
 
   html5QrCode = new Html5Qrcode("reader");
   html5QrCode.start(
@@ -36,7 +31,19 @@ function startScan() {
   );
 }
 
+function resetState() {
+  scannedQR = "";
+  currentQR = "";
+  currentFlat = "";
+  authToken = null;
 
+  document.getElementById("result").innerHTML = "";
+  document.getElementById("reportForm").style.display = "none";
+  document.getElementById("scanAgain").style.display = "none";
+  document.getElementById("reader").style.display = "block";
+}
+
+/* ================= ON SCAN ================= */
 function onScanSuccess(decodedText) {
   html5QrCode.stop().then(() => {
     document.getElementById("reader").style.display = "none";
@@ -66,7 +73,6 @@ function onScanSuccess(decodedText) {
   document.getElementById("verifyError").innerText = "";
 }
 
-
 /* ================= RESIDENT VERIFICATION ================= */
 function verifyResident() {
   const flat = document.getElementById("verifyFlat").value.trim();
@@ -79,7 +85,6 @@ function verifyResident() {
     return;
   }
 
-  // UI state
   btn.disabled = true;
   btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Verifying...';
   errorBox.innerText = "";
@@ -95,18 +100,23 @@ function verifyResident() {
   })
   .then(res => res.json())
   .then(resp => {
-    if (!resp.success) {
-      errorBox.innerText = "Verification failed. Details not matched.";
+
+    if (!resp.success || !resp.token) {
+      errorBox.innerText =
+        "Verification failed. Please contact society office.";
       btn.disabled = false;
       btn.innerHTML = "Verify & View";
       return;
     }
 
-    // Success
+    // ✅ AUTH SUCCESS
+    authToken = resp.token;
+
     document.getElementById("verifyModal").style.display = "none";
     btn.disabled = false;
     btn.innerHTML = "Verify & View";
-    fetchVehicleDetails(scannedQR);
+
+    fetchVehicleDetails(scannedQR, authToken);
   })
   .catch(() => {
     errorBox.innerText = "Network error. Try again.";
@@ -115,93 +125,67 @@ function verifyResident() {
   });
 }
 
-
-
 /* ================= FETCH VEHICLE DETAILS ================= */
-function fetchVehicleDetails(qr) {
+function fetchVehicleDetails(qr, token) {
+
+  if (!token) {
+    document.getElementById("result").innerHTML =
+      `<div class="error-message">Unauthorized access</div>`;
+    return;
+  }
+
   const result = document.getElementById("result");
 
   result.innerHTML =
     '<div class="checking-message"><i class="fa fa-spinner fa-spin"></i> Loading vehicle details...</div>';
 
-  fetch(`${API}?qr=${encodeURIComponent(qr)}`)
+  fetch(`${API}?qr=${encodeURIComponent(qr)}&token=${encodeURIComponent(token)}`)
     .then(res => res.json())
     .then(data => {
+
       if (data.error) {
         result.innerHTML =
-          `<div class="error-message"><i class="fa fa-times-circle"></i> ${data.error}</div>`;
-        document.getElementById("scanAgain").style.display = "block";
+          `<div class="error-message">${data.error}</div>`;
         return;
       }
 
       if (data.Status !== "Active") {
         result.innerHTML = `
           <div class="status-card access-denied">
-            <div class="status-header">
-              <div class="status-icon"><i class="fa fa-times"></i></div>
-              <div class="status-title">ACCESS DENIED</div>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Reason:</span>
-              <span class="info-value">Inactive QR Code</span>
-            </div>
-          </div>
-        `;
+            <div class="status-title">ACCESS DENIED</div>
+            <div class="info-row">Inactive QR Code</div>
+          </div>`;
         document.getElementById("scanAgain").style.display = "block";
         return;
       }
 
+      // ✅ FINAL ACCESS
       currentQR = data["QR_ID"];
       currentFlat = data["Flat No"];
       const mobile = data["Mobile No"];
 
       result.innerHTML = `
         <div class="status-card access-granted">
-          <div class="status-header">
-            <div class="status-icon"><i class="fa fa-check"></i></div>
-            <div class="status-title">ACCESS GRANTED</div>
-          </div>
+          <div class="status-title">ACCESS GRANTED</div>
 
           <div class="vehicle-info">
-            <div class="info-row">
-              <span class="info-label">Flat No</span>
-              <span class="info-value">${data["Flat No"]}</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Owner</span>
-              <span class="info-value">${data["Owner Name"]}</span>
-            </div>
+            <div><b>Flat:</b> ${data["Flat No"]}</div>
+            <div><b>Owner:</b> ${data["Owner Name"]}</div>
           </div>
 
           <div class="vehicle-section">
-            <div class="vehicle-section-header">
-              <i class="fa fa-motorcycle"></i>
-              <span>Two Wheelers</span>
-              <span class="vehicle-count">${data["2W Count"]}</span>
-            </div>
-            <div class="vehicle-numbers">${data["2W Numbers"] || "None registered"}</div>
+            <b>Two Wheelers:</b> ${data["2W Numbers"] || "None"}
           </div>
 
           <div class="vehicle-section">
-            <div class="vehicle-section-header">
-              <i class="fa fa-car"></i>
-              <span>Four Wheelers</span>
-              <span class="vehicle-count">${data["4W Count"]}</span>
-            </div>
-            <div class="vehicle-numbers">${data["4W Numbers"] || "None registered"}</div>
+            <b>Four Wheelers:</b> ${data["4W Numbers"] || "None"}
           </div>
 
           <div class="action-buttons">
-            ${mobile ? `
-              <a href="tel:${mobile}" class="btn btn-call">
-                <i class="fa fa-phone"></i> Call Owner
-              </a>` : ""}
-            <button id="reportBtn" class="btn btn-danger">
-              <i class="fa fa-flag"></i> Report Issue
-            </button>
+            ${mobile ? `<a href="tel:${mobile}" class="btn btn-call">Call Owner</a>` : ""}
+            <button id="reportBtn" class="btn btn-danger">Report Issue</button>
           </div>
-        </div>
-      `;
+        </div>`;
 
       document.getElementById("reportBtn").onclick = () => {
         document.getElementById("reportForm").style.display = "block";
@@ -212,7 +196,7 @@ function fetchVehicleDetails(qr) {
     })
     .catch(() => {
       result.innerHTML =
-        '<div class="error-message"><i class="fa fa-exclamation-triangle"></i> Error fetching data</div>';
+        '<div class="error-message">Error fetching data</div>';
       document.getElementById("scanAgain").style.display = "block";
     });
 }
@@ -235,53 +219,31 @@ function submitReport() {
   }
 
   btn.disabled = true;
-  btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Reporting...';
+  btn.innerHTML = "Reporting...";
 
-  if (photoInput.files.length > 0) {
+  const send = (photo) => {
+    fetch(API, {
+      method: "POST",
+      body: JSON.stringify({
+        action: "submitReport",
+        qrId: currentQR,
+        flatNo: currentFlat,
+        issue,
+        remarks,
+        photo
+      })
+    }).then(() => {
+      alert("Report submitted");
+      btn.disabled = false;
+      btn.innerHTML = "Submit Report";
+    });
+  };
+
+  if (photoInput.files.length) {
     const reader = new FileReader();
-    reader.onload = () => sendReport(issue, remarks, reader.result, btn);
+    reader.onload = () => send(reader.result);
     reader.readAsDataURL(photoInput.files[0]);
   } else {
-    sendReport(issue, remarks, null, btn);
+    send(null);
   }
 }
-
-function sendReport(issue, remarks, photoBase64, btn) {
-  fetch(API, {
-    method: "POST",
-    body: JSON.stringify({
-      action: "submitReport",   // ✅ REQUIRED
-      qrId: currentQR,
-      flatNo: currentFlat,
-      issue: issue,
-      remarks: remarks,
-      photo: photoBase64
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.success) {
-      btn.innerHTML = '<i class="fa fa-check"></i> Reported Successfully';
-      setTimeout(() => {
-        alert("Report submitted successfully");
-        document.getElementById("reportForm").style.display = "none";
-        document.getElementById("photoInput").value = "";
-        document.getElementById("issueType").value = "";
-        document.getElementById("remarks").value = "";
-        btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Report';
-        btn.disabled = false;
-      }, 800);
-    } else {
-      throw new Error();
-    }
-  })
-  .catch(() => {
-    alert("Error submitting report");
-    btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Report';
-    btn.disabled = false;
-  });
-}
-
-
-/* ================= INIT ================= */
-// startScan();
