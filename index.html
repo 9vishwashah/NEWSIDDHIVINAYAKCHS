@@ -459,84 +459,42 @@
             <div class="note-box">
                 <p>✍🏻 Fill The Form for Any Request or Complaint</p>
             </div>
-            <form action="https://airform.io/nsiddhi2014@gmail.com" method="POST" id="requestForm">
+            <form name="application" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+                enctype="multipart/form-data" action="/thankyou.html" id="requestForm">
+
+                <!-- Netlify detection -->
+                <input type="hidden" name="form-name" value="application">
+
+                <!-- Honeypot -->
+                <p hidden>
+                    <input name="bot-field">
+                </p>
+
                 <input type="text" name="FlatNo" placeholder="Flat No" required>
                 <input type="text" name="OwnerName" placeholder="Applicant name" required>
-                <input type="tel" name="Mobile No" placeholder="Mobile No" required>
+                <input type="tel" name="MobileNo" placeholder="Mobile No" required>
                 <input type="email" name="Email" placeholder="Email (Optional)">
                 <input type="text" name="Subject" placeholder="Write Subject">
+
                 <textarea name="Message" rows="4" placeholder="To Chairman/Secretary" required></textarea>
-                <button type="submit" onclick="return checkApplication(event)">Submit</button>
+
+                <label style="font-weight:600; margin-top:8px; display:block;">
+                    📎 Attach Media (Optional)
+                </label>
+
+                <input type="file" name="attachment" accept="image/*,application/pdf,.doc,.docx"
+                    style="margin-bottom:8px;">
+
+                <small style="display:block; color:#666; margin-bottom:12px;">
+                    Accepted: Images, PDF, Word documents
+                </small>
+
+                <button type="submit">Submit</button>
             </form>
         </div>
     </section>
 
-    <!-- <section class="survey-section" id="survey">
-        <div class="form-container">
-            <h2 class="form-title">Society Member Survey</h2>
-            <p class="form-subtitle">Please fill out the form to help us update our records.</p>
 
-            <form id="member-survey-form">
-                <label for="flat_no">Flat No</label>
-                <input type="text" id="flat_no" name="flat_no" required>
-
-                <label for="owner_name">Owner's Name</label>
-                <input type="text" id="owner_name" name="owner_name" required>
-
-                <label for="primary_mobile">Owner's Mobile No</label>
-                <input type="tel" id="primary_mobile" name="primary_mobile" required>
-
-                <label for="secondary_mobile">Secondary Mobile No (Optional)</label>
-                <input type="tel" id="secondary_mobile" name="secondary_mobile">
-
-                <label for="email">Email (Optional)</label>
-                <input type="email" id="email" name="email">
-
-                <label>Number of Two-Wheelers</label>
-                <div class="toggle-group">
-                    <input type="radio" id="2w-0" name="two_wheeler_count" value="0" checked><label
-                        for="2w-0">No</label>
-                    <input type="radio" id="2w-1" name="two_wheeler_count" value="1"><label for="2w-1">1</label>
-                    <input type="radio" id="2w-2" name="two_wheeler_count" value="2"><label for="2w-2">2</label>
-                    <input type="radio" id="2w-3" name="two_wheeler_count" value="3"><label for="2w-3">3+</label>
-                </div>
-                <div id="two-wheeler-inputs" class="conditional-inputs"></div>
-
-                <label>Do you own a Four-Wheeler?</label>
-                <div class="toggle-group">
-                    <input type="radio" id="4w-no" name="has_four_wheeler" value="no" checked><label
-                        for="4w-no">No</label>
-                    <input type="radio" id="4w-yes" name="has_four_wheeler" value="yes"><label for="4w-yes">Yes</label>
-                </div>
-                <div id="four-wheeler-input" class="conditional-inputs"></div>
-
-                <label>Current Occupancy</label>
-                <div class="toggle-group">
-                    <input type="radio" id="occ-owner" name="occupancy_status" value="Owner" checked><label
-                        for="occ-owner">Owner</label>
-                    <input type="radio" id="occ-rental" name="occupancy_status" value="Rental"><label
-                        for="occ-rental">Rental</label>
-                </div>
-
-                <label for="residents_count">Number of People Living</label>
-                <input type="number" id="residents_count" name="residents_count" min="1" required>
-
-                <label>Which redevelopment process do you prefer?</label>
-                <div class="toggle-group">
-                    <input type="radio" id="redev-self" name="redevelopment_preference" value="Self Development"
-                        checked><label for="redev-self">Self Development</label>
-                    <input type="radio" id="redev-builder" name="redevelopment_preference" value="Builder"><label
-                        for="redev-builder">Through Builder</label>
-                </div>
-
-                <label for="feedback">Any Suggestion/Feedback/Issue? (Optional)</label>
-                <textarea id="feedback" name="feedback" rows="4"></textarea>
-
-                <button type="submit" id="submit-survey-btn">Submit</button>
-                <p id="form-status"></p>
-            </form>
-        </div>
-    </section> -->
 
     <section class="committee" id="committee">
         <div class="container">
