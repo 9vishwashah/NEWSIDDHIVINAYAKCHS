@@ -370,14 +370,14 @@ fetch('asset/DecData.csv')
                 ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy,
                 TwoWNo, SecondTwNo, FourWNo, decBill, decRec,
                 patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepRec, SepBill, DecRec, DecBill,
-                vehicleImage1, vehicleImage2
+                MarchRec2, MarchBill2, vehicleImage1, vehicleImage2
             ] = line.split(',').map(item => item.trim());
 
             return {
                 ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy,
                 TwoWNo, SecondTwNo, FourWNo, decBill, decRec,
                 patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepRec, SepBill, DecRec, DecBill,
-                vehicleImage1, vehicleImage2
+                MarchRec2, MarchBill2, vehicleImage1, vehicleImage2
             };
         });
 
@@ -486,8 +486,8 @@ const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting && !hasAnimated) {
             hasAnimated = true;
-            countPayments()
-            countVehicles()
+            countPayments();
+            countVehicles();
             observer.unobserve(entry.target);
         }
     });
@@ -516,6 +516,8 @@ if (target) observer.observe(target);
 //     animateCounter("twoWheelerCount", twoW);
 //     animateCounter("fourWheelerCount", fourW);
 // }
+
+// function countTenants() {}
 
 
 const vehicleTarget = document.getElementById("payment-section");
@@ -681,7 +683,8 @@ function checkBalance(result) {
     } else {
         document.getElementById('balance').classList.add('green-text');
     }
-    document.getElementById('balance').innerText = "₹" + Math.abs(result.balance);
+    const formattedBalance = Math.abs(result.balance).toLocaleString('en-IN');
+    document.getElementById('balance').innerText = "₹" + formattedBalance;
 }
 
 function vehicleImages(result) {
@@ -788,6 +791,28 @@ function bills(result) {
         };
     } else {
         document.getElementById('marchBillbtn').style.display = "none";
+    }
+
+    if (result.MarchRec2) {
+        const marchRec2Btn = document.getElementById('marchRec2Btn');
+        marchRec2Btn.style.display = "inline-block";
+        marchRec2Btn.onclick = () => {
+            console.log("Opening URL:", result.MarchRec2);
+            window.open(result.MarchRec2, '_blank');
+        };
+    } else {
+        document.getElementById('marchRec2Btn').style.display = "none";
+    }
+
+    if (result.MarchBill2) {
+        const marchBill2Btn = document.getElementById('marchBill2Btn');
+        marchBill2Btn.style.display = "inline-block";
+        marchBill2Btn.onclick = () => {
+            console.log("Opening URL:", result.MarchBill2);
+            window.open(result.MarchBill2, '_blank');
+        };
+    } else {
+        document.getElementById('marchBill2Btn').style.display = "none";
     }
 
 

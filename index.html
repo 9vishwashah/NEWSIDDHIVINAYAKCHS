@@ -154,14 +154,14 @@
                 <h3>Welcome to New Siddhivinayak CHS!</h3>
 
                 <div class="important-msg">
-                    <p><i class="fa-solid fa-download" style="color: crimson;"></i> <strong>Kindly download December
-                            2025
+                    <p><i class="fa-solid fa-download" style="color: crimson;"></i> <strong>Kindly download March
+                            2026
                             Bills</strong></p>
                 </div>
 
                 <div class="important-msg">
                     <p><i class="fa-solid fa-wallet" style="color: crimson;"></i> <strong>Pay outstanding
-                            Amount before 31-12-2025</strong></p>
+                            Amount before 20-03-2026</strong></p>
                 </div>
 
             </div>
@@ -176,8 +176,8 @@
         <h1 class="title" id="title">👨‍💼 Members </h1>
         <div class="container">
             <div class="note-box">
-                <p><strong>📌</strong> Enter Flat <b>Owners Name</b> OR Flat No e.g.<strong>A-18 Room No 1</strong>
-                    <strong></strong>
+                <p><strong>📌</strong> Enter Flat <b>Owners Name</b> OR Flat No e.g. <strong>1801</strong> or <strong>A
+                        18-1</strong>
                 </p>
             </div>
 
@@ -238,6 +238,20 @@
 
                 <h3 id="ownerName">DOWNLOAD BILLS & RECEIPTS</h3>
                 <div class="note-box">📌 Receipts will be updated once the payment reflects in passbook.</div>
+                <div class="bill-section">
+                    <p><i class="fa-regular fa-file" style="color: #DC143C;"></i><strong> March 2026 Bill:
+                        </strong><span
+                            style="background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; margin-left: 8px; font-weight: bold; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(255,65,108,0.3);">NEW</span>
+                    </p>
+                    <button id="marchBill2Btn" class="view-bill">View Bill</button></p>
+                </div>
+                <div class="bill-section">
+                    <p><i class="fa-solid fa-receipt" style="color: #1D3956;"></i><strong> March 2026 Receipt:
+                        </strong><span
+                            style="background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; margin-left: 8px; font-weight: bold; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(255,65,108,0.3);">NEW</span>
+                    </p>
+                    <button id="marchRec2Btn" class="view-receipt">View Receipt</button></p>
+                </div>
                 <div class="bill-section">
                     <p><i class="fa-solid fa-receipt" style="color: #1D3956;"></i><strong> Dec 2025 Receipt:
                         </strong></p>
@@ -347,45 +361,6 @@
 
 
 
-    <section class="BillingStats" id="payment-section">
-        <h2 class="title" id="title">📊 Billing Stats</h2>
-        <div class="payment-summary">
-            <div class="note-box">
-                <p>🎯 Oct-Dec Billing Summary of 224 Flats</p>
-            </div>
-            <div class="circle-container">
-                <svg class="progress-ring" width="180" height="180">
-                    <circle class="progress-ring__background" r="80" cx="90" cy="90" />
-                    <circle class="progress-ring__circle" r="80" cx="90" cy="90" />
-                </svg>
-                <div class="count-overlay">
-                    <div id="animatedCount" class="count-number">0</div>
-                    <div class="count-label"><strong>PAYMENT RECEIVED</strong></div>
-                </div>
-            </div>
-            <div class="vehicle-stats">
-                <div class="vehicle-box">
-                    <div id="twoWheelerCount" class="vehicle-number">182</div>
-                    <div class="vehicle-label"><strong>Two Wheeler</strong></div>
-                </div>
-                <div class="vehicle-box">
-                    <div id="fourWheelerCount" class="vehicle-number">50</div>
-                    <div class="vehicle-label"><strong>Four Wheeler</strong></div>
-                </div>
-                <div class="vehicle-box">
-                    <div id="fourWheelerCount" class="vehicle-number">23</div>
-                    <div class="vehicle-label"><strong>Application Received</strong></div>
-                </div>
-                <div class="vehicle-box">
-                    <div id="fourWheelerCount" class="vehicle-number">73</div>
-                    <div class="vehicle-label"><strong>Active Tenants</strong></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
     <!-- <section class="gallery" id="gallery">
         <div class="container">
             <h2 class="title" id="title">🎉 Events</h2>
@@ -470,29 +445,67 @@
                     <input name="bot-field">
                 </p>
 
-                <input type="text" name="FlatNo" placeholder="Flat No" required>
-                <input type="text" name="OwnerName" placeholder="Applicant name" required>
-                <input type="tel" name="MobileNo" placeholder="Mobile No" required>
-                <input type="email" name="Email" placeholder="Email (Optional)">
-                <input type="text" name="Subject" placeholder="Write Subject">
+                <div class="form-field">
+                    <label for="FlatNo">🏠 Flat No <span class="req">*</span></label>
+                    <input type="text" id="FlatNo" name="FlatNo" placeholder="e.g. A-18/01" required>
+                </div>
 
-                <textarea name="Message" rows="4" placeholder="To Chairman/Secretary" required></textarea>
+                <div class="form-field">
+                    <label for="OwnerName">👤 Applicant Name <span class="req">*</span></label>
+                    <input type="text" id="OwnerName" name="OwnerName" placeholder="Full name" required>
+                </div>
 
-                <label style="font-weight:600; margin-top:8px; display:block;">
-                    📎 Attach Media (Optional)
-                </label>
+                <div class="form-field">
+                    <label for="MobileNo">📱 Mobile No <span class="req">*</span></label>
+                    <input type="tel" id="MobileNo" name="MobileNo" placeholder="10-digit mobile number" required>
+                </div>
 
-                <input type="file" name="attachment" accept="image/*,application/pdf,.doc,.docx"
-                    style="margin-bottom:8px;">
+                <div class="form-field">
+                    <label for="Subject">📌 Subject</label>
+                    <input type="text" id="Subject" name="Subject" placeholder="Brief subject of request">
+                </div>
 
-                <small style="display:block; color:#666; margin-bottom:12px;">
-                    Accepted: Images, PDF, Word documents
-                </small>
+                <div class="form-field">
+                    <label for="Message">✉️ Message <span class="req">*</span></label>
+                    <textarea id="Message" name="Message" rows="4" placeholder="To Chairman/Secretary..."
+                        required></textarea>
+                </div>
 
-                <button type="submit">Submit</button>
+                <div class="form-field">
+                    <label>📎 Attach Document <span style="font-weight:400; color:#888;">(Optional)</span></label>
+                    <label for="attachment" class="file-upload-btn" id="fileLabel">
+                        <i class="fa-solid fa-paperclip"></i> Choose File
+                    </label>
+                    <input type="file" id="attachment" name="attachment" accept="image/*,application/pdf,.doc,.docx"
+                        style="display:none;" onchange="handleFileAttach(this)">
+                    <div id="file-status" class="file-status-msg"></div>
+                    <small style="display:block; color:#888; margin-top:6px;">Accepted: Images, PDF, Word
+                        documents</small>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Application</button>
             </form>
         </div>
     </section>
+
+    <script>
+        function handleFileAttach(input) {
+            const label = document.getElementById('fileLabel');
+            const status = document.getElementById('file-status');
+            if (input.files && input.files[0]) {
+                const fileName = input.files[0].name;
+                label.innerHTML = '<i class="fa-solid fa-circle-check"></i> Change File';
+                label.classList.add('file-attached');
+                status.innerHTML = `<i class="fa-solid fa-circle-check" style="color:#1a9e5c;"></i> <strong>${fileName}</strong> attached successfully!`;
+                status.classList.add('show');
+            } else {
+                label.innerHTML = '<i class="fa-solid fa-paperclip"></i> Choose File';
+                label.classList.remove('file-attached');
+                status.innerHTML = '';
+                status.classList.remove('show');
+            }
+        }
+    </script>
 
 
 

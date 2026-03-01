@@ -129,14 +129,173 @@ body {
     display: inline-block;
 }
 
-/* === MEMBERS SEARCH SECTION STYLING === */
+/* === MEMBERS LOGIN SECTION STYLING === */
 
 .member-details {
-    padding: 20px 12px;
+    padding: 40px 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: linear-gradient(160deg, #f9f9fb 0%, #fff 100%);
 }
+
+/* Login Card Wrapper */
+.login-card-wrapper {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.13);
+    border: 1px solid #ececec;
+}
+
+/* Header */
+.login-card-header {
+    background: linear-gradient(135deg, #DC143C 0%, #9b0e28 100%);
+    padding: 32px 28px 28px;
+    text-align: center;
+    color: #fff;
+}
+
+.login-icon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 6px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.login-subtitle {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0;
+    letter-spacing: 0.3px;
+}
+
+/* Body */
+.login-card-body {
+    background: #fff;
+    padding: 28px 28px 32px;
+}
+
+/* Hint box */
+.login-hint-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #fff7f7;
+    border: 1px solid #f5c0c0;
+    border-left: 4px solid #DC143C;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 24px;
+    font-size: 13.5px;
+    color: #5a2929;
+    line-height: 1.6;
+}
+
+.login-hint-box code {
+    background: #f0e0e0;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: 'Poppins', monospace;
+}
+
+/* Fields */
+.login-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.login-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.login-field-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1D3956;
+}
+
+.login-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    border: 1.5px solid #ddd;
+    border-radius: 12px;
+    background: #fafafa;
+    color: #333;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: #DC143C;
+    box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.1);
+    background: #fff;
+}
+
+/* Login Button */
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #DC143C 0%, #a50e2b 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 4px 14px rgba(220, 20, 60, 0.35);
+    margin-top: 4px;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(220, 20, 60, 0.4);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 520px) {
+    .login-card-wrapper {
+        border-radius: 18px;
+    }
+
+    .login-card-header {
+        padding: 24px 20px 22px;
+    }
+
+    .login-card-body {
+        padding: 20px 18px 26px;
+    }
+
+    .login-input {
+        font-size: 16px;
+    }
+}
+
 
 .member-details .container {
     max-width: 500px;
@@ -394,7 +553,7 @@ body {
     /* padding-top: ; */
     width: 70px;
     border-radius: 30%;
-    margin-left: -150px;
+    margin-left: 0;
     height: auto;
     display: inline-block;
 }
@@ -2276,3 +2435,151 @@ body {
     color: var(--primary-color);
 }
 
+
+/* ===== APPLICATION FORM REDESIGN ===== */
+.form-cardDetails {
+    max-width: 520px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px 28px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border: 1px solid #f0e0e0;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.form-field label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1D3956;
+    margin-bottom: 7px;
+    text-align: left;
+}
+
+.form-field .req {
+    color: #DC143C;
+    margin-left: 2px;
+}
+
+.form-field input[type="text"],
+.form-field input[type="tel"],
+.form-field textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background: #fafafa;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: #DC143C;
+    box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.1);
+    background: #fff;
+}
+
+.form-field textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.file-upload-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #f5f5f5;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    transition: all 0.25s ease;
+    width: fit-content;
+    margin-top: 4px;
+}
+
+.file-upload-btn:hover {
+    border-color: #DC143C;
+    background: #fff5f7;
+    color: #DC143C;
+}
+
+.file-upload-btn.file-attached {
+    border-style: solid;
+    border-color: #1a9e5c;
+    background: #f0fff7;
+    color: #1a9e5c;
+}
+
+.file-status-msg {
+    display: none;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #1a9e5c;
+    background: #f0fff7;
+    border: 1px solid #a8e6c6;
+    border-radius: 8px;
+    padding: 8px 12px;
+    gap: 6px;
+    align-items: center;
+}
+
+.file-status-msg.show {
+    display: flex;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 13px;
+    background: #DC143C;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.25s ease, transform 0.1s ease;
+    letter-spacing: 0.3px;
+}
+
+.submit-btn:hover {
+    background: #b8102f;
+    transform: translateY(-1px);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .form-cardDetails {
+        padding: 20px 16px;
+        border-radius: 14px;
+    }
+
+    .form-field input[type="text"],
+    .form-field input[type="tel"],
+    .form-field textarea {
+        font-size: 16px;
+    }
+
+    .file-upload-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
