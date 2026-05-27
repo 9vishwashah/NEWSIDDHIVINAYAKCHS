@@ -370,14 +370,14 @@ fetch('asset/DecData.csv')
                 ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy,
                 TwoWNo, SecondTwNo, FourWNo, decBill, decRec,
                 patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepRec, SepBill, DecRec, DecBill,
-                MarchRec2, MarchBill2, vehicleImage1, vehicleImage2
+                MarchRec2, MarchBill2, JuneRec2, JuneBill2, vehicleImage1, vehicleImage2
             ] = line.split(',').map(item => item.trim());
 
             return {
                 ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy,
                 TwoWNo, SecondTwNo, FourWNo, decBill, decRec,
                 patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepRec, SepBill, DecRec, DecBill,
-                MarchRec2, MarchBill2, vehicleImage1, vehicleImage2
+                MarchRec2, MarchBill2, JuneRec2, JuneBill2, vehicleImage1, vehicleImage2
             };
         });
 
@@ -813,6 +813,32 @@ function bills(result) {
         };
     } else {
         document.getElementById('marchBill2Btn').style.display = "none";
+    }
+
+    if (result.JuneRec2) {
+        const juneRec2Btn = document.getElementById('juneRec2Btn');
+        juneRec2Btn.style.display = "inline-block";
+        juneRec2Btn.onclick = () => {
+            console.log("Opening URL:", result.JuneRec2);
+            window.open(result.JuneRec2, '_blank');
+        };
+    } else {
+        if (document.getElementById('juneRec2Btn')) {
+            document.getElementById('juneRec2Btn').style.display = "none";
+        }
+    }
+
+    if (result.JuneBill2) {
+        const juneBill2Btn = document.getElementById('juneBill2Btn');
+        juneBill2Btn.style.display = "inline-block";
+        juneBill2Btn.onclick = () => {
+            console.log("Opening URL:", result.JuneBill2);
+            window.open(result.JuneBill2, '_blank');
+        };
+    } else {
+        if (document.getElementById('juneBill2Btn')) {
+            document.getElementById('juneBill2Btn').style.display = "none";
+        }
     }
 
 
