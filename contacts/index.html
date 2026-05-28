@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
             min-height: 100vh;
             background: linear-gradient(160deg, #f9f9fb 0%, #fff 100%);
         }
+
         .contact-list {
             max-width: 600px;
             margin: 0 auto;
@@ -20,6 +22,7 @@
             flex-direction: column;
             gap: 18px;
         }
+
         .contact-card {
             background: #fff;
             padding: 20px 25px;
@@ -33,15 +36,18 @@
             border-left: 5px solid #DC143C;
             transition: transform 0.3s ease;
         }
+
         .contact-card:hover {
             transform: translateY(-3px);
         }
+
         .contact-info h3 {
             margin: 0 0 5px;
             color: #1D3956;
             font-size: 20px;
             font-weight: 600;
         }
+
         .contact-info p {
             margin: 6px 0 0;
             color: #DC143C;
@@ -52,10 +58,12 @@
             border-radius: 20px;
             display: inline-block;
         }
+
         .contact-actions {
             display: flex;
             gap: 12px;
         }
+
         .btn-action {
             display: inline-flex;
             align-items: center;
@@ -68,51 +76,61 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
+
         .btn-whatsapp {
             background: #25D366;
             color: #fff;
         }
+
         .btn-whatsapp:hover {
             background: #20b858;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
             transform: translateY(-2px);
             color: #fff;
         }
+
         .btn-call {
             background: #1D3956;
             color: #fff;
         }
+
         .btn-call:hover {
             background: #152b42;
             box-shadow: 0 4px 12px rgba(29, 57, 86, 0.3);
             transform: translateY(-2px);
             color: #fff;
         }
+
         .logo-link {
-            display: flex; 
-            align-items: center; 
+            display: flex;
+            align-items: center;
             gap: 12px;
             text-decoration: none;
         }
+
         .header-title {
             color: #fff;
             font-size: 22px;
             font-weight: 600;
             white-space: nowrap;
         }
+
         @media (max-width: 480px) {
             .contact-card {
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 16px;
             }
+
             .contact-actions {
                 width: 100%;
             }
+
             .btn-action {
                 flex: 1;
                 padding: 12px;
             }
+
             .header-title {
                 font-size: 16px;
                 white-space: normal;
@@ -121,6 +139,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar sticky" style="background: crimson; padding: 15px 0;">
@@ -140,7 +159,7 @@
     <section class="contact-page">
         <div class="max-width">
             <h1 class="title" id="title" style="margin-bottom: 40px;">Society Contacts</h1>
-            
+
             <div class="contact-list">
                 <!-- Contact Item 1 -->
                 <div class="contact-card">
@@ -149,8 +168,10 @@
                         <p>Legal Compliance</p>
                     </div>
                     <div class="contact-actions">
-                        <a href="https://wa.me/919819640825" class="btn-action btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                        <a href="tel:+919819640825" class="btn-action btn-call"><i class="fa-solid fa-phone"></i> Call</a>
+                        <a href="https://wa.me/919819640825" class="btn-action btn-whatsapp" target="_blank"><i
+                                class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                        <a href="tel:+919819640825" class="btn-action btn-call"><i class="fa-solid fa-phone"></i>
+                            Call</a>
                     </div>
                 </div>
 
@@ -161,20 +182,24 @@
                         <p>General Queries</p>
                     </div>
                     <div class="contact-actions">
-                        <a href="https://wa.me/919136352915" class="btn-action btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                        <a href="tel:+919136352915" class="btn-action btn-call"><i class="fa-solid fa-phone"></i> Call</a>
+                        <a href="https://wa.me/919136352915" class="btn-action btn-whatsapp" target="_blank"><i
+                                class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                        <a href="tel:+919136352915" class="btn-action btn-call"><i class="fa-solid fa-phone"></i>
+                            Call</a>
                     </div>
                 </div>
 
                 <!-- Contact Item 3 -->
                 <div class="contact-card">
                     <div class="contact-info">
-                        <h3>3. Mr Uttam Bhanage</h3>
+                        <h3>3. Mr. Uttam Bhanage</h3>
                         <p>Chairman</p>
                     </div>
                     <div class="contact-actions">
-                        <a href="https://wa.me/919821167546" class="btn-action btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                        <a href="tel:+919821167546" class="btn-action btn-call"><i class="fa-solid fa-phone"></i> Call</a>
+                        <a href="https://wa.me/919821167546" class="btn-action btn-whatsapp" target="_blank"><i
+                                class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                        <a href="tel:+919821167546" class="btn-action btn-call"><i class="fa-solid fa-phone"></i>
+                            Call</a>
                     </div>
                 </div>
 
@@ -185,8 +210,10 @@
                         <p>Secretary</p>
                     </div>
                     <div class="contact-actions">
-                        <a href="https://wa.me/919892933353" class="btn-action btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                        <a href="tel:+919892933353" class="btn-action btn-call"><i class="fa-solid fa-phone"></i> Call</a>
+                        <a href="https://wa.me/919892933353" class="btn-action btn-whatsapp" target="_blank"><i
+                                class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                        <a href="tel:+919892933353" class="btn-action btn-call"><i class="fa-solid fa-phone"></i>
+                            Call</a>
                     </div>
                 </div>
 
@@ -197,8 +224,10 @@
                         <p>Member</p>
                     </div>
                     <div class="contact-actions">
-                        <a href="https://wa.me/919766002001" class="btn-action btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                        <a href="tel:+919766002001" class="btn-action btn-call"><i class="fa-solid fa-phone"></i> Call</a>
+                        <a href="https://wa.me/919766002001" class="btn-action btn-whatsapp" target="_blank"><i
+                                class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                        <a href="tel:+919766002001" class="btn-action btn-call"><i class="fa-solid fa-phone"></i>
+                            Call</a>
                     </div>
                 </div>
 
@@ -209,8 +238,10 @@
                         <p>Committee Member</p>
                     </div>
                     <div class="contact-actions">
-                        <a href="https://wa.me/919322051984" class="btn-action btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                        <a href="tel:+919322051984" class="btn-action btn-call"><i class="fa-solid fa-phone"></i> Call</a>
+                        <a href="https://wa.me/919322051984" class="btn-action btn-whatsapp" target="_blank"><i
+                                class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                        <a href="tel:+919322051984" class="btn-action btn-call"><i class="fa-solid fa-phone"></i>
+                            Call</a>
                     </div>
                 </div>
             </div>
@@ -220,12 +251,16 @@
     <footer style="background: crimson; padding: 15px 23px; color: black; text-align: center;">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
             <span style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
-                Created By <a href="https://wa.me/919594503214" style="color: white; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                    <img src="../asset/vjas-logo.png" alt="VJAS Tech Logo" style="height: 24px; width: auto; border-radius: 4px; background: white; padding: 2px;"> VJAS Tech
+                Created By <a href="https://wa.me/919594503214"
+                    style="color: white; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                    <img src="../asset/vjas-logo.png" alt="VJAS Tech Logo"
+                        style="height: 24px; width: auto; border-radius: 4px; background: white; padding: 2px;"> VJAS
+                    Tech
                 </a>
             </span>
             <span style="font-size: 14px;"><span class="far fa-copyright"></span> 2026 All rights reserved.</span>
         </div>
     </footer>
 </body>
+
 </html>
