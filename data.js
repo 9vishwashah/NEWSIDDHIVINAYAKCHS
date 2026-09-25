@@ -370,14 +370,14 @@ fetch('asset/DecData.csv')
                 ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy,
                 TwoWNo, SecondTwNo, FourWNo, decBill, decRec,
                 patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepRec, SepBill, DecRec, DecBill,
-                MarchRec2, MarchBill2, JuneRec2, JuneBill2, vehicleImage1, vehicleImage2
+                MarchRec2, MarchBill2, JuneRec2, JuneBill2, SepRec26, SepBill26, vehicleImage1, vehicleImage2
             ] = line.split(',').map(item => item.trim());
 
             return {
                 ownerName, flatNo, phno, email, fourwheel, twowheel, balance, occupancy,
                 TwoWNo, SecondTwNo, FourWNo, decBill, decRec,
                 patraBill, patraRec, MarchReceipt, MarchBill, JuneRec, JuneBill, SepRec, SepBill, DecRec, DecBill,
-                MarchRec2, MarchBill2, JuneRec2, JuneBill2, vehicleImage1, vehicleImage2
+                MarchRec2, MarchBill2, JuneRec2, JuneBill2, SepRec26, SepBill26, vehicleImage1, vehicleImage2
             };
         });
 
@@ -704,6 +704,34 @@ function vehicleImages(result) {
 }
 
 function bills(result) {
+
+    if (result.SepRec26) {
+        const sepRec26Btn = document.getElementById('sepRec26Btn');
+        if (sepRec26Btn) {
+            sepRec26Btn.style.display = "inline-block";
+            sepRec26Btn.onclick = () => {
+                console.log("Opening URL:", result.SepRec26);
+                window.open(result.SepRec26, '_blank');
+            };
+        }
+    } else {
+        const sepRec26Btn = document.getElementById('sepRec26Btn');
+        if (sepRec26Btn) sepRec26Btn.style.display = "none";
+    }
+
+    if (result.SepBill26) {
+        const sepBill26Btn = document.getElementById('sepBill26Btn');
+        if (sepBill26Btn) {
+            sepBill26Btn.style.display = "inline-block";
+            sepBill26Btn.onclick = () => {
+                console.log("Opening URL:", result.SepBill26);
+                window.open(result.SepBill26, '_blank');
+            };
+        }
+    } else {
+        const sepBill26Btn = document.getElementById('sepBill26Btn');
+        if (sepBill26Btn) sepBill26Btn.style.display = "none";
+    }
 
     if (result.DecRec) {
         const decReceiptBtn = document.getElementById('decReceiptBtn');
