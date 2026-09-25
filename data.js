@@ -447,13 +447,14 @@ function countPayments() {
     });
 
     animateCounter("animatedCount", totalPayments);
-    animateProgressCircle(totalPayments, TOTAL_FLATS);
+    // animateProgressCircle(totalPayments, TOTAL_FLATS); // function is disabled
 }
 
 
 
 function animateCounter(id, target) {
     const el = document.getElementById(id);
+    if (!el) return;
     let count = 0;
     const duration = 1000;
     const step = Math.ceil(target / (duration / 16));
@@ -735,182 +736,196 @@ function bills(result) {
 
     if (result.DecRec) {
         const decReceiptBtn = document.getElementById('decReceiptBtn');
-        decReceiptBtn.style.display = "inline-block";
-        decReceiptBtn.onclick = () => {
-            console.log("Opening URL:", result.DecRec);
-            window.open(result.DecRec, '_blank');
-        };
+        if (decReceiptBtn) {
+            decReceiptBtn.style.display = "inline-block";
+            decReceiptBtn.onclick = () => {
+                console.log("Opening URL:", result.DecRec);
+                window.open(result.DecRec, '_blank');
+            };
+        }
     } else {
-        document.getElementById('decReceiptBtn').style.display = "none";
+        const el = document.getElementById('decReceiptBtn');
+        if (el) el.style.display = "none";
     }
 
     if (result.DecBill) {
         const decBillbtn = document.getElementById('decBillbtn');
-        decBillbtn.style.display = "inline-block";
-        decBillbtn.onclick = () => {
-            console.log("Opening URL:", result.DecBill);
-            window.open(result.DecBill, '_blank');
-        };
+        if (decBillbtn) {
+            decBillbtn.style.display = "inline-block";
+            decBillbtn.onclick = () => {
+                console.log("Opening URL:", result.DecBill);
+                window.open(result.DecBill, '_blank');
+            };
+        }
     } else {
-        document.getElementById('decBillbtn').style.display = "none";
+        const el = document.getElementById('decBillbtn');
+        if (el) el.style.display = "none";
     }
+
     if (result.SepRec) {
         const sepReceiptBtn = document.getElementById('sepReceiptBtn');
-        sepReceiptBtn.style.display = "inline-block";
-        sepReceiptBtn.onclick = () => {
-            console.log("Opening URL:", result.SepRec);
-            window.open(result.SepRec, '_blank');
-        };
+        if (sepReceiptBtn) {
+            sepReceiptBtn.style.display = "inline-block";
+            sepReceiptBtn.onclick = () => window.open(result.SepRec, '_blank');
+        }
     } else {
-        document.getElementById('sepReceiptBtn').style.display = "none";
+        const el = document.getElementById('sepReceiptBtn');
+        if (el) el.style.display = "none";
     }
 
     if (result.SepBill) {
         const sepBillbtn = document.getElementById('sepBillbtn');
-        sepBillbtn.style.display = "inline-block";
-        sepBillbtn.onclick = () => {
-            console.log("Opening URL:", result.SepBill);
-            window.open(result.SepBill, '_blank');
-        };
+        if (sepBillbtn) {
+            sepBillbtn.style.display = "inline-block";
+            sepBillbtn.onclick = () => window.open(result.SepBill, '_blank');
+        }
     } else {
-        document.getElementById('sepBillbtn').style.display = "none";
+        const el = document.getElementById('sepBillbtn');
+        if (el) el.style.display = "none";
     }
-
 
     if (result.JuneRec) {
         const juneReceiptBtn = document.getElementById('juneReceiptBtn');
-        juneReceiptBtn.style.display = "inline-block";
-        juneReceiptBtn.onclick = () => {
-            console.log("Opening URL:", result.JuneRec);
-            window.open(result.JuneRec, '_blank');
-        };
+        if (juneReceiptBtn) {
+            juneReceiptBtn.style.display = "inline-block";
+            juneReceiptBtn.onclick = () => window.open(result.JuneRec, '_blank');
+        }
     } else {
-        document.getElementById('juneReceiptBtn').style.display = "none";
+        const el = document.getElementById('juneReceiptBtn');
+        if (el) el.style.display = "none";
     }
 
     if (result.JuneBill) {
         const juneBillbtn = document.getElementById('juneBillbtn');
-        juneBillbtn.style.display = "inline-block";
-        juneBillbtn.onclick = () => {
-            console.log("Opening URL:", result.JuneBill);
-            window.open(result.JuneBill, '_blank');
-        };
+        if (juneBillbtn) {
+            juneBillbtn.style.display = "inline-block";
+            juneBillbtn.onclick = () => window.open(result.JuneBill, '_blank');
+        }
     } else {
-        document.getElementById('juneBillbtn').style.display = "none";
+        const el = document.getElementById('juneBillbtn');
+        if (el) el.style.display = "none";
     }
 
     if (result.MarchReceipt) {
         const marchReceiptBtn = document.getElementById('marchReceiptBtn');
-        marchReceiptBtn.style.display = "inline-block";
-        marchReceiptBtn.onclick = () => {
-            console.log("Opening URL:", result.MarchReceipt);
-            window.open(result.MarchReceipt, '_blank');
-        };
+        if (marchReceiptBtn) {
+            marchReceiptBtn.style.display = "inline-block";
+            marchReceiptBtn.onclick = () => window.open(result.MarchReceipt, '_blank');
+        }
     } else {
-        document.getElementById('marchReceiptBtn').style.display = "none";
+        const el = document.getElementById('marchReceiptBtn');
+        if (el) el.style.display = "none";
     }
 
     if (result.MarchBill) {
         const marchBillbtn = document.getElementById('marchBillbtn');
-        marchBillbtn.style.display = "inline-block";
-        marchBillbtn.onclick = () => {
-            console.log("Opening URL:", result.MarchBill);
-            window.open(result.MarchBill, '_blank');
-        };
+        if (marchBillbtn) {
+            marchBillbtn.style.display = "inline-block";
+            marchBillbtn.onclick = () => window.open(result.MarchBill, '_blank');
+        }
     } else {
-        document.getElementById('marchBillbtn').style.display = "none";
+        const el = document.getElementById('marchBillbtn');
+        if (el) el.style.display = "none";
     }
 
     if (result.MarchRec2) {
         const marchRec2Btn = document.getElementById('marchRec2Btn');
-        marchRec2Btn.style.display = "inline-block";
-        marchRec2Btn.onclick = () => {
-            console.log("Opening URL:", result.MarchRec2);
-            window.open(result.MarchRec2, '_blank');
-        };
+        if (marchRec2Btn) {
+            marchRec2Btn.style.display = "inline-block";
+            marchRec2Btn.onclick = () => {
+                console.log("Opening URL:", result.MarchRec2);
+                window.open(result.MarchRec2, '_blank');
+            };
+        }
     } else {
-        document.getElementById('marchRec2Btn').style.display = "none";
+        const el = document.getElementById('marchRec2Btn');
+        if (el) el.style.display = "none";
     }
 
     if (result.MarchBill2) {
         const marchBill2Btn = document.getElementById('marchBill2Btn');
-        marchBill2Btn.style.display = "inline-block";
-        marchBill2Btn.onclick = () => {
-            console.log("Opening URL:", result.MarchBill2);
-            window.open(result.MarchBill2, '_blank');
-        };
+        if (marchBill2Btn) {
+            marchBill2Btn.style.display = "inline-block";
+            marchBill2Btn.onclick = () => {
+                console.log("Opening URL:", result.MarchBill2);
+                window.open(result.MarchBill2, '_blank');
+            };
+        }
     } else {
-        document.getElementById('marchBill2Btn').style.display = "none";
+        const el = document.getElementById('marchBill2Btn');
+        if (el) el.style.display = "none";
     }
 
     if (result.JuneRec2) {
         const juneRec2Btn = document.getElementById('juneRec2Btn');
-        juneRec2Btn.style.display = "inline-block";
-        juneRec2Btn.onclick = () => {
-            console.log("Opening URL:", result.JuneRec2);
-            window.open(result.JuneRec2, '_blank');
-        };
-    } else {
-        if (document.getElementById('juneRec2Btn')) {
-            document.getElementById('juneRec2Btn').style.display = "none";
+        if (juneRec2Btn) {
+            juneRec2Btn.style.display = "inline-block";
+            juneRec2Btn.onclick = () => {
+                console.log("Opening URL:", result.JuneRec2);
+                window.open(result.JuneRec2, '_blank');
+            };
         }
+    } else {
+        const el = document.getElementById('juneRec2Btn');
+        if (el) el.style.display = "none";
     }
 
     if (result.JuneBill2) {
         const juneBill2Btn = document.getElementById('juneBill2Btn');
-        juneBill2Btn.style.display = "inline-block";
-        juneBill2Btn.onclick = () => {
-            console.log("Opening URL:", result.JuneBill2);
-            window.open(result.JuneBill2, '_blank');
-        };
-    } else {
-        if (document.getElementById('juneBill2Btn')) {
-            document.getElementById('juneBill2Btn').style.display = "none";
+        if (juneBill2Btn) {
+            juneBill2Btn.style.display = "inline-block";
+            juneBill2Btn.onclick = () => {
+                console.log("Opening URL:", result.JuneBill2);
+                window.open(result.JuneBill2, '_blank');
+            };
         }
+    } else {
+        const el = document.getElementById('juneBill2Btn');
+        if (el) el.style.display = "none";
     }
-
-
 
     if (result.decBill) {
         const decBillBtn = document.getElementById('decBillBtn');
-        decBillBtn.style.display = "inline-block";
-        decBillBtn.onclick = () => {
-            window.open(result.decBill, '_blank');
-        };
+        if (decBillBtn) {
+            decBillBtn.style.display = "inline-block";
+            decBillBtn.onclick = () => window.open(result.decBill, '_blank');
+        }
     } else {
-        document.getElementById('decBillBtn').style.display = "none";
+        const el = document.getElementById('decBillBtn');
+        if (el) el.style.display = "none";
     }
-
 
     if (result.decRec) {
         const decRecBtn = document.getElementById('decRecBtn');
-        decRecBtn.style.display = "inline-block";
-        decRecBtn.onclick = () => {
-            window.open(result.decRec, '_blank');
-        };
+        if (decRecBtn) {
+            decRecBtn.style.display = "inline-block";
+            decRecBtn.onclick = () => window.open(result.decRec, '_blank');
+        }
     } else {
-        document.getElementById('decRecBtn').style.display = "none";
+        const el = document.getElementById('decRecBtn');
+        if (el) el.style.display = "none";
     }
 
     if (result.patraBill) {
         const patraBillBtn = document.getElementById('patraBillBtn');
-        patraBillBtn.style.display = "inline-block";
-        patraBillBtn.onclick = () => {
-            window.open(result.patraBill, '_blank');
-        };
+        if (patraBillBtn) {
+            patraBillBtn.style.display = "inline-block";
+            patraBillBtn.onclick = () => window.open(result.patraBill, '_blank');
+        }
     } else {
-        document.getElementById('patraBillBtn').style.display = "none";
+        const el = document.getElementById('patraBillBtn');
+        if (el) el.style.display = "none";
     }
-
 
     if (result.patraRec) {
         const patraRecBtn = document.getElementById('patraRecBtn');
-        patraRecBtn.style.display = "inline-block";
-        patraRecBtn.onclick = () => {
-            window.open(result.patraRec, '_blank');
-        };
+        if (patraRecBtn) {
+            patraRecBtn.style.display = "inline-block";
+            patraRecBtn.onclick = () => window.open(result.patraRec, '_blank');
+        }
     } else {
-        document.getElementById('patraRecBtn').style.display = "none";
+        const el = document.getElementById('patraRecBtn');
+        if (el) el.style.display = "none";
     }
 
 }
